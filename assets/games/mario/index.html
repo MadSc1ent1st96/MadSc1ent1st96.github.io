@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Infinite Runner+</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      font-family: sans-serif;
+      color: white;
+    }
+
+    #gameContainer {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+    }
+
+    h1 {
+      margin: 8px 0;
+      font-size: 22px;
+    }
+
+    canvas {
+      max-width: 100%;
+      background: #5c94fc;
+    }
+
+    #scoreDisplay {
+      font-size: 18px;
+      margin: 6px 0;
+    }
+
+    #startBtn, #restartBtn, #mobileJump {
+      position: absolute;
+      padding: 12px 24px;
+      font-size: 18px;
+      z-index: 2;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffffffcc;
+      color: #000;
+    }
+
+    #startBtn {
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #restartBtn {
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+    }
+
+    #mobileJump {
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      padding: 16px 28px;
+      font-size: 22px;
+      background-color: #ffcc00;
+      color: #000;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ff0;
+    }
+  </style>
+</head>
+<body>
+  <div id="gameContainer">
+    <h1>Infinite Runner+</h1>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <p id="scoreDisplay">Score: 0</p>
+    <button id="startBtn"▶️ Start Game</button>
+    <button id="restartBtn">🔁 Restart Game</button>
+    <button id="mobileJump">🕹️ Tap to Jump</button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const startBtn = document.getElementById("startBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const mobileJump = document.getElementById("mobileJump");
+
+    const playerImg = new Image(); playerImg.src = "img/player.png";
+    const obstacleImg = new Image(); obstacleImg.src = "img/obstacle.png";
+    const powerupImg = new Image(); powerupImg.src = "img/powerup.png";
+
+    const jumpSound = new Audio("sounds/jump.wav");
+    const deathSound = new Audio("sounds/death.wav");
+    const bgm = new Audio("sounds/bgm.mp3"); bgm.loop = true;
+
+    let player, gravity, score, speed, obstacles, powerups, gameOver, jumps;
+    let invincible = false, invincibleTimer = 0;
+    let obstaclecooldown = 0;
+
+    function initGame() {
+      player = { x: 50, y: 330, w: 40, h: 50, vy: 0, jumpCount: 0 };
+      gravity = 0.6;
+      score = 0;
+      speed = 2;
+      obstacles = [];
+      powerups = [];
+      gameOver = false;
+      jumps = 2;
+      invincible = false;
+      invincibleTimer = 0;
+      restartBtn.style.display = "none";
+      document.getElementById("scoreDisplay").innerText = "Score: 0";
+      bgm.currentTime = 0;
+      bgm.play();
+      update();
+    }
+
+    function jump() {
+      if (player.jumpCount < jumps && !gameOver) {
+        player.vy = -18;
+        player.jumpCount++;
+        jumpSound.play();
+      }
+    }
+
+    document.addEventListener("keydown", e => {
+      if (e.code === "Space") jump();
+    });
+
+    mobileJump.addEventListener("touchstart", () => {
+      jump();
+    });
+
+    startBtn.addEventListener("click", () => {
+      startBtn.style.display = "none";
+      if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        mobileJump.style.display = "inline-block";
+      }
+      initGame();
+    });
+
+    restartBtn.onclick = () => {
+      restartBtn.style.display = "none";
+      initGame();
+    };
+
+    function drawPlayer() {
+      ctx.drawImage(playerImg, player.x, player.y, player.w, player.h);
+    }
+
+    function drawObstacle(ob) {
+      ctx.drawImage(obstacleImg, ob.x, ob.y, ob.w, ob.h);
+    }
+
+    function drawPowerUp(pu) {
+      ctx.drawImage(powerupImg, pu.x, pu.y, pu.w, pu.h);
+    }
+
+    function update() {
+      if (gameOver) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#3c763d";
+      ctx.fillRect(0, 380, canvas.width, 20);
+
+      player.vy += gravity;
+      player.y += player.vy;
+      if (player.y >= 330) {
+        player.y = 330;
+        player.vy = 0;
+        player.jumpCount = 0;
+      }
+
+      drawPlayer();
+
+      if (obstaclecooldown <= 0 && Math.random() < 0.01) {
+        obstacles.push({ x: canvas.width, y: 340, w: 40, h: 40 });
+        obstaclecooldown = 120;
+      } else {
+        obstaclecooldown--;
+      }
+
+      obstacles.forEach(ob => {
+        ob.x -= speed;
+        drawObstacle(ob);
+        if (!invincible && checkCollision(player, ob)) {
+          endGame();
+        }
+      });
+      obstacles = obstacles.filter(ob => ob.x + ob.w > 0);
+
+      if (Math.random() < 0.0035) {
+        powerups.push({ x: canvas.width, y: 310, w: 30, h: 30 });
+      }
+
+      powerups.forEach(pu => {
+        pu.x -= speed;
+        drawPowerUp(pu);
+        if (checkCollision(player, pu)) {
+          score += 100;
+          invincible = true;
+          invincibleTimer = 300;
+          pu.collected = true;
+        }
+      });
+
+      powerups = powerups.filter(p => !p.collected && p.x + p.w > 0);
+
+      if (invincible) {
+        invincibleTimer--;
+        if (invincibleTimer <= 0) invincible = false;
+        ctx.fillStyle = "yellow";
+        ctx.fillText("Invincible!", 700, 30);
+      }
+
+      score++;
+      document.getElementById("scoreDisplay").innerText = "Score: " + score;
+
+      requestAnimationFrame(update);
+    }
+
+    function checkCollision(a, b) {
+      return a.x < b.x + b.w &&
+             a.x + a.w > b.x &&
+             a.y < b.y + b.h &&
+             a.y + a.h > b.y;
+    }
+
+    function endGame() {
+      gameOver = true;
+      deathSound.play();
+      bgm.pause();
+      alert("💀 Game Over! Your score was: " + score);
+      restartBtn.style.display = "inline-block";
+    }
+
+    window.onload = () => {
+      // Wait for user to click Start
+    };
+  </script>
+</body>
+</html>

@@ -1,5 +1,7 @@
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I'm **Aniket Mishra**, a third-year BS-MS student at IISER Kolkata. My academic interests lie mainly in **astrophysics**, particularly **stellar structure and evolution**, and in using **computational tools** to study physical systems.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I enjoy working independently on projects that combine theoretical concepts with numerical simulations. One such project is the *Stellar Evolution Atlas*, a collection of MESA-based stellar models aimed at exploring how mass and metallicity influence stellar evolution.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Outside academics, I’m involved in organizing student events and occasionally work on science outreach.
+
+For more on what I'm currently doing, check the [Projects](/projects/) page.

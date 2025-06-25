@@ -21,16 +21,6 @@
                   {% endif %}
                 </td>
               </tr>
-              {% if content.location %}
-                <tr>
-                  <td>
-                    <p class="location">
-                      <i class="fa-solid fa-location-dot iconlocation"></i>
-                      {{ content.location }}
-                    </p>
-                  </td>
-                </tr>
-              {% endif %}
             </tbody>
           </table>
         </div>
@@ -39,6 +29,20 @@
             <a href="{{ content.url }}">{{ content.studyType }}</a>
           </h6>
           <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.institution }}</h6>
+          {% if content.location %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.9rem;">
+            <i class="fa-solid fa-location-dot mr-1"></i>{{ content.location }}
+            </h6>
+            {% endif %}
+
+          {% if content.score %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.9rem; font-weight: normal; font-style: italic">
+              {{ content.score }}
+            </h6>
+          {% endif %}
+
+          
+
           <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">{{ content.area }}</h6>
           <ul class="items">
             {% for item in content.courses %}
