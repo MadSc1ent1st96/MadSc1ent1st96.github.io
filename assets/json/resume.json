@@ -125,40 +125,19 @@
   "skills": [
     {
       "name": "Programming",
-      "keywords": [
-        "Python (intermediate)",
-        "Ubermag",
-        "C++ (beginner)",
-        "Fortran (beginner)",
-        "MESA"
-      ]
+      "keywords": ["Python (intermediate)", "Ubermag", "C++ (beginner)", "Fortran (beginner)", "MESA"]
     },
     {
       "name": "Programming (Not learned, but used using AI)",
-      "keywords": [
-        "Bash Scripting",
-        "HTML",
-        "CSS",
-        "Javascript"
-      ] 
+      "keywords": ["Bash Scripting", "HTML", "CSS", "Javascript"]
     },
     {
       "name": "Tools",
-      "keywords": [
-        "GnuPlot",
-        "OriginLab",
-        "Typst",
-        "Excel"
-      ]
+      "keywords": ["GnuPlot", "OriginLab", "Typst", "Excel"]
     },
     {
       "name": "Soft Skills",
-      "keywords": [
-        "Time Management",
-        "Team Handling",
-        "Planning",
-        "Flexibility"
-      ]
+      "keywords": ["Time Management", "Team Handling", "Planning", "Flexibility"]
     }
   ]
 }

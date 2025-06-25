@@ -20,7 +20,7 @@ icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name 
 timezone: Asia/Kolkata
 
 url: https://MadSc1ent1st96.github.io # the base hostname & protocol for your site
-baseurl:  # the subpath of your site, e.g. /blog/. Leave blank for root
+baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: true # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 back_to_top: true # set to false to disable the back to top button
@@ -150,7 +150,7 @@ collections:
     defaults:
       layout: post
     output: true
-  projects: 
+  projects:
     output: true
 
 # -----------------------------------------------------------------------------
@@ -621,12 +621,11 @@ third_party_libraries:
       js: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.js"
     version: "2.1.8"
 
-
 # -----------------------------------------------------------------------------
 # Get external JSON data
 # -----------------------------------------------------------------------------
 
-resume: 
+resume:
   json: /assets/json/resume.json
 
 jekyll_get_json:
@@ -641,6 +640,3 @@ jsonresume:
   - workshops
   - positions
   - skills
-  
-
-

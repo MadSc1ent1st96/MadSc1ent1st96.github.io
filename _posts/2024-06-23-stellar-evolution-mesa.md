@@ -15,6 +15,7 @@ This post summarizes my project on simulating stellar evolution using [MESA](htt
 ## What Defines a Star?
 
 A star is:
+
 1. A massive ball of gas held together by gravity.
 2. A luminous object radiating energy from nuclear fusion in its core.
 
@@ -25,6 +26,7 @@ The evolution of a star is dictated by how long these two conditions hold.
 ## Hydrostatic Equilibrium and Energy Balance
 
 Hydrostatic equilibrium maintains a balance between:
+
 - Inward gravitational force
 - Outward pressure from thermal motion
 
@@ -84,10 +86,9 @@ Modeling stellar structure with MESA helped me bridge textbook theory with dynam
 
 ## References
 
-1. Tablizer, *Sun Life*. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sun_Life.png)  
-2. Prialnik, *Stellar Structure and Evolution*, 2nd ed., Cambridge University Press (2009)  
-3. Paxton et al., *MESA Paper*, [DOI](https://doi.org/10.1088/0067-0049/192/1/3)  
+1. Tablizer, _Sun Life_. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sun_Life.png)
+2. Prialnik, _Stellar Structure and Evolution_, 2nd ed., Cambridge University Press (2009)
+3. Paxton et al., _MESA Paper_, [DOI](https://doi.org/10.1088/0067-0049/192/1/3)
 4. Mishra, A. (2025), [Zenodo Record](https://doi.org/10.5281/zenodo.15571157)
 
 ---
-

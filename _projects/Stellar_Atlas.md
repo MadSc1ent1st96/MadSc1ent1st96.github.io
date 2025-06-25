@@ -2,7 +2,7 @@
 layout: page
 title: Stellar Atlas
 description: A simulation-based study of stellar evolution using MESA
-img: assets/img/Stellar_thumbnail.png  # Optional – used for preview cards, can be replaced later
+img: assets/img/Stellar_thumbnail.png # Optional – used for preview cards, can be replaced later
 importance: 1
 category: work
 ---
@@ -44,4 +44,4 @@ Future phases will include stars of varying metallicities and enhancements to th
 
 ---
 
-*Stay tuned as the Stellar Atlas evolves into a complete digital reference of stellar lifetimes, structures, and fates.*
+_Stay tuned as the Stellar Atlas evolves into a complete digital reference of stellar lifetimes, structures, and fates._
