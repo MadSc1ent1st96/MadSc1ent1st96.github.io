@@ -6,8 +6,9 @@
     - name: Label
       value: Undergraduate Student
     - name: Email
-      value: mas23ms096@iiserkol.ac.in
-      value: aniket.mishra200510@gmail.com
+      value:
+      - mas23ms096@iiserkol.ac.in
+      - aniket.mishra200510@gmail.com
     - name: Date of Birth
       value: 10th September 2005
     - name: Languages
