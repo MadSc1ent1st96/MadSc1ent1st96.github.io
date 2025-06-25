@@ -50,4 +50,4 @@ If you’re into physics, coding, or organizing events, let’s connect!
 
 ---
 
-![Profile Banner](https://madsc1ent1st96.github.io/assets/banner.jpg) <!-- Replace with your actual banner if you add one! -->
+
