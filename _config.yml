@@ -15,7 +15,7 @@ footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website, astrophysics, BS-MS, IISER-Kolkata, Physics, aniket mishra, iiserk, iiser kolkata, physics student, stellar astrophysics, BS-MS, MESA, science projects # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: /assets/img/favicon.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: favicon.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 timezone: Asia/Kolkata
 
