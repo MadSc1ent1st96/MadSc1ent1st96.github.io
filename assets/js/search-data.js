@@ -55,10 +55,7 @@ ninja.data = [{
             window.location.href = "/blog/2025/stellar-evolution-mesa/";
           
         },
-      },{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
-          description: "",
-          section: "News",},{id: "projects-stellar-atlas",
+      },{id: "projects-stellar-atlas",
           title: 'Stellar Atlas',
           description: "A simulation-based study of stellar evolution using MESA",
           section: "Projects",handler: () => {
