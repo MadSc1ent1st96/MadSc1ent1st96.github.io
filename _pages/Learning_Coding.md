@@ -12,6 +12,8 @@ toc: true
 Here, I share the codes and resource I used to learn the following coding languages:
 
 ## Table Of Contents
+- [C++]{#c}
+- [FORTRAN]{#fortran}
 {:toc}
 
 ---
