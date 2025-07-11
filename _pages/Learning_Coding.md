@@ -18,6 +18,11 @@ Here, I share the codes and resource I used to learn the following coding langua
 
 ---
 
+* Table Of Contents
+{:toc}
+
+---
+
 ### 1. C++
 
 I learned C++ through a YouTube playlist by [CodeWithHarry](https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=FVimYizPpAqWqE_N).  
