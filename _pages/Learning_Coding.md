@@ -18,7 +18,7 @@ Here, I share the codes and resource I used to learn the following coding langua
 
 ---
 
-### 1. **C++** :
+### 1. C++ {#1-c}:
 
 I learned C++ through a YouTube playlist by [CodeWithHarry](https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL&si=FVimYizPpAqWqE_N).  
 It's a solid, college-style playlist that builds C++ concepts from the ground up.
@@ -35,14 +35,14 @@ Although my solutions follow the playlist closely, I’ve added my own structure
 
 ---
 
-### 2. **FORTRAN** :
+### 2. FORTRAN {#2-fortran}:
 
 There aren’t many modern, structured courses for Fortran, so I used ChatGPT and the official [Fortran Lang](https://fortran-lang.org/learn/) website to get started.
 
 I first got curious about Fortran while working with [MESA](http://mesa.sourceforge.net/).  
 I wanted to understand the purpose of various files in the working directory, especially the `inlist` file, and decided to learn the language so I could interpret and edit those files with confidence.
 
-The code I wrote is available [here](#) (GitHub or Google Drive).  
+The code I wrote is available [Github}(https://github.com/MadSc1ent1st96/Learning-Fortran) or <a href="https://github.com/MadSc1ent1st96/Learning-Fortran/archive/refs/heads/main.zip" class="btn" download>Download ZIP</a>.  
 I’ve added extensive inline comments and theory explanations within the code files, not only to help others but also to help me revise later.  
 The code should be interpretable by anyone familiar with general programming concepts, even if they’re new to Fortran.
 
