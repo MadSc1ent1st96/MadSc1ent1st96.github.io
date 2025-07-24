@@ -9,7 +9,7 @@ thumbnail: assets/img/Stellar_thumbnail.png
 author: Aniket Mishra
 ---
 
-![Author](assets/pdf/article1/Aniket%20Picture.jpg){: .img-fluid .rounded width="120px" style="float:right; margin-left: 1em;"}
+![Author](assets/pdf/article1/Aniket_Picture.jpg){: .img-fluid .rounded width="120px" style="float:right; margin-left: 1em;"}
 
 ## Introduction
 
@@ -41,7 +41,7 @@ A star is in hydrostatic equilibrium when gravity pulling inward is balanced by 
 
 This means pressure must increase toward the core to counteract gravity.
 
-![Hydrostatic Equilibrium](assets/pdf/article1/Figure%202.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+![Hydrostatic Equilibrium](assets/pdf/article1/Figure2.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
 
 ### Energy Generation and Transport
 
@@ -61,7 +61,7 @@ Stars are nearly spherical due to gravity. The mass-radius relation:
  dm = \rho 4\pi r^2 dr
 \]
 
-![Spherical Symmetry](assets/pdf/article1/Figure%203.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+![Spherical Symmetry](assets/pdf/article1/Figure3.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
 
 ### Nuclear Reactions and Composition
 
