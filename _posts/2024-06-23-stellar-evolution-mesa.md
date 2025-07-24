@@ -10,7 +10,7 @@ author: Aniket Mishra
 ---
 
 <p align="right">
-  <img src="/assets/pdf/article1/Aniket%20Picture.jpg" alt="Author" class="img-fluid rounded" style="width: 120px; margin-left: 1em;" />
+  <img src="/assets/pdf/article1/AniketPicture.jpg" alt="Author" class="img-fluid rounded" style="width: 120px; margin-left: 1em;" />
 </p>
 
 ## Introduction
@@ -54,7 +54,7 @@ $$
 This means pressure must increase toward the core to counteract gravity.
 
 <p align="center">
-  <img src="/assets/pdf/article1/Figure%202.png" alt="Hydrostatic Equilibrium" class="img-fluid rounded" style="width: 60%;" />
+  <img src="/assets/pdf/article1/figure2.png" alt="Hydrostatic Equilibrium" class="img-fluid rounded" style="width: 60%;" />
 </p>
 
 ### Energy Generation and Transport
@@ -76,7 +76,7 @@ $$
 $$
 
 <p align="center">
-  <img src="/assets/pdf/article1/Figure%203.png" alt="Spherical Symmetry" class="img-fluid rounded" style="width: 60%;" />
+  <img src="/assets/pdf/article1/figure3.png" alt="Spherical Symmetry" class="img-fluid rounded" style="width: 60%;" />
 </p>
 
 ### Nuclear Reactions and Composition
