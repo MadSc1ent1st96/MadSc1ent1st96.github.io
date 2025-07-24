@@ -2,7 +2,7 @@
 layout: page
 title: Stellar Atlas
 description: A comprehensive digital atlas of stellar evolution using MESA simulations
-img: assets/img/Stellar_thumbnail.png
+img: assets/img/Stellar-Atlas-Thumbnail.svg
 importance: 1
 category: work
 ---
