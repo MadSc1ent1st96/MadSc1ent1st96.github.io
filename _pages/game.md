@@ -13,7 +13,6 @@ CURRENTLY, ONLY SUPPORTS LAPTOPS!!
 <div style="max-width: 800px; margin: auto;">
   <iframe src="/assets/games/mario/index.html" width="800" height="500" style="border:none;"></iframe>
 </div>    
-   
 
 
 The resources used are as follows:
