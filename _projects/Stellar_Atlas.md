@@ -65,7 +65,7 @@ Stellar evolution is governed by a star’s **initial mass** and **metallicity**
 
 ## Access & Resources
 
-- **Explore the Atlas:** [stellar-atlas-vercel.vercel.app/atlas](https://stellar-atlas-vercel.app/atlas)
+- **Explore the Atlas:** [stellar-atlas-vercel.vercel.app/atlas](https://stellar-atlas.vercel.app/atlas)
 - **Download the Dataset:** [Zenodo DOI: 10.5281/zenodo.15571157](https://doi.org/10.5281/zenodo.15571157)
 - **Read the Full Report:** [PDF Download](https://stellar-atlas.vercel.app/Assets/Stellar-Atlas-Final-Report.pdf)
 
