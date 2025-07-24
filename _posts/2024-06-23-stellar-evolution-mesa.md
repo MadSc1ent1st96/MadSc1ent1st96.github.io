@@ -21,6 +21,8 @@ This article takes you on a journey inside a star, exploring the processes that 
   📄 Download Full Article (PDF)
 </a>
 
+[Download the full article as PDF](../assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf)
+
 ---
 
 ## What Defines a Star?
