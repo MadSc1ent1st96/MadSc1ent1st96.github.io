@@ -57,7 +57,7 @@ ninja.data = [{
         },
       },{id: "projects-stellar-atlas",
           title: 'Stellar Atlas',
-          description: "A simulation-based study of stellar evolution using MESA",
+          description: "A comprehensive digital atlas of stellar evolution using MESA simulations",
           section: "Projects",handler: () => {
               window.location.href = "/projects/Stellar_Atlas/";
             },},{
