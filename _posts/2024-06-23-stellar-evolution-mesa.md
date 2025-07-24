@@ -9,7 +9,9 @@ thumbnail: assets/img/Stellar_thumbnail.png
 author: Aniket Mishra
 ---
 
-![Author](/assets/pdf/article1/Aniket_Picture.jpg){: .img-fluid .rounded width="120px" style="float:right; margin-left: 1em;"}
+<p align="right">
+  <img src="/assets/pdf/article1/Aniket%20Picture.jpg" alt="Author" class="img-fluid rounded" style="width: 120px; margin-left: 1em;" />
+</p>
 
 ## Introduction
 
@@ -17,11 +19,15 @@ Have you ever looked up at the night sky and wondered what a star truly is? Star
 
 This article takes you on a journey inside a star, exploring the processes that drive its life cycle, and how scientists model these distant giants using MESA (Modules for Experiments in Stellar Astrophysics). Theoretical background is based on Prialnik's _Stellar Structure and Evolution_ [2].
 
-<a href="/assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf" download class="btn btn-primary" style="margin: 1em 0;">
-  📄 Download Full Article (PDF)
-</a>
+<p align="center">
+  <a href="/assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf" download class="btn btn-primary" style="margin: 1em 0;">
+    📄 Download Full Article (PDF)
+  </a>
+</p>
 
-[Download the full article as PDF](/assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf)
+<p align="center">
+  <a href="/assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf">Download the full article as PDF</a>
+</p>
 
 ---
 
@@ -41,21 +47,23 @@ A star's life is governed by these two conditions. Its death occurs when gravity
 
 A star is in hydrostatic equilibrium when gravity pulling inward is balanced by pressure pushing outward:
 
-\[
+$$
 \frac{dP}{dr} = -\frac{Gm\rho}{r^2}
-\]
+$$
 
 This means pressure must increase toward the core to counteract gravity.
 
-![Hydrostatic Equilibrium](/assets/pdf/article1/figure2.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+<p align="center">
+  <img src="/assets/pdf/article1/Figure%202.png" alt="Hydrostatic Equilibrium" class="img-fluid rounded" style="width: 60%;" />
+</p>
 
 ### Energy Generation and Transport
 
 Stars shine due to nuclear fusion in their cores. The energy equation:
 
-\[
+$$
 \dot{u} + P \cdot \dot{\left(\frac{1}{\rho}\right)} = q - \frac{\partial F}{\partial m}
-\]
+$$
 
 where $u$ is internal energy, $q$ is nuclear energy generation, $F$ is energy flux.
 
@@ -63,19 +71,21 @@ where $u$ is internal energy, $q$ is nuclear energy generation, $F$ is energy fl
 
 Stars are nearly spherical due to gravity. The mass-radius relation:
 
-\[
+$$
  dm = \rho 4\pi r^2 dr
-\]
+$$
 
-![Spherical Symmetry](/assets/pdf/article1/figure3.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+<p align="center">
+  <img src="/assets/pdf/article1/Figure%203.png" alt="Spherical Symmetry" class="img-fluid rounded" style="width: 60%;" />
+</p>
 
 ### Nuclear Reactions and Composition
 
 Nuclear reactions change the composition of a star's core, governed by conservation of charge, baryon number, and lepton number. The rate of change of mass fraction $X_i$ is:
 
-\[
+$$
 \dot{X}_i = f(\rho, T, X)
-\]
+$$
 
 When $\dot{X}=0$, the star is in nuclear equilibrium.
 
@@ -95,16 +105,16 @@ Because we can't observe stellar interiors directly, scientists use computer mod
 
 I modeled a 1 $M_\odot$ (solar mass) star from pre-main sequence to the red giant phase using MESA v24.08.1. The HR (Hertzsprung-Russell) diagram below shows the star's evolutionary track:
 
-<div class="row mt-3">
+<div class="row mt-3" style="text-align: center;">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="../assets/img/hr_model_290.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid path="assets/img/hr_model_290.png" class="img-fluid rounded z-depth-1 mx-auto d-block" zoomable=true %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="../assets/img/hr_model_750.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid path="assets/img/hr_model_750.png" class="img-fluid rounded z-depth-1 mx-auto d-block" zoomable=true %}
     </div>
 </div>
 
-<div class="caption">
+<div class="caption" style="text-align: center;">
 Left: Simulation halted when core hydrogen dropped below $10^{-4}$.  
 Right: Full evolution through pre-main sequence, main sequence, and red giant branch.
 </div>
