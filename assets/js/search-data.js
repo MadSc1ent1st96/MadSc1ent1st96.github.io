@@ -46,9 +46,9 @@ ninja.data = [{
           },
         },{id: "post-inside-the-heart-of-a-star-simulating-stellar-evolution-with-mesa",
         
-          title: "Inside the Heart of a Star - Simulating Stellar Evolution with MESA",
+          title: "Inside the Heart of a Star: Simulating Stellar Evolution with MESA",
         
-        description: "A hands-on exploration of stellar structure, theory, and MESA-based simulations",
+        description: "A deep dive into stellar structure, theory, and hands-on simulation using MESA, with a focus on the Sun&#39;s evolution.",
         section: "Posts",
         handler: () => {
           
