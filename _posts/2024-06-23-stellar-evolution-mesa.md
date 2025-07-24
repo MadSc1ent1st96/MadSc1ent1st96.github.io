@@ -17,6 +17,10 @@ Have you ever looked up at the night sky and wondered what a star truly is? Star
 
 This article takes you on a journey inside a star, exploring the processes that drive its life cycle, and how scientists model these distant giants using MESA (Modules for Experiments in Stellar Astrophysics). Theoretical background is based on Prialnik's _Stellar Structure and Evolution_ [2].
 
+<a href="assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf" download class="btn btn-primary" style="margin: 1em 0;">
+  📄 Download Full Article (PDF)
+</a>
+
 ---
 
 ## What Defines a Star?
