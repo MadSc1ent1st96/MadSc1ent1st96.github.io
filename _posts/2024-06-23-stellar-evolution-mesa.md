@@ -10,24 +10,17 @@ author: Aniket Mishra
 ---
 
 <p align="right">
-  <img src="/assets/pdf/article1/Aniket_Picture.jpg" alt="Author" class="img-fluid rounded" style="width: 120px; margin-left: 1em;" />
+  <a href="/assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf" download class="btn btn-primary" style="margin: 1em 0;">
+    📄 Download Full Article (PDF)
+  </a>
 </p>
 
 ## Introduction
 
 Have you ever looked up at the night sky and wondered what a star truly is? Stars are dynamic, living entities, constantly changing and evolving over vast stretches of time. Understanding them helps us understand our place in the universe.
 
-This article takes you on a journey inside a star, exploring the processes that drive its life cycle, and how scientists model these distant giants using MESA (Modules for Experiments in Stellar Astrophysics). Theoretical background is based on Prialnik's _Stellar Structure and Evolution_ [2].
+This article takes you on a journey inside a star, exploring the processes that drive its life cycle, and how scientists model these distant giants using MESA (Modules for Experiments in Stellar Astrophysics). Theoretical background is based on Prialnik's _Stellar Structure and Evolution_ [1].
 
-<p align="center">
-  <a href="/assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf" download class="btn btn-primary" style="margin: 1em 0;">
-    📄 Download Full Article (PDF)
-  </a>
-</p>
-
-<p align="center">
-  <a href="/assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf">Download the full article as PDF</a>
-</p>
 
 ---
 
@@ -144,10 +137,9 @@ Stellar evolution is an active research area. Challenges include modeling mixing
 
 ## References
 
-1. Tablizer, _Sun Life_. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sun_Life.png)
-2. Prialnik, D. (2009). _An Introduction to the Theory of Stellar Structure and Evolution_, 2nd ed., Cambridge University Press.
-3. Paxton, B. et al. (2011). _MESA Paper_, [DOI](https://doi.org/10.1088/0067-0049/192/1/3)
-4. Mishra, A. (2025), [Zenodo Record](https://doi.org/10.5281/zenodo.15571157)
+1. Prialnik, D. (2009). _An Introduction to the Theory of Stellar Structure and Evolution_, 2nd ed., Cambridge University Press.
+2. Paxton, B. et al. (2011). _MESA Paper_, [DOI](https://doi.org/10.1088/0067-0049/192/1/3)
+3. Mishra, A. (2025), [Zenodo Record](https://doi.org/10.5281/zenodo.15571157)
 
 ---
 
