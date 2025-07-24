@@ -47,7 +47,7 @@ A star is in hydrostatic equilibrium when gravity pulling inward is balanced by 
 
 This means pressure must increase toward the core to counteract gravity.
 
-![Hydrostatic Equilibrium](../assets/pdf/article1/Figure2.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+![Hydrostatic Equilibrium](../assets/pdf/article1/figure2.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
 
 ### Energy Generation and Transport
 
@@ -67,7 +67,7 @@ Stars are nearly spherical due to gravity. The mass-radius relation:
  dm = \rho 4\pi r^2 dr
 \]
 
-![Spherical Symmetry](../assets/pdf/article1/Figure3.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+![Spherical Symmetry](../assets/pdf/article1/figure3.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
 
 ### Nuclear Reactions and Composition
 
