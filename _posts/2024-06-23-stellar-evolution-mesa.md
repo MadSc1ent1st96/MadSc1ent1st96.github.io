@@ -10,7 +10,7 @@ author: Aniket Mishra
 ---
 
 <p align="right">
-  <img src="/assets/pdf/article1/AniketPicture.jpg" alt="Author" class="img-fluid rounded" style="width: 120px; margin-left: 1em;" />
+  <img src="/assets/pdf/article1/Aniket_Picture.jpg" alt="Author" class="img-fluid rounded" style="width: 120px; margin-left: 1em;" />
 </p>
 
 ## Introduction
