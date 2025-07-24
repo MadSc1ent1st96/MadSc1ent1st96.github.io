@@ -9,7 +9,7 @@ thumbnail: assets/img/Stellar_thumbnail.png
 author: Aniket Mishra
 ---
 
-![Author](assets/pdf/article1/Aniket_Picture.jpg){: .img-fluid .rounded width="120px" style="float:right; margin-left: 1em;"}
+![Author](../assets/pdf/article1/Aniket_Picture.jpg){: .img-fluid .rounded width="120px" style="float:right; margin-left: 1em;"}
 
 ## Introduction
 
@@ -17,7 +17,7 @@ Have you ever looked up at the night sky and wondered what a star truly is? Star
 
 This article takes you on a journey inside a star, exploring the processes that drive its life cycle, and how scientists model these distant giants using MESA (Modules for Experiments in Stellar Astrophysics). Theoretical background is based on Prialnik's _Stellar Structure and Evolution_ [2].
 
-<a href="assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf" download class="btn btn-primary" style="margin: 1em 0;">
+<a href="../assets/pdf/article1/Inside%20the%20Heart%20of%20a%20Star-%20Simulating%20Stellar%20Evolution%20with%20MESA.pdf" download class="btn btn-primary" style="margin: 1em 0;">
   📄 Download Full Article (PDF)
 </a>
 
@@ -45,7 +45,7 @@ A star is in hydrostatic equilibrium when gravity pulling inward is balanced by 
 
 This means pressure must increase toward the core to counteract gravity.
 
-![Hydrostatic Equilibrium](assets/pdf/article1/Figure2.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+![Hydrostatic Equilibrium](../assets/pdf/article1/Figure2.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
 
 ### Energy Generation and Transport
 
@@ -65,7 +65,7 @@ Stars are nearly spherical due to gravity. The mass-radius relation:
  dm = \rho 4\pi r^2 dr
 \]
 
-![Spherical Symmetry](assets/pdf/article1/Figure3.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
+![Spherical Symmetry](../assets/pdf/article1/Figure3.png){: .img-fluid .rounded .mx-auto d-block width="60%"}
 
 ### Nuclear Reactions and Composition
 
@@ -95,10 +95,10 @@ I modeled a 1 $M_\odot$ (solar mass) star from pre-main sequence to the red gian
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/hr_model_290.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid path="../assets/img/hr_model_290.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/hr_model_750.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid path="../assets/img/hr_model_750.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 
