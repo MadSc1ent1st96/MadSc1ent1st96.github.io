@@ -63,7 +63,7 @@
   "projects": [
     {
       "name": "Modeling Stellar Structure and Evolution",
-      "summary": "A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles. Interactive web atlas and open dataset published.",
+      "summary": "A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles. Interactive web atlas and open dataset published. Link: https://stellar-atlas.vercel.app/",
       "startDate": "2025-05",
       "endDate": "2025-07",
       "url": "https://stellar-atlas.vercel.app/",
