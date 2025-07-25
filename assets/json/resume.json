@@ -1,9 +1,9 @@
 {
   "basics": {
     "name": "Aniket Mishra",
-    "label": "Physics Undergraduate",
+    "label": "Physics Major, IISER Kolkata",
     "email": "mas23ms096@iiserkol.ac.in",
-    "alt. email": "aniket.mishra200510@gmail.com",
+    "alt_email": "aniket.mishra200510@gmail.com",
     "phone": "+91 9766640165",
     "url": "https://MadSc1ent1st96.github.io",
     "summary": "BS-MS student at IISER Kolkata majoring in physics. Interested in stellar evolution, numerical simulations, and data-driven science. Currently working on MESA-based stellar modeling and other computational projects in physics.",
@@ -27,7 +27,7 @@
       "area": "Physics",
       "studyType": "BS-MS",
       "startDate": "2023",
-      "endDate": "2028(exp.)",
+      "endDate": "2028 (exp.)",
       "score": "7.57/10 (Cumulative GPA as of 4 semesters)",
       "courses": [
         "Mechanics I & II",
@@ -63,17 +63,23 @@
   "projects": [
     {
       "name": "Modeling Stellar Structure and Evolution",
-      "summary": "A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles.",
-      "startDate": "05/25",
-      "endDate": "07/25",
-      "url": ""
+      "summary": "A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles. Interactive web atlas and open dataset published.",
+      "startDate": "2025-05",
+      "endDate": "2025-07",
+      "url": "https://stellar-atlas.vercel.app/",
+      "technologies": [
+        "Python", "MESA", "Next.js", "Tailwind CSS", "Streamlit", "NumPy", "matplotlib", "Zenodo", "Framer Motion", "THREE.js"
+      ]
     },
     {
       "name": "A Study on Hysteresis Loop",
       "summary": "Used Ubermag (Python interface to OOMMF) to simulate hysteresis loops under different exchange energy configurations in a cubic system.",
-      "startDate": "03/24",
-      "endDate": "11/24",
-      "url": ""
+      "startDate": "2024-03",
+      "endDate": "2024-11",
+      "url": "",
+      "technologies": [
+        "Python", "Ubermag", "OOMMF", "matplotlib"
+      ]
     }
   ],
   "awards": [
@@ -101,43 +107,90 @@
       "organization": "Inquivesta XII",
       "position": "Event Coordinator",
       "startDate": "2025",
-      "endDate": "2026"
+      "endDate": "2026",
+      "description": "Coordinated logistics and managed a team for the annual science fest."
     },
     {
       "organization": "Gaming Club of IISER Kolkata",
       "position": "Convener",
       "startDate": "2024",
-      "endDate": "2025"
+      "endDate": "2025",
+      "description": "Led club activities and organized gaming events."
     },
     {
       "organization": "Student Monitored Canteen (SMC)",
       "position": "Finance and Admin Sub-Committee Member",
       "startDate": "2024",
-      "endDate": "2025"
+      "endDate": "2025",
+      "description": "Handled budgeting and administrative tasks for the student canteen."
     },
     {
       "organization": "Inquivesta XI",
       "position": "Event Organizer (Esports: Headshot)",
       "startDate": "2024",
-      "endDate": "2025"
+      "endDate": "2025",
+      "description": "Organized and managed the esports event for the annual fest."
     }
   ],
   "skills": [
     {
       "name": "Programming",
-      "keywords": ["Python (intermediate)", "Ubermag", "C++ (beginner)", "Fortran (beginner)", "MESA"]
+      "keywords": [
+        "Python (intermediate)",
+        "C++ (beginner)",
+        "Fortran (beginner)"
+      ]
     },
     {
-      "name": "Programming (Not learned, but used using AI)",
-      "keywords": ["Bash Scripting", "HTML", "CSS", "Javascript"]
+      "name": "Web & Scripting (AI-assisted, basic familiarity)",
+      "keywords": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Bash Scripting",
+        "Next.js",
+        "Tailwind CSS",
+        "Streamlit",
+        "THREE.js",
+        "Framer Motion"
+      ]
     },
     {
-      "name": "Tools",
-      "keywords": ["GnuPlot", "OriginLab", "Typst", "Excel"]
+      "name": "Scientific Libraries & Tools",
+      "keywords": [
+        "MESA",
+        "Ubermag",
+        "NumPy",
+        "pandas",
+        "matplotlib",
+        "mesa_reader",
+        "FFmpeg",
+        "GnuPlot",
+        "OriginLab",
+        "Typst",
+        "Excel",
+        "Zenodo"
+      ]
+    },
+    {
+      "name": "Other Tools",
+      "keywords": [
+        "Git",
+        "VS Code"
+      ]
     },
     {
       "name": "Soft Skills",
-      "keywords": ["Time Management", "Team Handling", "Planning", "Flexibility"]
+      "keywords": [
+        "Scientific Communication",
+        "Time Management",
+        "Team Handling",
+        "Planning",
+        "Flexibility",
+        "Problem Solving",
+        "Collaboration",
+        "Self-learning"
+      ]
     }
   ]
-}
+} 
