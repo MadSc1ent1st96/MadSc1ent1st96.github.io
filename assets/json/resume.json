@@ -64,7 +64,7 @@
   "projects": [
     {
       "name": "Modeling Stellar Structure and Evolution",
-      "summary": "A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles. Interactive web atlas and open dataset published. Link: https://stellar-atlas.vercel.app/",
+      "summary": "A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles. Interactive web atlas and open dataset published.",
       "startDate": "2025-05",
       "endDate": "2025-07",
       "url": "https://stellar-atlas.vercel.app/",
@@ -95,14 +95,14 @@
     {
       "title": "AI and ROS for Robotics: Theory and Practice",
       "issuer": "IIITDM Kancheepuram",
-      "startDate": "2023-12-11",
-      "endDate": "2023-12-15"
+      "date": "2023-12-11",
+      "EndDate": "2023-12-15"
     },
     {
       "title": "Machine Learning Workshop",
       "issuer": "Techfest, IIT Bombay",
-      "startDate": "2023-12-27",
-      "endDate": "2023-12-29"
+      "date": "2023-12-27",
+      "EndDate": "2023-12-29"
     }
   ],
   "positions": [
