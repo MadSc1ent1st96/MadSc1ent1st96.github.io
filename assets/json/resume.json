@@ -85,7 +85,7 @@
   "awards": [
     {
       "title": "Top Team Nominee",
-      "date": "2024-09-01",
+      "date": "2024-09",
       "awarder": "IISER Kolkata Hackathon",
       "summary": "Nominated as one of the top teams of the internal hackathon held at IISER Kolkata."
     }
@@ -94,12 +94,14 @@
     {
       "title": "AI and ROS for Robotics: Theory and Practice",
       "issuer": "IIITDM Kancheepuram",
-      "date": "2023-12-15"
+      "startDate": "2023-12-11",
+      "endDate": "2023-12-15"
     },
     {
       "title": "Machine Learning Workshop",
       "issuer": "Techfest, IIT Bombay",
-      "date": "2023-12-29"
+      "startDate": "2023-12-27",
+      "endDate": "2023-12-29"
     }
   ],
   "positions": [
@@ -142,17 +144,10 @@
       ]
     },
     {
-      "name": "Web & Scripting (AI-assisted, basic familiarity)",
+      "name": "Other Tools",
       "keywords": [
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Bash Scripting",
-        "Next.js",
-        "Tailwind CSS",
-        "Streamlit",
-        "THREE.js",
-        "Framer Motion"
+        "Git",
+        "VS Code"
       ]
     },
     {
@@ -173,10 +168,17 @@
       ]
     },
     {
-      "name": "Other Tools",
+      "name": "Web & Scripting (AI-assisted, basic familiarity)",
       "keywords": [
-        "Git",
-        "VS Code"
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Bash Scripting",
+        "Next.js",
+        "Tailwind CSS",
+        "Streamlit",
+        "THREE.js",
+        "Framer Motion"
       ]
     },
     {
