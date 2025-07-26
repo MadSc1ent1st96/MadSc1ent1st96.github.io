@@ -164,12 +164,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- Removed in-canvas/game title, only page title will be shown -->
-        <p class="subtitle">Explore wave superposition and interference patterns in real-time</p>
+        <!-- No in-canvas/game title or subtitle, only page-level title will be shown -->
 
         <div class="game-area">
             <div class="canvas-container">
-                <canvas id="waveCanvas" width="800" height="400"></canvas>
+                <canvas id="waveCanvas"></canvas>
             </div>
 
             <div class="controls">
@@ -306,6 +305,7 @@
         
         // Animation loop
         function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#000';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
@@ -402,18 +402,21 @@
         updateDisplay();
         animate();
 
-        // Responsive canvas
+        // Responsive canvas: always fill parent, keep aspect ratio, always draw waves
         function resizeCanvas() {
             const container = canvas.parentElement;
-            const maxWidth = Math.min(800, container.offsetWidth - 40);
-            const maxHeight = Math.min(400, container.offsetHeight - 40);
-            
-            const scale = Math.min(maxWidth / 800, maxHeight / 400);
-            canvas.style.width = (800 * scale) + 'px';
-            canvas.style.height = (400 * scale) + 'px';
+            let width = container.offsetWidth;
+            let height = Math.round(width * 0.5); // 2:1 aspect ratio
+            if (window.innerHeight < height + 200) {
+                height = window.innerHeight - 200;
+                width = Math.round(height * 2);
+            }
+            canvas.width = Math.max(320, width);
+            canvas.height = Math.max(160, height);
         }
-
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+        });
         resizeCanvas();
     </script>
 </body>
