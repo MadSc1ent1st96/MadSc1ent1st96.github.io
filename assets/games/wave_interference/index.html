@@ -264,13 +264,12 @@
             document.getElementById('phase2Value').textContent = wave2.phase;
         }
         
-        // Calculate wave value at position x and time t
-        function calculateWave(x, t, wave) {
+        // Calculate wave value at position x and time t, with scaling
+        function calculateWave(x, t, wave, scale) {
             const k = wave.frequency * 2 * Math.PI / 100; // wave number
             const omega = wave.frequency * 2 * Math.PI; // angular frequency
             const phaseRad = wave.phase * Math.PI / 180; // convert to radians
-            
-            return wave.amplitude * Math.sin(k * x - omega * t + phaseRad);
+            return wave.amplitude * scale * Math.sin(k * x - omega * t + phaseRad);
         }
         
         // Draw wave
@@ -278,16 +277,17 @@
             ctx.strokeStyle = color;
             ctx.lineWidth = 2;
             ctx.beginPath();
-            
+            // Scale so max amplitude (100) fits 40% of canvas height
+            const scale = (canvas.height * 0.4) / 100;
+            const centerY = canvas.height / 2;
             for (let x = 0; x < canvas.width; x++) {
-                const y = canvas.height/2 + calculateWave(x, time, wave);
+                const y = centerY + calculateWave(x, time, wave, scale);
                 if (x === 0) {
                     ctx.moveTo(x, y);
                 } else {
                     ctx.lineTo(x, y);
                 }
             }
-            
             ctx.stroke();
         }
         
@@ -296,19 +296,18 @@
             ctx.strokeStyle = '#ffd700';
             ctx.lineWidth = 3;
             ctx.beginPath();
-            
+            const scale = (canvas.height * 0.4) / 100;
+            const centerY = canvas.height / 2;
             for (let x = 0; x < canvas.width; x++) {
-                const y1 = calculateWave(x, time, wave1);
-                const y2 = calculateWave(x, time, wave2);
-                const y = canvas.height/2 + y1 + y2;
-                
+                const y1 = calculateWave(x, time, wave1, scale);
+                const y2 = calculateWave(x, time, wave2, scale);
+                const y = centerY + y1 + y2;
                 if (x === 0) {
                     ctx.moveTo(x, y);
                 } else {
                     ctx.lineTo(x, y);
                 }
             }
-            
             ctx.stroke();
         }
         
