@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Wave Interference Constructor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(24px, 5vw, 36px);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: clamp(14px, 3vw, 18px);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .game-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .canvas-container {
+            position: relative;
+            border: 3px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            background: #000;
+        }
+
+        canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+            max-width: 800px;
+        }
+
+        .control-group {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-group h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #ffd700;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0 4px 0;
+            font-size: 14px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 4px;
+            border: none;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .info-panel {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-group {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 Wave Interference Constructor</h1>
+        <p class="subtitle">Explore wave superposition and interference patterns in real-time</p>
+
+        <div class="game-area">
+            <div class="canvas-container">
+                <canvas id="waveCanvas" width="800" height="400"></canvas>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <h3>Wave 1 Settings</h3>
+                    <label>Amplitude: <span id="amp1Value">50</span></label>
+                    <input type="range" id="amp1" min="10" max="100" value="50">
+                    
+                    <label>Frequency: <span id="freq1Value">1.0</span> Hz</label>
+                    <input type="range" id="freq1" min="0.1" max="3" step="0.1" value="1.0">
+                    
+                    <label>Phase: <span id="phase1Value">0</span>°</label>
+                    <input type="range" id="phase1" min="0" max="360" value="0">
+                </div>
+
+                <div class="control-group">
+                    <h3>Wave 2 Settings</h3>
+                    <label>Amplitude: <span id="amp2Value">50</span></label>
+                    <input type="range" id="amp2" min="10" max="100" value="50">
+                    
+                    <label>Frequency: <span id="freq2Value">1.0</span> Hz</label>
+                    <input type="range" id="freq2" min="0.1" max="3" step="0.1" value="1.0">
+                    
+                    <label>Phase: <span id="phase2Value">0</span>°</label>
+                    <input type="range" id="phase2" min="0" max="360" value="0">
+                </div>
+
+                <div class="control-group">
+                    <h3>Display Options</h3>
+                    <label>
+                        <input type="checkbox" id="showWave1" checked> Show Wave 1
+                    </label>
+                    <label>
+                        <input type="checkbox" id="showWave2" checked> Show Wave 2
+                    </label>
+                    <label>
+                        <input type="checkbox" id="showInterference" checked> Show Interference
+                    </label>
+                    <button id="resetBtn">Reset Waves</button>
+                    <button id="randomBtn">Random Waves</button>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h3>📚 Physics Concepts</h3>
+                <p><strong>Wave Interference:</strong> When two or more waves meet, they combine according to the principle of superposition.</p>
+                <div class="formula">y(x,t) = A₁sin(k₁x - ω₁t + φ₁) + A₂sin(k₂x - ω₂t + φ₂)</div>
+                <p><strong>Constructive Interference:</strong> When waves add up to create larger amplitude (peaks align with peaks).</p>
+                <p><strong>Destructive Interference:</strong> When waves cancel each other out (peaks align with troughs).</p>
+                <p><strong>Beat Frequency:</strong> When two waves have slightly different frequencies, you can hear a "beating" pattern.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('waveCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Wave parameters
+        let wave1 = {
+            amplitude: 50,
+            frequency: 1.0,
+            phase: 0,
+            color: '#ff6b6b'
+        };
+        
+        let wave2 = {
+            amplitude: 50,
+            frequency: 1.0,
+            phase: 0,
+            color: '#4ecdc4'
+        };
+
+        let time = 0;
+        let animationId;
+
+        // Update display values
+        function updateDisplay() {
+            document.getElementById('amp1Value').textContent = wave1.amplitude;
+            document.getElementById('freq1Value').textContent = wave1.frequency.toFixed(1);
+            document.getElementById('phase1Value').textContent = wave1.phase;
+            
+            document.getElementById('amp2Value').textContent = wave2.amplitude;
+            document.getElementById('freq2Value').textContent = wave2.frequency.toFixed(1);
+            document.getElementById('phase2Value').textContent = wave2.phase;
+        }
+
+        // Calculate wave value at position x and time t
+        function calculateWave(x, t, wave) {
+            const k = wave.frequency * 2 * Math.PI / 100; // wave number
+            const omega = wave.frequency * 2 * Math.PI; // angular frequency
+            const phaseRad = wave.phase * Math.PI / 180; // convert to radians
+            
+            return wave.amplitude * Math.sin(k * x - omega * t + phaseRad);
+        }
+
+        // Draw wave
+        function drawWave(wave, color) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            for (let x = 0; x < canvas.width; x++) {
+                const y = canvas.height/2 + calculateWave(x, time, wave);
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.stroke();
+        }
+
+        // Draw interference pattern
+        function drawInterference() {
+            ctx.strokeStyle = '#ffd700';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            for (let x = 0; x < canvas.width; x++) {
+                const y1 = calculateWave(x, time, wave1);
+                const y2 = calculateWave(x, time, wave2);
+                const y = canvas.height/2 + y1 + y2;
+                
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.stroke();
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < canvas.width; x += 50) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for (let y = 0; y < canvas.height; y += 50) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Draw center line
+            ctx.strokeStyle = '#666';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height/2);
+            ctx.lineTo(canvas.width, canvas.height/2);
+            ctx.stroke();
+            
+            // Draw waves
+            if (document.getElementById('showWave1').checked) {
+                drawWave(wave1, wave1.color);
+            }
+            if (document.getElementById('showWave2').checked) {
+                drawWave(wave2, wave2.color);
+            }
+            if (document.getElementById('showInterference').checked) {
+                drawInterference();
+            }
+            
+            time += 0.02;
+            animationId = requestAnimationFrame(animate);
+        }
+
+        // Event listeners
+        document.getElementById('amp1').addEventListener('input', (e) => {
+            wave1.amplitude = parseInt(e.target.value);
+            updateDisplay();
+        });
+
+        document.getElementById('freq1').addEventListener('input', (e) => {
+            wave1.frequency = parseFloat(e.target.value);
+            updateDisplay();
+        });
+
+        document.getElementById('phase1').addEventListener('input', (e) => {
+            wave1.phase = parseInt(e.target.value);
+            updateDisplay();
+        });
+
+        document.getElementById('amp2').addEventListener('input', (e) => {
+            wave2.amplitude = parseInt(e.target.value);
+            updateDisplay();
+        });
+
+        document.getElementById('freq2').addEventListener('input', (e) => {
+            wave2.frequency = parseFloat(e.target.value);
+            updateDisplay();
+        });
+
+        document.getElementById('phase2').addEventListener('input', (e) => {
+            wave2.phase = parseInt(e.target.value);
+            updateDisplay();
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            wave1 = { amplitude: 50, frequency: 1.0, phase: 0, color: '#ff6b6b' };
+            wave2 = { amplitude: 50, frequency: 1.0, phase: 0, color: '#4ecdc4' };
+            
+            document.getElementById('amp1').value = 50;
+            document.getElementById('freq1').value = 1.0;
+            document.getElementById('phase1').value = 0;
+            document.getElementById('amp2').value = 50;
+            document.getElementById('freq2').value = 1.0;
+            document.getElementById('phase2').value = 0;
+            
+            updateDisplay();
+        });
+
+        document.getElementById('randomBtn').addEventListener('click', () => {
+            wave1.amplitude = Math.random() * 80 + 20;
+            wave1.frequency = Math.random() * 2 + 0.5;
+            wave1.phase = Math.random() * 360;
+            
+            wave2.amplitude = Math.random() * 80 + 20;
+            wave2.frequency = Math.random() * 2 + 0.5;
+            wave2.phase = Math.random() * 360;
+            
+            document.getElementById('amp1').value = wave1.amplitude;
+            document.getElementById('freq1').value = wave1.frequency;
+            document.getElementById('phase1').value = wave1.phase;
+            document.getElementById('amp2').value = wave2.amplitude;
+            document.getElementById('freq2').value = wave2.frequency;
+            document.getElementById('phase2').value = wave2.phase;
+            
+            updateDisplay();
+        });
+
+        // Initialize
+        updateDisplay();
+        animate();
+
+        // Responsive canvas
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            const maxWidth = Math.min(800, container.offsetWidth - 40);
+            const scale = maxWidth / 800;
+            canvas.style.width = (800 * scale) + 'px';
+            canvas.style.height = (400 * scale) + 'px';
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+    </script>
+</body>
+</html> 
