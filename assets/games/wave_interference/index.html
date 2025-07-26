@@ -455,23 +455,16 @@
         updateDisplay();
         animate();
 
-        // Responsive canvas: PC and mobile code are completely separate
+        // Responsive canvas: simple and working approach
         function resizeCanvas() {
-            const container = canvas.parentElement;
-            const containerRect = container.getBoundingClientRect();
-            
             if (window.innerWidth > 600) {
-                // PC: use container dimensions with max constraints
-                const maxWidth = Math.min(800, window.innerWidth * 0.8);
-                const maxHeight = Math.round(maxWidth * 9 / 16);
-                canvas.width = Math.max(320, Math.min(maxWidth, containerRect.width));
-                canvas.height = Math.max(180, Math.min(maxHeight, containerRect.height));
+                // PC: fixed dimensions that work well
+                canvas.width = 800;
+                canvas.height = 400;
             } else {
-                // Mobile: use container dimensions with mobile constraints
-                const maxWidth = Math.min(400, window.innerWidth * 0.95);
-                const maxHeight = Math.round(maxWidth * 9 / 16);
-                canvas.width = Math.max(320, Math.min(maxWidth, containerRect.width));
-                canvas.height = Math.max(180, Math.min(maxHeight, containerRect.height));
+                // Mobile: smaller fixed dimensions
+                canvas.width = 400;
+                canvas.height = 200;
             }
         }
         window.addEventListener('resize', resizeCanvas);
