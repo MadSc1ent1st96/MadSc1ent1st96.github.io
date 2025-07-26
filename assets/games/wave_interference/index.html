@@ -51,6 +51,7 @@
             min-height: 0;
         }
         
+        /* PC-only styles (width > 600px) */
         .canvas-container {
             position: relative;
             border: 3px solid #fff;
@@ -66,7 +67,7 @@
         
         canvas {
             display: block;
-            width: 100%;
+            max-width: 100%;
             height: auto;
             min-width: 320px;
             min-height: 180px;
@@ -157,8 +158,7 @@
             margin: 8px 0;
             font-size: 12px;
         }
-        
-        /* Mobile optimizations */
+        /* MOBILE-ONLY styles (width <= 600px) */
         @media (max-width: 600px) {
             .container {
                 padding: 5px;
@@ -431,20 +431,22 @@
         updateDisplay();
         animate();
 
-        // Responsive canvas: auto-detect device, no toggle
+        // Responsive canvas: PC and mobile code are completely separate
         function resizeCanvas() {
             let width, height;
             if (window.innerWidth > 600) {
-                // Desktop
+                // PC: original perfect layout
                 width = Math.min(window.innerWidth * 0.9, 900);
                 height = Math.round(width * 9 / 16);
+                canvas.width = Math.max(320, width);
+                canvas.height = Math.max(180, height);
             } else {
-                // Mobile
+                // Mobile: mobile-optimized layout
                 width = Math.max(Math.min(window.innerWidth * 0.98, 420), 320);
                 height = Math.max(Math.round(width * 9 / 16), 180);
+                canvas.width = width;
+                canvas.height = height;
             }
-            canvas.width = width;
-            canvas.height = height;
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
