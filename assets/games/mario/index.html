@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Physics Platformer</title>
+    <title>Infinite Runner</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         
         html, body {
             height: 100vh;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             font-family: 'Segoe UI', Arial, sans-serif;
             color: white;
             touch-action: manipulation;
@@ -40,31 +40,27 @@
             font-weight: 700;
             color: #fff;
             text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .game-wrapper {
             position: relative;
             width: 95vw;
-            max-width: 900px;
+            max-width: 800px;
             height: auto;
             aspect-ratio: 16/9;
             max-height: 70vh;
             margin: 0 auto;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0,212,255,0.3), 0 8px 25px rgba(0,0,0,0.4);
-            border: 3px solid #00d4ff;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            border: 3px solid #4a90e2;
+            background: #1a1a2e;
         }
         
         canvas {
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #0f3460 0%, #16213e 50%, #0a0a0a 100%);
+            background: linear-gradient(to bottom, #5c94fc 0%, #4a7bc8 50%, #3c5aa6 100%);
             display: block;
             border-radius: 17px;
         }
@@ -76,10 +72,10 @@
             color: #fff;
             font-weight: 600;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
             padding: 10px 25px;
             border-radius: 30px;
-            box-shadow: 0 6px 20px rgba(0,212,255,0.4);
+            box-shadow: 0 6px 20px rgba(74,144,226,0.4);
         }
         
         .controls {
@@ -96,22 +92,22 @@
             cursor: pointer;
             border: none;
             border-radius: 20px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
             color: white;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-weight: 600;
-            box-shadow: 0 8px 25px rgba(0,212,255,0.4);
+            box-shadow: 0 8px 25px rgba(74,144,226,0.4);
             position: relative;
             overflow: hidden;
         }
         
         #startBtn:hover, #restartBtn:hover, #mobileJump:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,212,255,0.6);
+            box-shadow: 0 12px 35px rgba(74,144,226,0.6);
+            background: linear-gradient(135deg, #5ba0f2 0%, #468acd 100%);
         }
         
         #startBtn:active, #restartBtn:active, #mobileJump:active {
-            transform: translateY(-1px);
+            transform: scale(0.98);
         }
         
         #startBtn {
@@ -126,31 +122,11 @@
         
         #startBtn:hover {
             box-shadow: 0 12px 35px rgba(255,107,107,0.6);
+            background: linear-gradient(135deg, #ff7b7b 0%, #ff6a2a 100%);
         }
         
         #mobileJump {
             display: none;
-        }
-        
-        .physics-info {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(0,0,0,0.7);
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            max-width: 200px;
-        }
-        
-        .zone-indicator {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(0,0,0,0.7);
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 11px;
         }
         
         @media (max-width: 768px) {
@@ -171,39 +147,23 @@
                 transform: translateX(-50%);
                 z-index: 100;
             }
-            
-            .physics-info, .zone-indicator {
-                font-size: 10px;
-                max-width: 150px;
-            }
         }
     </style>
 </head>
 <body>
     <div id="gameContainer">
-        <h1>Physics Platformer</h1>
+        <h1>Infinite Runner</h1>
         
         <div class="game-wrapper">
             <canvas id="gameCanvas"></canvas>
             <button id="startBtn">🚀 Start Game</button>
         </div>
         
-        <div id="scoreDisplay">Score: 0 | Energy: 100%</div>
+        <div id="scoreDisplay">Score: 0</div>
         
         <div class="controls">
             <button id="restartBtn" style="display: none;">🔄 Restart</button>
             <button id="mobileJump">🕹️ Jump</button>
-        </div>
-        
-        <div class="physics-info">
-            <strong>Physics Concepts:</strong><br>
-            • Gravity zones affect jump height<br>
-            • Momentum conservation<br>
-            • Energy management
-        </div>
-        
-        <div class="zone-indicator">
-            <strong>Current Zone:</strong> Normal Gravity
         </div>
     </div>
 
@@ -214,101 +174,34 @@
         const restartBtn = document.getElementById('restartBtn');
         const mobileJump = document.getElementById('mobileJump');
         const scoreDisplay = document.getElementById('scoreDisplay');
-        const zoneIndicator = document.querySelector('.zone-indicator');
 
         // Game state
         let gameRunning = false;
         let score = 0;
-        let energy = 100;
-        let gameSpeed = 2;
-        let currentZone = 'normal';
+        let gameSpeed = 3;
         let level = 1;
-        let obstaclePattern = 0;
-        let powerupPattern = 0;
 
-        // Player physics
+        // Player
         let player = {
             x: 100,
             y: 300,
-            width: 30,
-            height: 30,
-            vx: 0,
+            width: 40,
+            height: 50,
             vy: 0,
             onGround: false,
-            canJump: true,
             jumpCount: 0,
             maxJumps: 2
         };
 
-        // Physics constants
-        const GRAVITY = 0.6;
-        const JUMP_FORCE = -15;
-        const FRICTION = 0.8;
-        const TERMINAL_VELOCITY = 12;
+        // Physics
+        const GRAVITY = 0.8;
+        const JUMP_FORCE = -16;
+        const GROUND_Y = 350;
 
-        // Zones with different physics
-        const zones = [
-            { x: 0, width: 200, type: 'normal', gravity: 0.6, color: '#4a90e2' },
-            { x: 200, width: 150, type: 'low-gravity', gravity: 0.3, color: '#9b59b6' },
-            { x: 350, width: 150, type: 'high-gravity', gravity: 1.2, color: '#e74c3c' },
-            { x: 500, width: 150, type: 'bouncy', gravity: 0.6, color: '#f39c12' },
-            { x: 650, width: 200, type: 'energy', gravity: 0.6, color: '#2ecc71' }
-        ];
-
-        // Obstacles and power-ups
+        // Game objects
         let obstacles = [];
         let powerups = [];
         let particles = [];
-
-        // Pattern-based generation
-        function generateObstaclePattern() {
-            const patterns = [
-                // Pattern 1: Single obstacle
-                () => [{ x: canvas.width, y: canvas.height - 50 - 30, width: 30, height: 30 }],
-                // Pattern 2: Two obstacles with gap
-                () => [
-                    { x: canvas.width, y: canvas.height - 50 - 30, width: 30, height: 30 },
-                    { x: canvas.width + 150, y: canvas.height - 50 - 30, width: 30, height: 30 }
-                ],
-                // Pattern 3: Low obstacle
-                () => [{ x: canvas.width, y: canvas.height - 50 - 20, width: 40, height: 20 }],
-                // Pattern 4: High obstacle
-                () => [{ x: canvas.width, y: canvas.height - 50 - 50, width: 25, height: 50 }]
-            ];
-            
-            return patterns[obstaclePattern % patterns.length]();
-        }
-
-        function generatePowerupPattern() {
-            const patterns = [
-                // Pattern 1: Single powerup
-                () => [{ x: canvas.width, y: canvas.height - 50 - 40, width: 25, height: 25 }],
-                // Pattern 2: Powerup after obstacle
-                () => [{ x: canvas.width + 100, y: canvas.height - 50 - 40, width: 25, height: 25 }],
-                // Pattern 3: High powerup
-                () => [{ x: canvas.width, y: canvas.height - 50 - 80, width: 25, height: 25 }]
-            ];
-            
-            return patterns[powerupPattern % patterns.length]();
-        }
-
-        // Generate obstacles with pattern-based approach
-        function generateObstacles() {
-            if (score % 300 === 0 && score > 0) { // Every 300 points
-                const newObstacles = generateObstaclePattern();
-                obstacles.push(...newObstacles);
-                obstaclePattern++;
-            }
-        }
-
-        // Generate power-ups with pattern-based approach
-        function generatePowerups() {
-            if (score % 500 === 0 && score > 0) { // Every 500 points
-                const newPowerups = generatePowerupPattern();
-                powerups.push(...newPowerups);
-                powerupPattern++;
-            }
-        }
 
         // Responsive canvas
         function resizeCanvas() {
@@ -321,68 +214,12 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Physics calculations
-        function updatePlayerPhysics() {
-            // Get current zone
-            const currentZoneData = zones.find(zone => 
-                player.x >= zone.x && player.x < zone.x + zone.width
-            ) || zones[0];
-            
-            currentZone = currentZoneData.type;
-            const zoneGravity = currentZoneData.gravity;
-            
-            // Update zone indicator
-            zoneIndicator.innerHTML = `<strong>Current Zone:</strong> ${currentZone.replace('-', ' ').toUpperCase()}`;
-
-            // Apply gravity
-            player.vy += zoneGravity;
-            
-            // Terminal velocity
-            if (player.vy > TERMINAL_VELOCITY) {
-                player.vy = TERMINAL_VELOCITY;
-            }
-
-            // Update position
-            player.x += player.vx;
-            player.y += player.vy;
-
-            // Ground collision
-            if (player.y + player.height > canvas.height - 50) {
-                player.y = canvas.height - 50 - player.height;
-                player.vy = 0;
-                player.onGround = true;
-                player.jumpCount = 0;
-                player.canJump = true;
-            } else {
-                player.onGround = false;
-            }
-
-            // Bouncy zone effect
-            if (currentZone === 'bouncy' && player.onGround) {
-                player.vy = JUMP_FORCE * 0.8;
-                player.onGround = false;
-            }
-
-            // Energy zone effect
-            if (currentZone === 'energy' && player.onGround) {
-                energy = Math.min(100, energy + 0.5);
-            }
-
-            // Apply friction
-            player.vx *= FRICTION;
-
-            // Screen boundaries
-            if (player.x < 0) player.x = 0;
-            if (player.x > canvas.width - player.width) player.x = canvas.width - player.width;
-        }
-
         // Jump mechanics
         function jump() {
-            if (player.jumpCount < player.maxJumps && energy > 10) {
+            if (player.jumpCount < player.maxJumps && gameRunning) {
                 player.vy = JUMP_FORCE;
                 player.onGround = false;
                 player.jumpCount++;
-                energy -= 10;
                 
                 // Create jump particles
                 for (let i = 0; i < 5; i++) {
@@ -392,9 +229,44 @@
                         vx: (Math.random() - 0.5) * 4,
                         vy: Math.random() * 3,
                         life: 30,
-                        color: '#00d4ff'
+                        color: '#4a90e2'
                     });
                 }
+            }
+        }
+
+        // Generate obstacles with better patterns
+        function generateObstacles() {
+            if (score % 200 === 0 && score > 0) {
+                const patterns = [
+                    // Single obstacle
+                    [{ x: canvas.width, y: GROUND_Y - 30, width: 30, height: 30 }],
+                    // Two obstacles with gap
+                    [
+                        { x: canvas.width, y: GROUND_Y - 30, width: 30, height: 30 },
+                        { x: canvas.width + 120, y: GROUND_Y - 30, width: 30, height: 30 }
+                    ],
+                    // Low obstacle
+                    [{ x: canvas.width, y: GROUND_Y - 20, width: 40, height: 20 }],
+                    // High obstacle
+                    [{ x: canvas.width, y: GROUND_Y - 50, width: 25, height: 50 }]
+                ];
+                
+                const pattern = patterns[Math.floor(score / 200) % patterns.length];
+                obstacles.push(...pattern);
+            }
+        }
+
+        // Generate powerups
+        function generatePowerups() {
+            if (score % 400 === 0 && score > 0) {
+                powerups.push({
+                    x: canvas.width,
+                    y: GROUND_Y - 40,
+                    width: 25,
+                    height: 25,
+                    type: 'energy'
+                });
             }
         }
 
@@ -406,7 +278,7 @@
                 return obstacle.x > -obstacle.width;
             });
 
-            // Update power-ups
+            // Update powerups
             powerups = powerups.filter(powerup => {
                 powerup.x -= gameSpeed;
                 return powerup.x > -powerup.width;
@@ -416,7 +288,7 @@
             particles = particles.filter(particle => {
                 particle.x += particle.vx;
                 particle.y += particle.vy;
-                particle.vy += 0.2;
+                particle.vy += 0.3;
                 particle.life--;
                 return particle.life > 0;
             });
@@ -434,13 +306,13 @@
                 }
             });
 
-            // Power-up collisions
+            // Powerup collisions
             powerups.forEach((powerup, index) => {
                 if (player.x < powerup.x + powerup.width &&
                     player.x + player.width > powerup.x &&
                     player.y < powerup.y + powerup.height &&
                     player.y + player.height > powerup.y) {
-                    energy = Math.min(100, energy + 30);
+                    score += 100;
                     powerups.splice(index, 1);
                     
                     // Create collection particles
@@ -460,26 +332,14 @@
 
         // Render functions
         function drawPlayer() {
-            ctx.fillStyle = '#00d4ff';
+            ctx.fillStyle = '#4a90e2';
             ctx.fillRect(player.x, player.y, player.width, player.height);
             
             // Player glow effect
-            ctx.shadowColor = '#00d4ff';
+            ctx.shadowColor = '#4a90e2';
             ctx.shadowBlur = 10;
             ctx.fillRect(player.x, player.y, player.width, player.height);
             ctx.shadowBlur = 0;
-        }
-
-        function drawZones() {
-            zones.forEach(zone => {
-                ctx.fillStyle = zone.color + '20';
-                ctx.fillRect(zone.x, 0, zone.width, canvas.height);
-                
-                // Zone borders
-                ctx.strokeStyle = zone.color;
-                ctx.lineWidth = 2;
-                ctx.strokeRect(zone.x, 0, zone.width, canvas.height);
-            });
         }
 
         function drawObstacles() {
@@ -494,7 +354,7 @@
                 ctx.fillStyle = '#2ecc71';
                 ctx.fillRect(powerup.x, powerup.y, powerup.width, powerup.height);
                 
-                // Power-up glow
+                // Powerup glow
                 ctx.shadowColor = '#2ecc71';
                 ctx.shadowBlur = 8;
                 ctx.fillRect(powerup.x, powerup.y, powerup.width, powerup.height);
@@ -513,25 +373,7 @@
 
         function drawGround() {
             ctx.fillStyle = '#34495e';
-            ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
-        }
-
-        function drawUI() {
-            // Energy bar
-            const barWidth = 200;
-            const barHeight = 15;
-            const barX = 20;
-            const barY = 20;
-            
-            ctx.fillStyle = '#2c3e50';
-            ctx.fillRect(barX, barY, barWidth, barHeight);
-            
-            ctx.fillStyle = energy > 30 ? '#2ecc71' : '#e74c3c';
-            ctx.fillRect(barX, barY, (energy / 100) * barWidth, barHeight);
-            
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(barX, barY, barWidth, barHeight);
+            ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
         }
 
         // Game loop
@@ -541,32 +383,40 @@
             // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Update physics
-            updatePlayerPhysics();
-            updateGameObjects();
-            checkCollisions();
+            // Update player physics
+            player.vy += GRAVITY;
+            player.y += player.vy;
 
-            // Generate new objects
+            // Ground collision
+            if (player.y + player.height > GROUND_Y) {
+                player.y = GROUND_Y - player.height;
+                player.vy = 0;
+                player.onGround = true;
+                player.jumpCount = 0;
+            } else {
+                player.onGround = false;
+            }
+
+            // Update game objects
+            updateGameObjects();
             generateObstacles();
             generatePowerups();
+            checkCollisions();
 
             // Render everything
-            drawZones();
             drawGround();
             drawObstacles();
             drawPowerups();
             drawParticles();
             drawPlayer();
-            drawUI();
 
-            // Update score
+            // Update score and speed
             score++;
-            scoreDisplay.textContent = `Score: ${score} | Energy: ${Math.round(energy)}%`;
-
-            // Game over conditions
-            if (energy <= 0) {
-                gameOver();
+            if (score % 1000 === 0) {
+                gameSpeed += 0.5;
             }
+            
+            scoreDisplay.textContent = `Score: ${score}`;
 
             requestAnimationFrame(gameLoop);
         }
@@ -588,8 +438,7 @@
         function restartGame() {
             // Reset game state
             score = 0;
-            energy = 100;
-            gameSpeed = 2;
+            gameSpeed = 3;
             obstacles = [];
             powerups = [];
             particles = [];
@@ -597,10 +446,8 @@
             // Reset player
             player.x = 100;
             player.y = 300;
-            player.vx = 0;
             player.vy = 0;
             player.onGround = false;
-            player.canJump = true;
             player.jumpCount = 0;
             
             startGame();
