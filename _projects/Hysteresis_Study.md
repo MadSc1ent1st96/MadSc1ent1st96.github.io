@@ -72,7 +72,7 @@ The study employed a cubic magnetic system with carefully chosen parameters to i
 - **Applied Field**: Cyclic magnetic field to generate hysteresis loops
 - **Boundary Conditions**: Periodic boundary conditions for realistic behavior
 
-{% include figure.html path="assets/img/Hysteresis-cube.png" class="img-fluid rounded z-depth-1" caption="Cubic magnetic system geometry used in the hysteresis simulation. The cube represents the magnetic material with defined exchange energy configurations and boundary conditions." %}
+{% include figure.liquid path="assets/img/Hysteresis-cube.png" class="img-fluid rounded z-depth-1" caption="Cubic magnetic system geometry used in the hysteresis simulation. The cube represents the magnetic material with defined exchange energy configurations and boundary conditions." %}
 
 ---
 
@@ -84,7 +84,7 @@ The study revealed how exchange energy configurations influence:
 - **Loop Shape**: Symmetry and saturation behavior
 - **Energy Loss**: Area enclosed by the hysteresis loop
 
-{% include figure.html path="assets/img/Hysteresis-plot.png" class="img-fluid rounded z-depth-1" caption="Hysteresis loop showing magnetization vs. applied field. The loop demonstrates the characteristic magnetic behavior with coercivity, remanence, and saturation regions clearly visible." %}
+{% include figure.liquid path="assets/img/Hysteresis-plot.png" class="img-fluid rounded z-depth-1" caption="Hysteresis loop showing magnetization vs. applied field. The loop demonstrates the characteristic magnetic behavior with coercivity, remanence, and saturation regions clearly visible." %}
 
 ---
 
