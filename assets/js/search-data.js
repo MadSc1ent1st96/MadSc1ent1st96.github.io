@@ -55,7 +55,12 @@ ninja.data = [{
             window.location.href = "/blog/2025/stellar-evolution-mesa/";
           
         },
-      },{id: "projects-stellar-atlas",
+      },{id: "projects-hysteresis-loop-study",
+          title: 'Hysteresis Loop Study',
+          description: "A computational study of hysteresis loops using Ubermag and OOMMF",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/Hysteresis_Study/";
+            },},{id: "projects-stellar-atlas",
           title: 'Stellar Atlas',
           description: "A comprehensive digital atlas of stellar evolution using MESA simulations",
           section: "Projects",handler: () => {

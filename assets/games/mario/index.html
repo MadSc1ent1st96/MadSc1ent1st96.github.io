@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>Infinite Runner+</title>
     <style>
       html,
@@ -14,6 +14,13 @@
         background: #000;
         font-family: sans-serif;
         color: white;
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       #gameContainer {
@@ -31,31 +38,46 @@
 
       h1 {
         margin: 8px 0;
-        font-size: 22px;
+        font-size: clamp(16px, 4vw, 22px);
+        text-align: center;
       }
 
       canvas {
         max-width: 100%;
+        max-height: 60vh;
         background: #5c94fc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       }
 
       #scoreDisplay {
-        font-size: 18px;
+        font-size: clamp(14px, 3.5vw, 18px);
         margin: 6px 0;
+        text-align: center;
       }
 
       #startBtn,
       #restartBtn,
       #mobileJump {
         position: absolute;
-        padding: 12px 24px;
-        font-size: 18px;
+        padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px);
+        font-size: clamp(14px, 3.5vw, 18px);
         z-index: 2;
         cursor: pointer;
         border: none;
         border-radius: 8px;
         background-color: #ffffffcc;
         color: #000;
+        transition: all 0.2s ease;
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      #startBtn:hover,
+      #restartBtn:hover,
+      #mobileJump:hover {
+        background-color: #ffffff;
+        transform: scale(1.05);
       }
 
       #startBtn {
@@ -76,12 +98,76 @@
         left: 50%;
         transform: translateX(-50%);
         display: none;
-        padding: 16px 28px;
-        font-size: 22px;
+        padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);
+        font-size: clamp(16px, 4vw, 22px);
         background-color: #ffcc00;
         color: #000;
         border-radius: 12px;
         box-shadow: 0 0 10px #ff0;
+        min-height: 60px;
+        min-width: 120px;
+      }
+
+      /* Mobile-specific styles */
+      @media (max-width: 768px) {
+        #gameContainer {
+          padding: 10px;
+        }
+        
+        canvas {
+          max-height: 50vh;
+        }
+        
+        #mobileJump {
+          bottom: 80px;
+          font-size: 18px;
+          padding: 12px 24px;
+        }
+      }
+
+      /* Small mobile devices */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 18px;
+          margin: 4px 0;
+        }
+        
+        #scoreDisplay {
+          font-size: 16px;
+        }
+        
+        canvas {
+          max-height: 45vh;
+        }
+        
+        #mobileJump {
+          bottom: 60px;
+          font-size: 16px;
+          padding: 10px 20px;
+        }
+      }
+
+      /* Landscape orientation for mobile */
+      @media (max-height: 500px) and (orientation: landscape) {
+        #gameContainer {
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+        }
+        
+        canvas {
+          max-height: 80vh;
+          max-width: 60vw;
+        }
+        
+        #mobileJump {
+          position: fixed;
+          right: 20px;
+          bottom: 50%;
+          transform: translateY(50%);
+          left: auto;
+        }
       }
     </style>
   </head>
@@ -102,6 +188,24 @@
       const restartBtn = document.getElementById("restartBtn");
       const mobileJump = document.getElementById("mobileJump");
 
+      // Responsive canvas sizing
+      function resizeCanvas() {
+        const container = document.getElementById("gameContainer");
+        const maxWidth = Math.min(800, container.offsetWidth - 40);
+        const maxHeight = Math.min(400, window.innerHeight * 0.6);
+        
+        const scale = Math.min(maxWidth / 800, maxHeight / 400);
+        canvas.style.width = (800 * scale) + "px";
+        canvas.style.height = (400 * scale) + "px";
+        
+        // Update game scale for collision detection
+        window.gameScale = scale;
+      }
+
+      // Initialize responsive canvas
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
       const playerImg = new Image();
       playerImg.src = "img/player.png";
       const obstacleImg = new Image();
@@ -114,10 +218,18 @@
       const bgm = new Audio("sounds/bgm.mp3");
       bgm.loop = true;
 
+      // Preload audio for mobile
+      function preloadAudio() {
+        jumpSound.load();
+        deathSound.load();
+        bgm.load();
+      }
+
       let player, gravity, score, speed, obstacles, powerups, gameOver, jumps;
       let invincible = false,
         invincibleTimer = 0;
       let obstaclecooldown = 0;
+      let isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
       function initGame() {
         player = { x: 50, y: 330, w: 40, h: 50, vy: 0, jumpCount: 0 };
@@ -132,8 +244,16 @@
         invincibleTimer = 0;
         restartBtn.style.display = "none";
         document.getElementById("scoreDisplay").innerText = "Score: 0";
+        
+        // Handle audio for mobile
+        if (isMobile) {
+          bgm.volume = 0.3;
+          jumpSound.volume = 0.5;
+          deathSound.volume = 0.5;
+        }
+        
         bgm.currentTime = 0;
-        bgm.play();
+        bgm.play().catch(e => console.log("Audio autoplay blocked"));
         update();
       }
 
@@ -141,21 +261,41 @@
         if (player.jumpCount < jumps && !gameOver) {
           player.vy = -18;
           player.jumpCount++;
-          jumpSound.play();
+          jumpSound.play().catch(e => console.log("Jump sound blocked"));
         }
       }
 
+      // Enhanced keyboard controls
       document.addEventListener("keydown", (e) => {
-        if (e.code === "Space") jump();
+        if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") {
+          e.preventDefault();
+          jump();
+        }
       });
 
-      mobileJump.addEventListener("touchstart", () => {
+      // Enhanced touch controls
+      mobileJump.addEventListener("touchstart", (e) => {
+        e.preventDefault();
         jump();
+      });
+
+      // Touch anywhere on canvas to jump (for mobile)
+      canvas.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        jump();
+      });
+
+      // Mouse click support
+      canvas.addEventListener("click", (e) => {
+        if (isMobile) {
+          e.preventDefault();
+          jump();
+        }
       });
 
       startBtn.addEventListener("click", () => {
         startBtn.style.display = "none";
-        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        if (isMobile) {
           mobileJump.style.display = "inline-block";
         }
         initGame();
@@ -247,13 +387,23 @@
 
       function endGame() {
         gameOver = true;
-        deathSound.play();
+        deathSound.play().catch(e => console.log("Death sound blocked"));
         bgm.pause();
-        alert("💀 Game Over! Your score was: " + score);
-        restartBtn.style.display = "inline-block";
+        
+        // Mobile-friendly game over
+        if (isMobile) {
+          setTimeout(() => {
+            alert("💀 Game Over! Your score was: " + score);
+            restartBtn.style.display = "inline-block";
+          }, 500);
+        } else {
+          alert("💀 Game Over! Your score was: " + score);
+          restartBtn.style.display = "inline-block";
+        }
       }
 
       window.onload = () => {
+        preloadAudio();
         // Wait for user to click Start
       };
     </script>
