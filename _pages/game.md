@@ -10,10 +10,10 @@ Welcome to the Physics Game Room! Explore interactive physics games and simulati
 
 <div class="projects-grid">
   <div class="project-card">
-    <a href="/game/infinite-runner/">
-      <img src="/assets/games/mario/img/player.png" alt="Infinite Runner" style="width:100px;height:100px;object-fit:contain;margin:1em auto;display:block;"/>
-      <h2>Infinite Runner</h2>
-      <p>A classic platformer with a physics twist! Jump, dodge obstacles, and collect power-ups.</p>
+    <a href="/game/physics-platformer/">
+      <img src="/assets/games/mario/img/player.png" alt="Physics Platformer" style="width:100px;height:100px;object-fit:contain;margin:1em auto;display:block;"/>
+      <h2>Physics Platformer</h2>
+      <p>Experience real physics concepts through gameplay! Navigate through gravity zones, manage energy, and learn momentum conservation.</p>
     </a>
   </div>
   <div class="project-card">

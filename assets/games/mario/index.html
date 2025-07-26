@@ -222,6 +222,9 @@
         let energy = 100;
         let gameSpeed = 2;
         let currentZone = 'normal';
+        let level = 1;
+        let obstaclePattern = 0;
+        let powerupPattern = 0;
 
         // Player physics
         let player = {
@@ -256,6 +259,56 @@
         let obstacles = [];
         let powerups = [];
         let particles = [];
+
+        // Pattern-based generation
+        function generateObstaclePattern() {
+            const patterns = [
+                // Pattern 1: Single obstacle
+                () => [{ x: canvas.width, y: canvas.height - 50 - 30, width: 30, height: 30 }],
+                // Pattern 2: Two obstacles with gap
+                () => [
+                    { x: canvas.width, y: canvas.height - 50 - 30, width: 30, height: 30 },
+                    { x: canvas.width + 150, y: canvas.height - 50 - 30, width: 30, height: 30 }
+                ],
+                // Pattern 3: Low obstacle
+                () => [{ x: canvas.width, y: canvas.height - 50 - 20, width: 40, height: 20 }],
+                // Pattern 4: High obstacle
+                () => [{ x: canvas.width, y: canvas.height - 50 - 50, width: 25, height: 50 }]
+            ];
+            
+            return patterns[obstaclePattern % patterns.length]();
+        }
+
+        function generatePowerupPattern() {
+            const patterns = [
+                // Pattern 1: Single powerup
+                () => [{ x: canvas.width, y: canvas.height - 50 - 40, width: 25, height: 25 }],
+                // Pattern 2: Powerup after obstacle
+                () => [{ x: canvas.width + 100, y: canvas.height - 50 - 40, width: 25, height: 25 }],
+                // Pattern 3: High powerup
+                () => [{ x: canvas.width, y: canvas.height - 50 - 80, width: 25, height: 25 }]
+            ];
+            
+            return patterns[powerupPattern % patterns.length]();
+        }
+
+        // Generate obstacles with pattern-based approach
+        function generateObstacles() {
+            if (score % 300 === 0 && score > 0) { // Every 300 points
+                const newObstacles = generateObstaclePattern();
+                obstacles.push(...newObstacles);
+                obstaclePattern++;
+            }
+        }
+
+        // Generate power-ups with pattern-based approach
+        function generatePowerups() {
+            if (score % 500 === 0 && score > 0) { // Every 500 points
+                const newPowerups = generatePowerupPattern();
+                powerups.push(...newPowerups);
+                powerupPattern++;
+            }
+        }
 
         // Responsive canvas
         function resizeCanvas() {
@@ -342,32 +395,6 @@
                         color: '#00d4ff'
                     });
                 }
-            }
-        }
-
-        // Generate obstacles
-        function generateObstacles() {
-            if (Math.random() < 0.02) {
-                obstacles.push({
-                    x: canvas.width,
-                    y: canvas.height - 50 - 30,
-                    width: 30,
-                    height: 30,
-                    type: 'obstacle'
-                });
-            }
-        }
-
-        // Generate power-ups
-        function generatePowerups() {
-            if (Math.random() < 0.005) {
-                powerups.push({
-                    x: canvas.width,
-                    y: canvas.height - 50 - 40,
-                    width: 25,
-                    height: 25,
-                    type: 'energy'
-                });
             }
         }
 
