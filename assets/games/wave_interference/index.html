@@ -332,8 +332,9 @@
             ctx.strokeStyle = color;
             ctx.lineWidth = 2;
             ctx.beginPath();
-            // Scale so max amplitude (100) fits 30% of canvas height (more conservative)
-            const scale = (canvas.height * 0.3) / 100;
+            // Scale for maximum possible interference: 200 amplitude (100+100)
+            // Use 25% of canvas height to ensure waves never exceed bounds
+            const scale = (canvas.height * 0.25) / 200;
             const centerY = canvas.height / 2;
             for (let x = 0; x < canvas.width; x++) {
                 const y = centerY + calculateWave(x, time, wave, scale);
@@ -351,7 +352,7 @@
             ctx.strokeStyle = '#ffd700';
             ctx.lineWidth = 3;
             ctx.beginPath();
-            const scale = (canvas.height * 0.3) / 100;
+            const scale = (canvas.height * 0.25) / 200;
             const centerY = canvas.height / 2;
             for (let x = 0; x < canvas.width; x++) {
                 const y1 = calculateWave(x, time, wave1, scale);
