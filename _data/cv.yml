@@ -23,21 +23,21 @@
       institution: Indian Institute of Science Education and Research, Kolkata
       year: 2023 - 2028(expected)
       description:
-        - Cumulative GPA (As of 4 semesters) - 7.57/10
-        - Relevant Coursework - Introduction to Computer Programming, Introduction to Computation, Mechanics I, Mechanics II, Electricity and Magnetism, Physics Laboratory I (LCR, Coupled Pendulum, Dulong-Petit Law, Stokes Law- Calculation of coefficient of viscosity, Young's Modulus), Waves and Optics, Optics Lab (Single slit - Double Slit Diffraction, Diffraction Grating, Verification of malus law, Michelson Interferometer, Study of Newton's rings), Basic Quantum Mechanics, Thermal Physics, Mathematical Methods of Physics, Modern Physics Lab (Electron Diffraction, Frank Hertz Experiment, Photo electric effect, Stefan Boltzman law of radiation, Velocity of light), Linear Algebra I, Analysis I
+        - "Cumulative GPA (As of 4 semesters) - 7.57/10"
+        - "Relevant Coursework - Introduction to Computer Programming, Introduction to Computation, Mechanics I, Mechanics II, Electricity and Magnetism, Physics Laboratory I (LCR, Coupled Pendulum, Dulong-Petit Law, Stokes Law- Calculation of coefficient of viscosity, Young's Modulus), Waves and Optics, Optics Lab (Single slit - Double Slit Diffraction, Diffraction Grating, Verification of malus law, Michelson Interferometer, Study of Newton's rings), Basic Quantum Mechanics, Thermal Physics, Mathematical Methods of Physics, Modern Physics Lab (Electron Diffraction, Frank Hertz Experiment, Photo electric effect, Stefan Boltzman law of radiation, Velocity of light), Linear Algebra I, Analysis I"
     - title: HSC (12th)
       institution: Alpha Junior College of Science and Commerce
       year: 2021-2023
       description:
-        - place - Vileparle, Mumbai
-        - area - Science
-        - score - 77.67%
+        - "place - Vileparle, Mumbai"
+        - "area - Science"
+        - "score - 77.67%"
     - title: SSC (10th)
       institution: St. Francis De Sales School
       year: 2008-2021
       description:
-        - place - Nallasopara, Mumbai
-        - score - 89.60%
+        - "place - Nallasopara, Mumbai"
+        - "score - 89.60%"
 
 - title: Experience
   type: time_table
@@ -46,22 +46,22 @@
       institution: Inquivesta XII
       year: 2025-2026
       description:
-        - Organizing and coordinating academic events
+        - "Organizing and coordinating academic events"
     - title: Convener
       institution: Gaming Club of IISER Kolkata
       year: 2024-2025
       description:
-        - Managing gaming club activities and events
+        - "Managing gaming club activities and events"
     - title: Finance and Admin Sub-Committee Member
       institution: Student Monitored Canteen (SMC)
       year: 2024-2025
       description:
-        - Managing canteen finances and administration
+        - "Managing canteen finances and administration"
     - title: Event Organizer (Esports: Headshot)
       institution: Inquivesta XI
       year: 2024-2025
       description:
-        - Organized esports events
+        - "Organized esports events"
 
 - title: Projects
   type: time_table
@@ -69,18 +69,18 @@
     - title: Modeling Stellar Structure and Evolution
       year: 05/25-07/25
       description:
-        - A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles.
+        - "A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles."
     - title: A Study on Hysteresis Loop
       year: 03/24-11/24
       description:
-        - Used Ubermag (Python interface to OOMMF) to simulate hysteresis loops under different exchange energy configurations in a cubic system.
+        - "Used Ubermag (Python interface to OOMMF) to simulate hysteresis loops under different exchange energy configurations in a cubic system."
 
 - title: Awards and Achievements
   type: time_table
   contents:
     - year: 2024
       items:
-        - Top Team Nominee - IISER Kolkata Hackathon
+        - "Top Team Nominee - IISER Kolkata Hackathon"
 
 - title: Workshops and Training
   type: time_table
@@ -97,39 +97,39 @@
   contents:
     - title: Programming
       items:
-        - Python (intermediate)
-        - C++ (beginner)
-        - Fortran (beginner)
-        - MESA
-        - Ubermag
+        - "Python (intermediate)"
+        - "C++ (beginner)"
+        - "Fortran (beginner)"
+        - "MESA"
+        - "Ubermag"
     - title: Tools and Software
       items:
-        - GnuPlot
-        - OriginLab
-        - Typst
-        - Excel
+        - "GnuPlot"
+        - "OriginLab"
+        - "Typst"
+        - "Excel"
     - title: Soft Skills
       items:
-        - Time Management
-        - Team Handling
-        - Planning
-        - Flexibility
+        - "Time Management"
+        - "Team Handling"
+        - "Planning"
+        - "Flexibility"
 
 - title: Academic Interests
   type: nested_list
   contents:
     - title: Astrophysics
       items:
-        - Stellar evolution
-        - Numerical simulations
-        - Computational modeling
+        - "Stellar evolution"
+        - "Numerical simulations"
+        - "Computational modeling"
     - title: Physics
       items:
-        - Quantum mechanics
-        - Electromagnetism
-        - Thermal physics
+        - "Quantum mechanics"
+        - "Electromagnetism"
+        - "Thermal physics"
 
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Gaming, Reading, Programming, Physics Simulations
+    - "<u>Hobbies:</u> Gaming, Reading, Programming, Physics Simulations"
