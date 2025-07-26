@@ -58,14 +58,14 @@ When two or more waves meet, they combine according to the principle of superpos
 ### Mathematical Foundation
 The simulation uses the wave equation:
 ```
-y(x,t) = A₁·sin(k₁x - ω₁t + φ₁) + A₂·sin(k₂x - ω₂t + φ₂)
+y(x,t) = A<sub>1</sub>·sin(k<sub>1</sub>x - ω<sub>1</sub>t + φ<sub>1</sub>) + A<sub>2</sub>·sin(k<sub>2</sub>x - ω<sub>2</sub>t + φ<sub>2</sub>)
 ```
 
 Where:
-- **A₁, A₂**: Amplitudes of the two waves
-- **k₁, k₂**: Wave numbers (related to frequency)
-- **ω₁, ω₂**: Angular frequencies
-- **φ₁, φ₂**: Phase angles
+- **A<sub>1</sub>, A<sub>2</sub>**: Amplitudes of the two waves
+- **k<sub>1</sub>, k<sub>2</sub>**: Wave numbers (related to frequency)
+- **ω<sub>1</sub>, ω<sub>2</sub>**: Angular frequencies
+- **φ<sub>1</sub>, φ<sub>2</sub>**: Phase angles
 - **x**: Position
 - **t**: Time
 
