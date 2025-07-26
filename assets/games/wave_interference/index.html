@@ -59,21 +59,29 @@
             background: #000;
             flex: 1;
             min-height: 0;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         canvas {
             display: block;
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
             height: auto;
+            min-width: 320px;
+            min-height: 180px;
         }
         
         .controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-direction: row;
             gap: 10px;
             margin: 10px 0;
-            max-width: 800px;
+            max-width: 900px;
+            width: 100%;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
         }
         
         .control-group {
@@ -81,6 +89,10 @@
             padding: 10px;
             border-radius: 8px;
             backdrop-filter: blur(10px);
+            flex: 1 1 220px;
+            min-width: 180px;
+            max-width: 320px;
+            margin: 0 2px;
         }
         
         .control-group h3 {
@@ -147,17 +159,35 @@
         }
         
         /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .controls {
-                grid-template-columns: 1fr;
-            }
-            
-            .control-group {
-                padding: 8px;
-            }
-            
+        @media (max-width: 600px) {
             .container {
                 padding: 5px;
+            }
+            .canvas-container {
+                max-width: 98vw;
+                min-width: 320px;
+                margin: 0 auto;
+            }
+            canvas {
+                width: 98vw !important;
+                min-width: 320px;
+                max-width: 100vw;
+                height: auto !important;
+                min-height: 180px;
+            }
+            .controls {
+                flex-direction: row;
+                gap: 6px;
+                max-width: 98vw;
+                width: 98vw;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .control-group {
+                min-width: 120px;
+                max-width: 220px;
+                flex: 1 1 120px;
+                margin: 0 1px;
             }
         }
     </style>
@@ -410,11 +440,11 @@
                 height = Math.round(width * 9 / 16);
             } else {
                 // Mobile
-                width = Math.min(window.innerWidth * 0.98, 420);
-                height = Math.round(width * 9 / 16);
+                width = Math.max(Math.min(window.innerWidth * 0.98, 420), 320);
+                height = Math.max(Math.round(width * 9 / 16), 180);
             }
-            canvas.width = Math.max(220, width);
-            canvas.height = Math.max(120, height);
+            canvas.width = width;
+            canvas.height = height;
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
