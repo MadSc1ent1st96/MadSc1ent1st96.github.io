@@ -165,14 +165,6 @@
 <body>
     <div class="container">
         <!-- No in-canvas/game title or subtitle, only page-level title will be shown -->
-        <div style="text-align:right; margin-bottom:8px;">
-            <label style="font-size:14px; color:#ffd700; font-weight:bold;">View Mode:
-                <select id="viewMode" style="margin-left:6px; font-size:14px;">
-                    <option value="desktop">Desktop</option>
-                    <option value="mobile">Mobile</option>
-                </select>
-            </label>
-        </div>
 
         <div class="game-area">
             <div class="canvas-container">
@@ -233,7 +225,6 @@
     <script>
         const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
-        const viewMode = document.getElementById('viewMode');
         
         // Wave parameters
         let wave1 = {
@@ -410,21 +401,21 @@
         updateDisplay();
         animate();
 
-        // Responsive canvas: fixed aspect ratio, min/max size, user toggle
+        // Responsive canvas: auto-detect device, no toggle
         function resizeCanvas() {
-            let mode = viewMode.value;
             let width, height;
-            if (mode === 'desktop') {
+            if (window.innerWidth > 600) {
+                // Desktop
                 width = Math.min(window.innerWidth * 0.9, 900);
                 height = Math.round(width * 9 / 16);
             } else {
+                // Mobile
                 width = Math.min(window.innerWidth * 0.98, 420);
                 height = Math.round(width * 9 / 16);
             }
-            canvas.width = Math.max(320, width);
-            canvas.height = Math.max(180, height);
+            canvas.width = Math.max(220, width);
+            canvas.height = Math.max(120, height);
         }
-        viewMode.addEventListener('change', resizeCanvas);
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
     </script>
