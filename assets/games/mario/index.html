@@ -34,8 +34,8 @@
       }
       
       h1 {
-        margin: 0 0 8px 0;
-        font-size: clamp(1.2rem, 4vw, 2rem);
+        margin: 0 0 12px 0;
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
         text-align: center;
         letter-spacing: 1px;
         font-weight: 700;
@@ -45,62 +45,84 @@
       
       .game-wrapper {
         position: relative;
-        width: 98vw;
-        max-width: 900px;
+        width: 95vw;
+        max-width: 800px;
         height: auto;
         aspect-ratio: 16/9;
-        max-height: 60vh;
+        max-height: 65vh;
         margin: 0 auto;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 8px 32px rgba(0,118,223,0.15), 0 4px 16px rgba(0,0,0,0.2);
-        border: 2px solid #232323;
+        box-shadow: 0 12px 40px rgba(0,118,223,0.2), 0 6px 20px rgba(0,0,0,0.3);
+        border: 3px solid #0076df;
+        background: linear-gradient(135deg, #232323 0%, #1c1c1d 100%);
       }
       
       canvas {
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom, #5c94fc 0%, #4a7bc8 100%);
+        background: linear-gradient(to bottom, #5c94fc 0%, #4a7bc8 50%, #3c5aa6 100%);
         display: block;
-        border-radius: 14px;
+        border-radius: 17px;
       }
       
       #scoreDisplay {
-        font-size: clamp(1rem, 3vw, 1.3rem);
-        margin: 8px 0;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        margin: 12px 0 8px 0;
         text-align: center;
         color: #fff;
         font-weight: 600;
         text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        background: linear-gradient(135deg, #0076df 0%, #0056b3 100%);
+        padding: 8px 20px;
+        border-radius: 25px;
+        box-shadow: 0 4px 12px rgba(0,118,223,0.3);
       }
       
       .controls {
         display: flex;
-        gap: 12px;
-        margin-top: 8px;
+        gap: 16px;
+        margin-top: 12px;
         flex-wrap: wrap;
         justify-content: center;
       }
       
       #startBtn, #restartBtn, #mobileJump {
-        padding: clamp(10px, 3vw, 14px) clamp(16px, 4vw, 24px);
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 28px);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
         cursor: pointer;
         border: none;
-        border-radius: 12px;
+        border-radius: 15px;
         background: linear-gradient(135deg, #0076df 0%, #0056b3 100%);
         color: white;
-        transition: all 0.2s;
+        transition: all 0.3s;
         font-weight: 600;
-        box-shadow: 0 4px 12px rgba(0,118,223,0.3);
-        min-height: 44px;
-        min-width: 44px;
+        box-shadow: 0 6px 16px rgba(0,118,223,0.3);
+        min-height: 48px;
+        min-width: 48px;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      #startBtn::before, #restartBtn::before, #mobileJump::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+      }
+      
+      #startBtn:hover::before, #restartBtn:hover::before, #mobileJump:hover::before {
+        left: 100%;
       }
       
       #startBtn:hover, #restartBtn:hover, #mobileJump:hover {
         background: linear-gradient(135deg, #0088ff 0%, #0066cc 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0,118,223,0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,118,223,0.4);
       }
       
       #startBtn {
@@ -109,6 +131,8 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 10;
+        font-size: 1.3rem;
+        padding: 16px 32px;
       }
       
       #restartBtn {
@@ -120,14 +144,15 @@
         background: linear-gradient(135deg, #efcc00 0%, #d4b800 100%);
         color: #000;
         font-weight: 700;
-        box-shadow: 0 4px 12px rgba(239,204,0,0.4);
-        min-height: 56px;
-        min-width: 140px;
+        box-shadow: 0 6px 16px rgba(239,204,0,0.4);
+        min-height: 60px;
+        min-width: 160px;
+        font-size: 1.1rem;
       }
       
       #mobileJump:hover {
         background: linear-gradient(135deg, #ffd700 0%, #e6c200 100%);
-        box-shadow: 0 6px 16px rgba(239,204,0,0.5);
+        box-shadow: 0 8px 20px rgba(239,204,0,0.5);
       }
       
       /* Mobile optimizations */
@@ -138,29 +163,30 @@
         
         .game-wrapper {
           width: 100vw;
-          max-height: 50vh;
-          border-radius: 12px;
+          max-height: 55vh;
+          border-radius: 16px;
         }
         
         h1 {
-          font-size: 1.1rem;
-          margin-bottom: 4px;
+          font-size: 1.3rem;
+          margin-bottom: 8px;
         }
         
         #scoreDisplay {
-          font-size: 0.9rem;
-          margin: 4px 0;
+          font-size: 1rem;
+          margin: 8px 0 6px 0;
+          padding: 6px 16px;
         }
         
         .controls {
-          gap: 8px;
-          margin-top: 4px;
+          gap: 12px;
+          margin-top: 8px;
         }
         
         #mobileJump {
           display: inline-block;
           position: fixed;
-          bottom: 20px;
+          bottom: 24px;
           left: 50%;
           transform: translateX(-50%);
           z-index: 100;
@@ -169,22 +195,22 @@
       
       @media (max-width: 480px) {
         .game-wrapper {
-          max-height: 45vh;
+          max-height: 50vh;
         }
         
         h1 {
-          font-size: 1rem;
+          font-size: 1.2rem;
         }
         
         #scoreDisplay {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
         }
       }
     </style>
   </head>
   <body>
     <div id="gameContainer">
-      <h1>Infinite Runner+</h1>
+      <h1>🏃‍♂️ Infinite Runner+</h1>
       <div class="game-wrapper">
         <canvas id="gameCanvas"></canvas>
         <button id="startBtn">▶️ Start Game</button>
@@ -267,17 +293,17 @@
       
       function initGame() {
         player = { 
-          x: canvas.width * 0.1, 
-          y: canvas.height * 0.8, 
-          w: canvas.width * 0.05, 
-          h: canvas.height * 0.12, 
+          x: canvas.width * 0.12, 
+          y: canvas.height * 0.75, 
+          w: canvas.width * 0.06, 
+          h: canvas.height * 0.15, 
           vy: 0, 
           jumpCount: 0 
         };
         
-        gravity = canvas.height * 0.015;
+        gravity = canvas.height * 0.008; // Reduced gravity for higher jumps
         score = 0;
-        speed = canvas.width * 0.003;
+        speed = canvas.width * 0.0015; // Slower speed
         obstacles = [];
         powerups = [];
         gameOver = false;
@@ -297,13 +323,13 @@
       
       function jump() {
         if (player.jumpCount < jumps && !gameOver) {
-          player.vy = -canvas.height * 0.045;
+          player.vy = -canvas.height * 0.08; // Much higher jump
           player.jumpCount++;
           jumpSound.play().catch(e => {});
         }
       }
       
-      // Enhanced controls
+      // Enhanced controls - FIXED CLICK ISSUE
       document.addEventListener("keydown", (e) => {
         if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") {
           e.preventDefault();
@@ -311,7 +337,7 @@
         }
       });
       
-      // Touch/click controls
+      // Touch/click controls - FIXED FOR LAPTOP
       canvas.addEventListener("touchstart", (e) => {
         e.preventDefault();
         jump();
@@ -322,16 +348,19 @@
         jump();
       });
       
+      canvas.addEventListener("click", (e) => {
+        e.preventDefault();
+        jump();
+      });
+      
       mobileJump.addEventListener("touchstart", (e) => {
         e.preventDefault();
         jump();
       });
       
-      canvas.addEventListener("click", (e) => {
-        if (isMobile) {
-          e.preventDefault();
-          jump();
-        }
+      mobileJump.addEventListener("click", (e) => {
+        e.preventDefault();
+        jump();
       });
       
       startBtn.addEventListener("click", () => {
@@ -371,16 +400,19 @@
         
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Draw ground
-        ctx.fillStyle = "#3c763d";
+        // Draw ground with gradient
+        const groundGradient = ctx.createLinearGradient(0, canvas.height * 0.95, 0, canvas.height);
+        groundGradient.addColorStop(0, "#3c763d");
+        groundGradient.addColorStop(1, "#2d5a2d");
+        ctx.fillStyle = groundGradient;
         ctx.fillRect(0, canvas.height * 0.95, canvas.width, canvas.height * 0.05);
         
         // Update player
         player.vy += gravity;
         player.y += player.vy;
         
-        if (player.y >= canvas.height * 0.8) {
-          player.y = canvas.height * 0.8;
+        if (player.y >= canvas.height * 0.75) {
+          player.y = canvas.height * 0.75;
           player.vy = 0;
           player.jumpCount = 0;
         }
@@ -388,14 +420,14 @@
         drawPlayer();
         
         // Generate obstacles
-        if (obstaclecooldown <= 0 && Math.random() < 0.008) {
+        if (obstaclecooldown <= 0 && Math.random() < 0.006) { // Slower obstacle generation
           obstacles.push({ 
             x: canvas.width, 
-            y: canvas.height * 0.85, 
-            w: canvas.width * 0.05, 
-            h: canvas.height * 0.1 
+            y: canvas.height * 0.8, 
+            w: canvas.width * 0.06, 
+            h: canvas.height * 0.12 
           });
-          obstaclecooldown = 120;
+          obstaclecooldown = 150; // Longer cooldown
         } else {
           obstaclecooldown--;
         }
@@ -411,12 +443,12 @@
         obstacles = obstacles.filter((ob) => ob.x + ob.w > 0);
         
         // Generate powerups
-        if (Math.random() < 0.003) {
+        if (Math.random() < 0.002) { // Slower powerup generation
           powerups.push({ 
             x: canvas.width, 
-            y: canvas.height * 0.75, 
-            w: canvas.width * 0.04, 
-            h: canvas.height * 0.08 
+            y: canvas.height * 0.7, 
+            w: canvas.width * 0.05, 
+            h: canvas.height * 0.1 
           });
         }
         
@@ -438,7 +470,7 @@
           invincibleTimer--;
           if (invincibleTimer <= 0) invincible = false;
           ctx.fillStyle = "#efcc00";
-          ctx.font = `${canvas.width * 0.02}px Arial`;
+          ctx.font = `${canvas.width * 0.025}px Arial`;
           ctx.fillText("Invincible!", canvas.width * 0.7, canvas.height * 0.1);
         }
         
