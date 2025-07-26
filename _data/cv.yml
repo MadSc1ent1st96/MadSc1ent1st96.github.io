@@ -68,10 +68,12 @@
   contents:
     - title: Modeling Stellar Structure and Evolution
       year: 05/25-07/25
-      description: A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles.
+      description:
+        - A computational study using MESA to simulate stars of varying mass and metallicity. Results analyzed through HR diagrams and temperature-density profiles.
     - title: A Study on Hysteresis Loop
       year: 03/24-11/24
-      description: Used Ubermag (Python interface to OOMMF) to simulate hysteresis loops under different exchange energy configurations in a cubic system.
+      description:
+        - Used Ubermag (Python interface to OOMMF) to simulate hysteresis loops under different exchange energy configurations in a cubic system.
 
 - title: Awards and Achievements
   type: time_table
