@@ -156,6 +156,9 @@
             border-radius: 4px;
             margin: 10px 0;
             font-size: 12px;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-align: center;
         }
         /* MOBILE-ONLY styles (width <= 600px) */
         @media (max-width: 600px) {
@@ -213,6 +216,13 @@
                 font-size: 11px;
                 margin: 3px;
             }
+            .formula {
+                font-size: 11px;
+                padding: 6px;
+                margin: 8px 0;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
@@ -268,7 +278,7 @@
             <div class="info-panel">
                 <h3>📚 Physics Concepts</h3>
                 <p><strong>Wave Interference:</strong> When two or more waves meet, they combine according to the principle of superposition.</p>
-                <div class="formula">y(x,t) = A₁sin(k₁x - ω₁t + φ₁) + A₂sin(k₂x - ω₂t + φ₂)</div>
+                <div class="formula">y(x,t) = A₁·sin(k₁x - ω₁t + φ₁) + A₂·sin(k₂x - ω₂t + φ₂)</div>
                 <p><strong>Constructive Interference:</strong> When waves add up to create larger amplitude (peaks align with peaks).</p>
                 <p><strong>Destructive Interference:</strong> When waves cancel each other out (peaks align with troughs).</p>
                 <p><strong>Beat Frequency:</strong> When two waves have slightly different frequencies, you can hear a "beating" pattern.</p>
@@ -455,16 +465,24 @@
         updateDisplay();
         animate();
 
-        // Responsive canvas: simple and working approach
+        // Responsive canvas: improved scaling approach
         function resizeCanvas() {
             if (window.innerWidth > 600) {
-                // PC: fixed dimensions that work well
-                canvas.width = 800;
-                canvas.height = 400;
+                // PC: better scaling that adapts to container
+                const container = canvas.parentElement;
+                const containerWidth = container.offsetWidth;
+                const maxWidth = Math.min(800, containerWidth - 20);
+                const maxHeight = Math.round(maxWidth * 9 / 16);
+                canvas.width = Math.max(320, maxWidth);
+                canvas.height = Math.max(180, maxHeight);
             } else {
-                // Mobile: smaller fixed dimensions
-                canvas.width = 400;
-                canvas.height = 200;
+                // Mobile: responsive scaling
+                const container = canvas.parentElement;
+                const containerWidth = container.offsetWidth;
+                const maxWidth = Math.min(400, containerWidth - 10);
+                const maxHeight = Math.round(maxWidth * 9 / 16);
+                canvas.width = Math.max(320, maxWidth);
+                canvas.height = Math.max(180, maxHeight);
             }
         }
         window.addEventListener('resize', resizeCanvas);
