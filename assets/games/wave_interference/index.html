@@ -5,152 +5,273 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Wave Interference Constructor</title>
     <style>
-        body {
+        * {
             margin: 0;
-            padding: 10px;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #181818 0%, #1c1c1d 100%);
             color: white;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-
+        
         .container {
-            max-width: 1200px;
+            max-width: 100vw;
             margin: 0 auto;
-            text-align: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            padding: 8px;
         }
-
+        
         h1 {
-            font-size: clamp(20px, 4vw, 28px);
-            margin: 5px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            text-align: center;
+            margin: 8px 0 4px 0;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-
+        
         .subtitle {
-            font-size: clamp(12px, 2.5vw, 16px);
-            margin-bottom: 10px;
-            opacity: 0.9;
+            text-align: center;
+            color: #bfc9d1;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            margin-bottom: 12px;
         }
-
+        
         .game-area {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 16px;
             align-items: center;
-            flex: 1;
-            min-height: 0;
         }
-
+        
         .canvas-container {
-            position: relative;
-            border: 3px solid #fff;
-            border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            background: #000;
-            flex: 1;
-            min-height: 0;
-        }
-
-        canvas {
-            display: block;
-            max-width: 100%;
-            max-height: 100%;
+            width: 98vw;
+            max-width: 900px;
             height: auto;
+            aspect-ratio: 2/1;
+            max-height: 50vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,118,223,0.15), 0 4px 16px rgba(0,0,0,0.2);
+            border: 2px solid #232323;
+            background: #000;
         }
-
-        .controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin: 10px 0;
-            max-width: 800px;
-        }
-
-        .control-group {
-            background: rgba(255,255,255,0.1);
-            padding: 10px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .control-group h3 {
-            margin: 0 0 8px 0;
-            font-size: 14px;
-            color: #ffd700;
-        }
-
-        label {
+        
+        #waveCanvas {
+            width: 100%;
+            height: 100%;
             display: block;
-            margin: 6px 0 2px 0;
-            font-size: 12px;
+            background: #000;
         }
-
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 98vw;
+            max-width: 900px;
+            padding: 16px;
+            background: linear-gradient(135deg, #232323 0%, #1c1c1d 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            border: 1px solid #333;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .control-group h3 {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #0076df;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .slider-label {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            color: #bfc9d1;
+            display: flex;
+            justify-content: space-between;
+        }
+        
         input[type="range"] {
             width: 100%;
-            margin: 3px 0;
+            height: 6px;
+            border-radius: 3px;
+            background: #333;
+            outline: none;
+            -webkit-appearance: none;
         }
-
-        input[type="number"] {
-            width: 50px;
-            padding: 2px;
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0076df;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0076df;
+            cursor: pointer;
             border: none;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0;
+        }
+        
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #0076df;
+        }
+        
+        .checkbox-label {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            color: #bfc9d1;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
         button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            padding: clamp(8px, 2.5vw, 12px) clamp(16px, 4vw, 24px);
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            background: linear-gradient(135deg, #0076df 0%, #0056b3 100%);
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s ease;
-            margin: 3px;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .info-panel {
-            background: rgba(255,255,255,0.1);
-            padding: 10px;
             border-radius: 8px;
-            margin: 10px 0;
-            backdrop-filter: blur(10px);
-            max-width: 600px;
-            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,118,223,0.3);
         }
-
+        
+        button:hover {
+            background: linear-gradient(135deg, #0088ff 0%, #0066cc 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,118,223,0.4);
+        }
+        
+        .info-panel {
+            width: 98vw;
+            max-width: 900px;
+            padding: 16px;
+            background: linear-gradient(135deg, #232323 0%, #1c1c1d 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            border: 1px solid #333;
+            margin-top: 8px;
+        }
+        
+        .info-panel h3 {
+            color: #0076df;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .info-panel p {
+            color: #bfc9d1;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        
         .formula {
+            background: rgba(0,118,223,0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid #0076df;
             font-family: 'Courier New', monospace;
-            background: rgba(0,0,0,0.3);
-            padding: 6px;
-            border-radius: 4px;
+            font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+            color: #0076df;
             margin: 8px 0;
-            font-size: 12px;
         }
-
+        
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            .controls {
-                grid-template-columns: 1fr;
-            }
-            
-            .control-group {
-                padding: 8px;
-            }
-            
             .container {
-                padding: 5px;
+                padding: 4px;
+            }
+            
+            .canvas-container {
+                width: 100vw;
+                max-height: 40vh;
+                border-radius: 12px;
+            }
+            
+            .controls {
+                width: 100vw;
+                padding: 12px;
+                gap: 12px;
+            }
+            
+            .info-panel {
+                width: 100vw;
+                padding: 12px;
+                margin-top: 4px;
+            }
+            
+            .button-container {
+                gap: 8px;
+            }
+            
+            button {
+                min-width: 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+                margin: 4px 0 2px 0;
+            }
+            
+            .subtitle {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+            
+            .canvas-container {
+                max-height: 35vh;
+            }
+            
+            .controls {
+                padding: 8px;
+                gap: 8px;
+            }
+            
+            .info-panel {
+                padding: 8px;
             }
         }
     </style>
@@ -162,45 +283,77 @@
 
         <div class="game-area">
             <div class="canvas-container">
-                <canvas id="waveCanvas" width="800" height="400"></canvas>
+                <canvas id="waveCanvas"></canvas>
             </div>
 
             <div class="controls">
                 <div class="control-group">
                     <h3>Wave 1 Settings</h3>
-                    <label>Amplitude: <span id="amp1Value">50</span></label>
-                    <input type="range" id="amp1" min="10" max="100" value="50">
-                    
-                    <label>Frequency: <span id="freq1Value">1.0</span> Hz</label>
-                    <input type="range" id="freq1" min="0.1" max="3" step="0.1" value="1.0">
-                    
-                    <label>Phase: <span id="phase1Value">0</span>°</label>
-                    <input type="range" id="phase1" min="0" max="360" value="0">
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Amplitude</span>
+                            <span id="amp1Value">50</span>
+                        </div>
+                        <input type="range" id="amp1Slider" min="0" max="100" value="50">
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Frequency</span>
+                            <span id="freq1Value">1.0 Hz</span>
+                        </div>
+                        <input type="range" id="freq1Slider" min="0.1" max="3" step="0.1" value="1.0">
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Phase</span>
+                            <span id="phase1Value">0°</span>
+                        </div>
+                        <input type="range" id="phase1Slider" min="0" max="360" value="0">
+                    </div>
                 </div>
 
                 <div class="control-group">
                     <h3>Wave 2 Settings</h3>
-                    <label>Amplitude: <span id="amp2Value">50</span></label>
-                    <input type="range" id="amp2" min="10" max="100" value="50">
-                    
-                    <label>Frequency: <span id="freq2Value">1.0</span> Hz</label>
-                    <input type="range" id="freq2" min="0.1" max="3" step="0.1" value="1.0">
-                    
-                    <label>Phase: <span id="phase2Value">0</span>°</label>
-                    <input type="range" id="phase2" min="0" max="360" value="0">
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Amplitude</span>
+                            <span id="amp2Value">50</span>
+                        </div>
+                        <input type="range" id="amp2Slider" min="0" max="100" value="50">
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Frequency</span>
+                            <span id="freq2Value">1.0 Hz</span>
+                        </div>
+                        <input type="range" id="freq2Slider" min="0.1" max="3" step="0.1" value="1.0">
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Phase</span>
+                            <span id="phase2Value">0°</span>
+                        </div>
+                        <input type="range" id="phase2Slider" min="0" max="360" value="0">
+                    </div>
                 </div>
 
                 <div class="control-group">
                     <h3>Display Options</h3>
-                    <label>
-                        <input type="checkbox" id="showWave1" checked> Show Wave 1
-                    </label>
-                    <label>
-                        <input type="checkbox" id="showWave2" checked> Show Wave 2
-                    </label>
-                    <label>
-                        <input type="checkbox" id="showInterference" checked> Show Interference
-                    </label>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="showWave1" checked>
+                        <label class="checkbox-label" for="showWave1">Show Wave 1</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="showWave2" checked>
+                        <label class="checkbox-label" for="showWave2">Show Wave 2</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="showInterference" checked>
+                        <label class="checkbox-label" for="showInterference">Show Interference</label>
+                    </div>
+                </div>
+
+                <div class="button-container">
                     <button id="resetBtn">Reset Waves</button>
                     <button id="randomBtn">Random Waves</button>
                 </div>
@@ -209,10 +362,10 @@
             <div class="info-panel">
                 <h3>📚 Physics Concepts</h3>
                 <p><strong>Wave Interference:</strong> When two or more waves meet, they combine according to the principle of superposition.</p>
-                <div class="formula">y(x,t) = A₁sin(k₁x - ω₁t + φ₁) + A₂sin(k₂x - ω₂t + φ₂)</div>
                 <p><strong>Constructive Interference:</strong> When waves add up to create larger amplitude (peaks align with peaks).</p>
                 <p><strong>Destructive Interference:</strong> When waves cancel each other out (peaks align with troughs).</p>
-                <p><strong>Beat Frequency:</strong> When two waves have slightly different frequencies, you can hear a "beating" pattern.</p>
+                <div class="formula">y(x,t) = A₁sin(2πf₁t + φ₁) + A₂sin(2πf₂t + φ₂)</div>
+                <p>Where A = amplitude, f = frequency, φ = phase, and t = time.</p>
             </div>
         </div>
     </div>
@@ -221,72 +374,172 @@
         const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
         
-        // Wave parameters
-        let wave1 = {
-            amplitude: 50,
-            frequency: 1.0,
-            phase: 0,
-            color: '#ff6b6b'
-        };
+        // Responsive canvas setup
+        function setupCanvas() {
+            const container = document.querySelector('.canvas-container');
+            const rect = container.getBoundingClientRect();
+            
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
         
-        let wave2 = {
-            amplitude: 50,
-            frequency: 1.0,
-            phase: 0,
-            color: '#4ecdc4'
-        };
-
-        let time = 0;
-        let animationId;
-
+        setupCanvas();
+        window.addEventListener('resize', () => {
+            setTimeout(setupCanvas, 100);
+        });
+        
+        // Wave parameters
+        let wave1 = { amplitude: 50, frequency: 1.0, phase: 0, show: true };
+        let wave2 = { amplitude: 50, frequency: 1.0, phase: 0, show: true };
+        let showInterference = true;
+        
+        // Slider elements
+        const amp1Slider = document.getElementById('amp1Slider');
+        const freq1Slider = document.getElementById('freq1Slider');
+        const phase1Slider = document.getElementById('phase1Slider');
+        const amp2Slider = document.getElementById('amp2Slider');
+        const freq2Slider = document.getElementById('freq2Slider');
+        const phase2Slider = document.getElementById('phase2Slider');
+        
+        // Checkbox elements
+        const showWave1Checkbox = document.getElementById('showWave1');
+        const showWave2Checkbox = document.getElementById('showWave2');
+        const showInterferenceCheckbox = document.getElementById('showInterference');
+        
+        // Button elements
+        const resetBtn = document.getElementById('resetBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        
         // Update display values
-        function updateDisplay() {
+        function updateDisplayValues() {
             document.getElementById('amp1Value').textContent = wave1.amplitude;
-            document.getElementById('freq1Value').textContent = wave1.frequency.toFixed(1);
-            document.getElementById('phase1Value').textContent = wave1.phase;
-            
+            document.getElementById('freq1Value').textContent = wave1.frequency.toFixed(1) + ' Hz';
+            document.getElementById('phase1Value').textContent = wave1.phase + '°';
             document.getElementById('amp2Value').textContent = wave2.amplitude;
-            document.getElementById('freq2Value').textContent = wave2.frequency.toFixed(1);
-            document.getElementById('phase2Value').textContent = wave2.phase;
+            document.getElementById('freq2Value').textContent = wave2.frequency.toFixed(1) + ' Hz';
+            document.getElementById('phase2Value').textContent = wave2.phase + '°';
         }
-
-        // Calculate wave value at position x and time t
-        function calculateWave(x, t, wave) {
-            const k = wave.frequency * 2 * Math.PI / 100; // wave number
-            const omega = wave.frequency * 2 * Math.PI; // angular frequency
-            const phaseRad = wave.phase * Math.PI / 180; // convert to radians
+        
+        // Event listeners for sliders
+        amp1Slider.addEventListener('input', (e) => {
+            wave1.amplitude = parseInt(e.target.value);
+            updateDisplayValues();
+        });
+        
+        freq1Slider.addEventListener('input', (e) => {
+            wave1.frequency = parseFloat(e.target.value);
+            updateDisplayValues();
+        });
+        
+        phase1Slider.addEventListener('input', (e) => {
+            wave1.phase = parseInt(e.target.value);
+            updateDisplayValues();
+        });
+        
+        amp2Slider.addEventListener('input', (e) => {
+            wave2.amplitude = parseInt(e.target.value);
+            updateDisplayValues();
+        });
+        
+        freq2Slider.addEventListener('input', (e) => {
+            wave2.frequency = parseFloat(e.target.value);
+            updateDisplayValues();
+        });
+        
+        phase2Slider.addEventListener('input', (e) => {
+            wave2.phase = parseInt(e.target.value);
+            updateDisplayValues();
+        });
+        
+        // Event listeners for checkboxes
+        showWave1Checkbox.addEventListener('change', (e) => {
+            wave1.show = e.target.checked;
+        });
+        
+        showWave2Checkbox.addEventListener('change', (e) => {
+            wave2.show = e.target.checked;
+        });
+        
+        showInterferenceCheckbox.addEventListener('change', (e) => {
+            showInterference = e.target.checked;
+        });
+        
+        // Button event listeners
+        resetBtn.addEventListener('click', () => {
+            wave1 = { amplitude: 50, frequency: 1.0, phase: 0, show: true };
+            wave2 = { amplitude: 50, frequency: 1.0, phase: 0, show: true };
+            showInterference = true;
             
-            return wave.amplitude * Math.sin(k * x - omega * t + phaseRad);
+            amp1Slider.value = 50;
+            freq1Slider.value = 1.0;
+            phase1Slider.value = 0;
+            amp2Slider.value = 50;
+            freq2Slider.value = 1.0;
+            phase2Slider.value = 0;
+            
+            showWave1Checkbox.checked = true;
+            showWave2Checkbox.checked = true;
+            showInterferenceCheckbox.checked = true;
+            
+            updateDisplayValues();
+        });
+        
+        randomBtn.addEventListener('click', () => {
+            wave1 = {
+                amplitude: Math.floor(Math.random() * 100) + 1,
+                frequency: Math.random() * 2.9 + 0.1,
+                phase: Math.floor(Math.random() * 360),
+                show: true
+            };
+            wave2 = {
+                amplitude: Math.floor(Math.random() * 100) + 1,
+                frequency: Math.random() * 2.9 + 0.1,
+                phase: Math.floor(Math.random() * 360),
+                show: true
+            };
+            
+            amp1Slider.value = wave1.amplitude;
+            freq1Slider.value = wave1.frequency;
+            phase1Slider.value = wave1.phase;
+            amp2Slider.value = wave2.amplitude;
+            freq2Slider.value = wave2.frequency;
+            phase2Slider.value = wave2.phase;
+            
+            updateDisplayValues();
+        });
+        
+        // Calculate wave value at given position and time
+        function calculateWave(amplitude, frequency, phase, x, time) {
+            return amplitude * Math.sin(2 * Math.PI * frequency * (x / canvas.width + time) + phase * Math.PI / 180);
         }
-
+        
         // Draw wave
-        function drawWave(wave, color) {
+        function drawWave(wave, color, time) {
             ctx.strokeStyle = color;
             ctx.lineWidth = 2;
             ctx.beginPath();
             
             for (let x = 0; x < canvas.width; x++) {
-                const y = canvas.height/2 + calculateWave(x, time, wave);
+                const y = canvas.height / 2 + calculateWave(wave.amplitude, wave.frequency, wave.phase, x, time);
                 if (x === 0) {
                     ctx.moveTo(x, y);
                 } else {
                     ctx.lineTo(x, y);
                 }
             }
-            
             ctx.stroke();
         }
-
+        
         // Draw interference pattern
-        function drawInterference() {
-            ctx.strokeStyle = '#ffd700';
+        function drawInterference(time) {
+            ctx.strokeStyle = '#efcc00';
             ctx.lineWidth = 3;
             ctx.beginPath();
             
             for (let x = 0; x < canvas.width; x++) {
-                const y1 = calculateWave(x, time, wave1);
-                const y2 = calculateWave(x, time, wave2);
-                const y = canvas.height/2 + y1 + y2;
+                const y1 = calculateWave(wave1.amplitude, wave1.frequency, wave1.phase, x, time);
+                const y2 = calculateWave(wave2.amplitude, wave2.frequency, wave2.phase, x, time);
+                const y = canvas.height / 2 + y1 + y2;
                 
                 if (x === 0) {
                     ctx.moveTo(x, y);
@@ -294,14 +547,13 @@
                     ctx.lineTo(x, y);
                 }
             }
-            
             ctx.stroke();
         }
-
+        
         // Animation loop
+        let time = 0;
         function animate() {
-            ctx.fillStyle = '#000';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             // Draw grid
             ctx.strokeStyle = '#333';
@@ -319,110 +571,24 @@
                 ctx.stroke();
             }
             
-            // Draw center line
-            ctx.strokeStyle = '#666';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(0, canvas.height/2);
-            ctx.lineTo(canvas.width, canvas.height/2);
-            ctx.stroke();
-            
             // Draw waves
-            if (document.getElementById('showWave1').checked) {
-                drawWave(wave1, wave1.color);
+            if (wave1.show) {
+                drawWave(wave1, '#0076df', time);
             }
-            if (document.getElementById('showWave2').checked) {
-                drawWave(wave2, wave2.color);
+            if (wave2.show) {
+                drawWave(wave2, '#00ab37', time);
             }
-            if (document.getElementById('showInterference').checked) {
-                drawInterference();
+            if (showInterference) {
+                drawInterference(time);
             }
             
             time += 0.02;
-            animationId = requestAnimationFrame(animate);
+            requestAnimationFrame(animate);
         }
-
-        // Event listeners
-        document.getElementById('amp1').addEventListener('input', (e) => {
-            wave1.amplitude = parseInt(e.target.value);
-            updateDisplay();
-        });
-
-        document.getElementById('freq1').addEventListener('input', (e) => {
-            wave1.frequency = parseFloat(e.target.value);
-            updateDisplay();
-        });
-
-        document.getElementById('phase1').addEventListener('input', (e) => {
-            wave1.phase = parseInt(e.target.value);
-            updateDisplay();
-        });
-
-        document.getElementById('amp2').addEventListener('input', (e) => {
-            wave2.amplitude = parseInt(e.target.value);
-            updateDisplay();
-        });
-
-        document.getElementById('freq2').addEventListener('input', (e) => {
-            wave2.frequency = parseFloat(e.target.value);
-            updateDisplay();
-        });
-
-        document.getElementById('phase2').addEventListener('input', (e) => {
-            wave2.phase = parseInt(e.target.value);
-            updateDisplay();
-        });
-
-        document.getElementById('resetBtn').addEventListener('click', () => {
-            wave1 = { amplitude: 50, frequency: 1.0, phase: 0, color: '#ff6b6b' };
-            wave2 = { amplitude: 50, frequency: 1.0, phase: 0, color: '#4ecdc4' };
-            
-            document.getElementById('amp1').value = 50;
-            document.getElementById('freq1').value = 1.0;
-            document.getElementById('phase1').value = 0;
-            document.getElementById('amp2').value = 50;
-            document.getElementById('freq2').value = 1.0;
-            document.getElementById('phase2').value = 0;
-            
-            updateDisplay();
-        });
-
-        document.getElementById('randomBtn').addEventListener('click', () => {
-            wave1.amplitude = Math.random() * 80 + 20;
-            wave1.frequency = Math.random() * 2 + 0.5;
-            wave1.phase = Math.random() * 360;
-            
-            wave2.amplitude = Math.random() * 80 + 20;
-            wave2.frequency = Math.random() * 2 + 0.5;
-            wave2.phase = Math.random() * 360;
-            
-            document.getElementById('amp1').value = wave1.amplitude;
-            document.getElementById('freq1').value = wave1.frequency;
-            document.getElementById('phase1').value = wave1.phase;
-            document.getElementById('amp2').value = wave2.amplitude;
-            document.getElementById('freq2').value = wave2.frequency;
-            document.getElementById('phase2').value = wave2.phase;
-            
-            updateDisplay();
-        });
-
+        
         // Initialize
-        updateDisplay();
+        updateDisplayValues();
         animate();
-
-        // Responsive canvas
-        function resizeCanvas() {
-            const container = canvas.parentElement;
-            const maxWidth = Math.min(800, container.offsetWidth - 40);
-            const maxHeight = Math.min(400, container.offsetHeight - 40);
-            
-            const scale = Math.min(maxWidth / 800, maxHeight / 400);
-            canvas.style.width = (800 * scale) + 'px';
-            canvas.style.height = (400 * scale) + 'px';
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
     </script>
 </body>
 </html> 
