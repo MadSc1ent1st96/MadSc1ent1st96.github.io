@@ -53,15 +53,6 @@ Explore wave superposition and interference patterns in real-time! This interact
 
 ---
 
-## **📱 Device Compatibility**
-
-| Device Type | Status | Features |
-|-------------|--------|----------|
-| **Desktop/Laptop** | ✅ Full Support | Keyboard controls, full audio, high performance |
-| **Tablet** | ✅ Optimized | Touch controls, responsive layout, scaled audio |
-| **Mobile** | ✅ Optimized | Touch controls, mobile UI, reduced audio |
-| **Small Mobile** | ✅ Optimized | Compact layout, landscape recommended |
-
 ## **🎯 Physics Learning Goals**
 
 These games are designed to help you understand:
