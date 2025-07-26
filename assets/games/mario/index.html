@@ -210,15 +210,16 @@
   </head>
   <body>
     <div id="gameContainer">
-      <!-- Removed in-canvas/game title, only page title will be shown -->
+      <!-- No in-canvas/game title, only page-level title will be shown -->
       <div class="game-wrapper">
-        <canvas id="gameCanvas"></canvas>
-        <button id="startBtn">▶️ Start Game</button>
+        <canvas id="gameCanvas" style="z-index:1; position:relative;"></canvas>
+        <button id="startBtn" style="z-index:2; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">▶️ Start Game</button>
       </div>
       <p id="scoreDisplay">Score: 0</p>
       <div class="controls">
         <button id="restartBtn">🔁 Restart</button>
         <button id="mobileJump">🕹️ Tap to Jump</button>
+        <span id="powerupTimer" style="display:none; color:#efcc00; font-weight:bold; font-size:1.2em; margin-left:1em;"></span>
       </div>
     </div>
     
@@ -286,7 +287,7 @@
       
       // Game variables
       let player, gravity, score, speed, obstacles, powerups, gameOver, jumps;
-      let invincible = false, invincibleTimer = 0;
+      let invincible = false, invincibleTimer = 0, powerupCountdown = 0;
       let obstaclecooldown = 0;
       let lastFrameTime = 0;
       let frameCount = 0;
@@ -301,9 +302,9 @@
             vy: 0, 
             jumpCount: 0 
           };
-          gravity = canvas.height * 0.0045; // More natural gravity
+          gravity = canvas.height * 0.0055; // More natural gravity
           score = 0;
-          speed = canvas.width * 0.0022; // Balanced speed
+          speed = canvas.width * 0.002; // Slightly slower for playability
           obstacles = [];
           powerups = [];
           gameOver = false;
@@ -311,8 +312,10 @@
           canDoubleJump = true;
           invincible = false;
           invincibleTimer = 0;
+          powerupCountdown = 0;
           restartBtn.style.display = "none";
           document.getElementById("scoreDisplay").innerText = "Score: 0";
+          document.getElementById("powerupTimer").style.display = "none";
           bgm.currentTime = 0;
           bgm.play().catch(e => {});
           update();
@@ -321,12 +324,12 @@
       function jump() {
           if (!gameOver) {
             if (player.jumpCount === 0) {
-              player.vy = -canvas.height * 0.09; // First jump
+              player.vy = -canvas.height * 0.13; // First jump (higher)
               player.jumpCount = 1;
               canDoubleJump = true;
               jumpSound.play().catch(e => {});
             } else if (player.jumpCount === 1 && canDoubleJump) {
-              player.vy = -canvas.height * 0.08; // Double jump
+              player.vy = -canvas.height * 0.11; // Double jump (slightly less)
               player.jumpCount = 2;
               canDoubleJump = false;
               jumpSound.play().catch(e => {});
@@ -379,6 +382,12 @@
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
+        // Draw modern background
+        const bgGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        bgGrad.addColorStop(0, '#232323');
+        bgGrad.addColorStop(1, '#1c1c1d');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         // Draw ground with gradient
         const groundGradient = ctx.createLinearGradient(0, canvas.height * 0.95, 0, canvas.height);
         groundGradient.addColorStop(0, "#3c763d");
@@ -448,7 +457,14 @@
         // Invincibility effect
         if (invincible) {
           invincibleTimer--;
-          if (invincibleTimer <= 0) invincible = false;
+          powerupCountdown = Math.ceil(invincibleTimer / 60);
+          if (invincibleTimer <= 0) {
+            invincible = false;
+            document.getElementById("powerupTimer").style.display = "none";
+          } else {
+            document.getElementById("powerupTimer").style.display = "inline-block";
+            document.getElementById("powerupTimer").textContent = `🛡️ Powerup: ${powerupCountdown}s`;
+          }
           ctx.fillStyle = "#efcc00";
           ctx.font = `${canvas.width * 0.025}px Arial`;
           ctx.fillText("Invincible!", canvas.width * 0.7, canvas.height * 0.1);
