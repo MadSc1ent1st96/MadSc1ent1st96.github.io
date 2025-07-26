@@ -94,7 +94,7 @@
             border-radius: 20px;
             background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
             color: white;
-            transition: all 0.2s ease;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
             font-weight: 600;
             box-shadow: 0 8px 25px rgba(74,144,226,0.4);
             position: relative;
@@ -107,7 +107,7 @@
         }
         
         #startBtn:active, #restartBtn:active, #mobileJump:active {
-            transform: scale(0.98);
+            transform: scale(0.95);
         }
         
         #startBtn {
@@ -179,14 +179,15 @@
         let gameRunning = false;
         let score = 0;
         let gameSpeed = 3;
-        let level = 1;
+        let cameraX = 0;
 
         // Player
         let player = {
-            x: 100,
+            x: 150,
             y: 300,
             width: 40,
             height: 50,
+            vx: 0,
             vy: 0,
             onGround: false,
             jumpCount: 0,
@@ -197,6 +198,7 @@
         const GRAVITY = 0.8;
         const JUMP_FORCE = -16;
         const GROUND_Y = 350;
+        const PLAYER_SPEED = 2;
 
         // Game objects
         let obstacles = [];
@@ -240,16 +242,16 @@
             if (score % 200 === 0 && score > 0) {
                 const patterns = [
                     // Single obstacle
-                    [{ x: canvas.width, y: GROUND_Y - 30, width: 30, height: 30 }],
+                    [{ x: canvas.width + cameraX, y: GROUND_Y - 30, width: 30, height: 30 }],
                     // Two obstacles with gap
                     [
-                        { x: canvas.width, y: GROUND_Y - 30, width: 30, height: 30 },
-                        { x: canvas.width + 120, y: GROUND_Y - 30, width: 30, height: 30 }
+                        { x: canvas.width + cameraX, y: GROUND_Y - 30, width: 30, height: 30 },
+                        { x: canvas.width + cameraX + 120, y: GROUND_Y - 30, width: 30, height: 30 }
                     ],
                     // Low obstacle
-                    [{ x: canvas.width, y: GROUND_Y - 20, width: 40, height: 20 }],
+                    [{ x: canvas.width + cameraX, y: GROUND_Y - 20, width: 40, height: 20 }],
                     // High obstacle
-                    [{ x: canvas.width, y: GROUND_Y - 50, width: 25, height: 50 }]
+                    [{ x: canvas.width + cameraX, y: GROUND_Y - 50, width: 25, height: 50 }]
                 ];
                 
                 const pattern = patterns[Math.floor(score / 200) % patterns.length];
@@ -261,7 +263,7 @@
         function generatePowerups() {
             if (score % 400 === 0 && score > 0) {
                 powerups.push({
-                    x: canvas.width,
+                    x: canvas.width + cameraX,
                     y: GROUND_Y - 40,
                     width: 25,
                     height: 25,
@@ -275,13 +277,13 @@
             // Update obstacles
             obstacles = obstacles.filter(obstacle => {
                 obstacle.x -= gameSpeed;
-                return obstacle.x > -obstacle.width;
+                return obstacle.x > cameraX - 50;
             });
 
             // Update powerups
             powerups = powerups.filter(powerup => {
                 powerup.x -= gameSpeed;
-                return powerup.x > -powerup.width;
+                return powerup.x > cameraX - 50;
             });
 
             // Update particles
@@ -333,31 +335,31 @@
         // Render functions
         function drawPlayer() {
             ctx.fillStyle = '#4a90e2';
-            ctx.fillRect(player.x, player.y, player.width, player.height);
+            ctx.fillRect(player.x - cameraX, player.y, player.width, player.height);
             
             // Player glow effect
             ctx.shadowColor = '#4a90e2';
             ctx.shadowBlur = 10;
-            ctx.fillRect(player.x, player.y, player.width, player.height);
+            ctx.fillRect(player.x - cameraX, player.y, player.width, player.height);
             ctx.shadowBlur = 0;
         }
 
         function drawObstacles() {
             obstacles.forEach(obstacle => {
                 ctx.fillStyle = '#e74c3c';
-                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+                ctx.fillRect(obstacle.x - cameraX, obstacle.y, obstacle.width, obstacle.height);
             });
         }
 
         function drawPowerups() {
             powerups.forEach(powerup => {
                 ctx.fillStyle = '#2ecc71';
-                ctx.fillRect(powerup.x, powerup.y, powerup.width, powerup.height);
+                ctx.fillRect(powerup.x - cameraX, powerup.y, powerup.width, powerup.height);
                 
                 // Powerup glow
                 ctx.shadowColor = '#2ecc71';
                 ctx.shadowBlur = 8;
-                ctx.fillRect(powerup.x, powerup.y, powerup.width, powerup.height);
+                ctx.fillRect(powerup.x - cameraX, powerup.y, powerup.width, powerup.height);
                 ctx.shadowBlur = 0;
             });
         }
@@ -366,7 +368,7 @@
             particles.forEach(particle => {
                 ctx.fillStyle = particle.color;
                 ctx.globalAlpha = particle.life / 40;
-                ctx.fillRect(particle.x, particle.y, 3, 3);
+                ctx.fillRect(particle.x - cameraX, particle.y, 3, 3);
             });
             ctx.globalAlpha = 1;
         }
@@ -396,6 +398,9 @@
             } else {
                 player.onGround = false;
             }
+
+            // Update camera to follow player
+            cameraX = player.x - 150;
 
             // Update game objects
             updateGameObjects();
@@ -439,13 +444,15 @@
             // Reset game state
             score = 0;
             gameSpeed = 3;
+            cameraX = 0;
             obstacles = [];
             powerups = [];
             particles = [];
             
             // Reset player
-            player.x = 100;
+            player.x = 150;
             player.y = 300;
+            player.vx = 0;
             player.vy = 0;
             player.onGround = false;
             player.jumpCount = 0;
