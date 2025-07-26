@@ -5,6 +5,36 @@ permalink: /game/wave-interference/
 nav: false
 ---
 
+<style>
+/* Improve visual hierarchy */
+h3 {
+    font-size: 1.3em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: #0076df;
+    border-bottom: 2px solid #0076df;
+    padding-bottom: 0.3em;
+}
+
+h4 {
+    font-size: 1.1em;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+    color: #666;
+    font-weight: 600;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    h3 {
+        font-size: 1.2em;
+    }
+    h4 {
+        font-size: 1em;
+    }
+}
+</style>
+
 Explore wave superposition and interference patterns in real-time! This interactive simulation demonstrates fundamental wave physics concepts.
 
 <div style="max-width: 900px; margin: auto; text-align: center;">
@@ -28,14 +58,14 @@ When two or more waves meet, they combine according to the principle of superpos
 ### Mathematical Foundation
 The simulation uses the wave equation:
 ```
-y(x,t) = A<sub>1</sub>·sin(k<sub>1</sub>x - ω<sub>1</sub>t + φ<sub>1</sub>) + A<sub>2</sub>·sin(k<sub>2</sub>x - ω<sub>2</sub>t + φ<sub>2</sub>)
+y(x,t) = A₁·sin(k₁x - ω₁t + φ₁) + A₂·sin(k₂x - ω₂t + φ₂)
 ```
 
 Where:
-- **A<sub>1</sub>, A<sub>2</sub>**: Amplitudes of the two waves
-- **k<sub>1</sub>, k<sub>2</sub>**: Wave numbers (related to frequency)
-- **ω<sub>1</sub>, ω<sub>2</sub>**: Angular frequencies
-- **φ<sub>1</sub>, φ<sub>2</sub>**: Phase angles
+- **A₁, A₂**: Amplitudes of the two waves
+- **k₁, k₂**: Wave numbers (related to frequency)
+- **ω₁, ω₂**: Angular frequencies
+- **φ₁, φ₂**: Phase angles
 - **x**: Position
 - **t**: Time
 
