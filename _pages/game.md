@@ -33,30 +33,76 @@ Welcome to the Physics Game Room! Explore interactive physics games and simulati
   justify-content: flex-start;
 }
 .project-card {
-  background: #232323;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  padding: 1.5em 1em;
-  width: 320px;
-  min-height: 320px;
+  background: linear-gradient(135deg, #232323 60%, #1c1c1d 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  border: 2px solid transparent;
+  padding: 2em 1.2em 1.5em 1.2em;
+  width: 340px;
+  min-height: 340px;
   text-align: center;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.18s;
+  position: relative;
+  overflow: hidden;
 }
 .project-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 32px rgba(0,118,223,0.18), 0 2px 8px rgba(0,0,0,0.18);
+  border-color: #0076df;
+  transform: translateY(-6px) scale(1.03);
 }
 .project-card h2 {
   margin: 0.5em 0 0.2em 0;
-  font-size: 1.4em;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  transition: color 0.2s;
+}
+.project-card:hover h2 {
+  color: #0076df;
 }
 .project-card p {
-  color: #aaa;
-  font-size: 1em;
+  color: #bfc9d1;
+  font-size: 1.08em;
+  margin-bottom: 0.5em;
 }
 .project-card a {
   color: inherit;
   text-decoration: none;
   display: block;
   height: 100%;
+}
+.project-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin: 1em auto 0.5em auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,118,223,0.10);
+  background: #181818;
+  border: 1.5px solid #232323;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.project-card:hover img {
+  box-shadow: 0 4px 24px rgba(0,118,223,0.18);
+  border-color: #0076df;
+}
+@media (max-width: 900px) {
+  .projects-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+  }
+  .project-card {
+    width: 98vw;
+    min-width: unset;
+    min-height: 220px;
+    padding: 1.2em 0.5em 1em 0.5em;
+  }
+  .project-card img {
+    width: 80px;
+    height: 80px;
+  }
 }
 </style>

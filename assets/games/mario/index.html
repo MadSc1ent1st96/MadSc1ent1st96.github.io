@@ -5,125 +5,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>Infinite Runner+</title>
     <style>
-      html,
-      body {
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html, body {
         height: 100vh;
-        background: #181818;
+        background: linear-gradient(135deg, #181818 0%, #1c1c1d 100%);
         font-family: 'Segoe UI', Arial, sans-serif;
         color: white;
         touch-action: manipulation;
         user-select: none;
+        overflow: hidden;
       }
+      
       #gameContainer {
         position: relative;
         width: 100vw;
         height: 100vh;
-        max-width: 1100px;
-        max-height: 800px;
-        margin: 40px auto 0 auto;
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
-        background: #111;
-        border-radius: 24px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-        padding-bottom: 32px;
+        justify-content: center;
+        padding: 0;
+        background: linear-gradient(135deg, #181818 0%, #1c1c1d 100%);
       }
+      
       h1 {
-        margin: 16px 0 8px 0;
-        font-size: 2.2em;
+        margin: 0 0 8px 0;
+        font-size: clamp(1.2rem, 4vw, 2rem);
         text-align: center;
         letter-spacing: 1px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
       }
+      
+      .game-wrapper {
+        position: relative;
+        width: 98vw;
+        max-width: 900px;
+        height: auto;
+        aspect-ratio: 16/9;
+        max-height: 60vh;
+        margin: 0 auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0,118,223,0.15), 0 4px 16px rgba(0,0,0,0.2);
+        border: 2px solid #232323;
+      }
+      
       canvas {
-        max-width: 100%;
-        max-height: 600px;
-        background: #5c94fc;
-        border-radius: 12px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-        margin-bottom: 12px;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #5c94fc 0%, #4a7bc8 100%);
         display: block;
+        border-radius: 14px;
       }
+      
       #scoreDisplay {
-        font-size: 1.2em;
-        margin: 8px 0 12px 0;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        margin: 8px 0;
         text-align: center;
+        color: #fff;
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
       }
-      #startBtn,
-      #restartBtn,
-      #mobileJump {
-        position: absolute;
-        padding: 14px 28px;
-        font-size: 1.1em;
-        z-index: 2;
+      
+      .controls {
+        display: flex;
+        gap: 12px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      #startBtn, #restartBtn, #mobileJump {
+        padding: clamp(10px, 3vw, 14px) clamp(16px, 4vw, 24px);
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         cursor: pointer;
         border: none;
-        border-radius: 10px;
-        background-color: #ffffffcc;
-        color: #000;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #0076df 0%, #0056b3 100%);
+        color: white;
         transition: all 0.2s;
-        min-height: 48px;
-        min-width: 48px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0,118,223,0.3);
+        min-height: 44px;
+        min-width: 44px;
       }
-      #startBtn:hover,
-      #restartBtn:hover,
-      #mobileJump:hover {
-        background-color: #fff;
-        transform: scale(1.05);
+      
+      #startBtn:hover, #restartBtn:hover, #mobileJump:hover {
+        background: linear-gradient(135deg, #0088ff 0%, #0066cc 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0,118,223,0.4);
       }
+      
       #startBtn {
-        top: 40%;
+        position: absolute;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 10;
       }
+      
       #restartBtn {
-        bottom: 32px;
-        left: 50%;
-        transform: translateX(-50%);
         display: none;
       }
+      
       #mobileJump {
-        bottom: 120px;
-        left: 50%;
-        transform: translateX(-50%);
         display: none;
-        background-color: #ffcc00;
+        background: linear-gradient(135deg, #efcc00 0%, #d4b800 100%);
         color: #000;
-        border-radius: 14px;
-        box-shadow: 0 0 10px #ff0;
-        min-height: 64px;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(239,204,0,0.4);
+        min-height: 56px;
         min-width: 140px;
-        font-size: 1.2em;
       }
-      @media (max-width: 1200px) {
-        #gameContainer {
-          max-width: 98vw;
-        }
+      
+      #mobileJump:hover {
+        background: linear-gradient(135deg, #ffd700 0%, #e6c200 100%);
+        box-shadow: 0 6px 16px rgba(239,204,0,0.5);
       }
-      @media (max-width: 900px) {
+      
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
         #gameContainer {
-          max-width: 100vw;
-          padding-bottom: 16px;
+          padding: 8px;
         }
-        canvas {
-          max-height: 350px;
+        
+        .game-wrapper {
+          width: 100vw;
+          max-height: 50vh;
+          border-radius: 12px;
         }
-      }
-      @media (max-width: 600px) {
-        #gameContainer {
-          margin: 0;
-          border-radius: 0;
-        }
+        
         h1 {
-          font-size: 1.2em;
+          font-size: 1.1rem;
+          margin-bottom: 4px;
         }
-        canvas {
-          max-height: 220px;
+        
+        #scoreDisplay {
+          font-size: 0.9rem;
+          margin: 4px 0;
+        }
+        
+        .controls {
+          gap: 8px;
+          margin-top: 4px;
+        }
+        
+        #mobileJump {
+          display: inline-block;
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 100;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .game-wrapper {
+          max-height: 45vh;
+        }
+        
+        h1 {
+          font-size: 1rem;
+        }
+        
+        #scoreDisplay {
+          font-size: 0.8rem;
         }
       }
     </style>
@@ -131,104 +185,155 @@
   <body>
     <div id="gameContainer">
       <h1>Infinite Runner+</h1>
-      <canvas id="gameCanvas" width="900" height="400"></canvas>
+      <div class="game-wrapper">
+        <canvas id="gameCanvas"></canvas>
+        <button id="startBtn">▶️ Start Game</button>
+      </div>
       <p id="scoreDisplay">Score: 0</p>
-      <button id="startBtn">▶️ Start Game</button>
-      <button id="restartBtn">🔁 Restart Game</button>
-      <button id="mobileJump">🕹️ Tap to Jump</button>
+      <div class="controls">
+        <button id="restartBtn">🔁 Restart</button>
+        <button id="mobileJump">🕹️ Tap to Jump</button>
+      </div>
     </div>
+    
     <script>
       const canvas = document.getElementById("gameCanvas");
       const ctx = canvas.getContext("2d");
       const startBtn = document.getElementById("startBtn");
       const restartBtn = document.getElementById("restartBtn");
       const mobileJump = document.getElementById("mobileJump");
-      function resizeCanvas() {
-        const container = document.getElementById("gameContainer");
-        const maxWidth = Math.min(900, container.offsetWidth - 40);
-        const maxHeight = Math.min(400, window.innerHeight * 0.7);
-        const scale = Math.min(maxWidth / 900, maxHeight / 400);
-        canvas.style.width = (900 * scale) + "px";
-        canvas.style.height = (400 * scale) + "px";
-        window.gameScale = scale;
+      
+      // Mobile detection
+      const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      // Responsive canvas setup
+      function setupCanvas() {
+        const wrapper = document.querySelector('.game-wrapper');
+        const rect = wrapper.getBoundingClientRect();
+        
+        // Set canvas size to match wrapper
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        
+        // Store scale for collision detection
+        window.gameScale = 1;
+        
+        // Lower resolution on mobile for better performance
+        if (isMobile) {
+          canvas.width = Math.min(canvas.width, 800);
+          canvas.height = Math.min(canvas.height, 450);
+        }
       }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
+      
+      // Initialize canvas and handle resize
+      setupCanvas();
+      window.addEventListener('resize', () => {
+        setTimeout(setupCanvas, 100);
+      });
+      
+      // Preload assets
       const playerImg = new Image();
       playerImg.src = "img/player.png";
       const obstacleImg = new Image();
       obstacleImg.src = "img/obstacle.png";
       const powerupImg = new Image();
       powerupImg.src = "img/powerup.png";
+      
+      // Audio setup with mobile optimization
       const jumpSound = new Audio("sounds/jump.wav");
       const deathSound = new Audio("sounds/death.wav");
       const bgm = new Audio("sounds/bgm.mp3");
       bgm.loop = true;
+      
       function preloadAudio() {
         jumpSound.load();
         deathSound.load();
         bgm.load();
+        
+        // Mobile audio optimization
+        if (isMobile) {
+          bgm.volume = 0.2;
+          jumpSound.volume = 0.4;
+          deathSound.volume = 0.4;
+        }
       }
+      
+      // Game variables
       let player, gravity, score, speed, obstacles, powerups, gameOver, jumps;
       let invincible = false, invincibleTimer = 0;
       let obstaclecooldown = 0;
-      let isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      let lastFrameTime = 0;
+      let frameCount = 0;
+      
       function initGame() {
-        player = { x: 50, y: 330, w: 40, h: 50, vy: 0, jumpCount: 0 };
-        gravity = 0.6;
+        player = { 
+          x: canvas.width * 0.1, 
+          y: canvas.height * 0.8, 
+          w: canvas.width * 0.05, 
+          h: canvas.height * 0.12, 
+          vy: 0, 
+          jumpCount: 0 
+        };
+        
+        gravity = canvas.height * 0.015;
         score = 0;
-        speed = 2;
+        speed = canvas.width * 0.003;
         obstacles = [];
         powerups = [];
         gameOver = false;
         jumps = 2;
         invincible = false;
         invincibleTimer = 0;
+        
         restartBtn.style.display = "none";
         document.getElementById("scoreDisplay").innerText = "Score: 0";
-        if (isMobile) {
-          bgm.volume = 0.3;
-          jumpSound.volume = 0.5;
-          deathSound.volume = 0.5;
-        }
+        
+        // Start audio
         bgm.currentTime = 0;
         bgm.play().catch(e => {});
+        
         update();
       }
+      
       function jump() {
         if (player.jumpCount < jumps && !gameOver) {
-          player.vy = -18;
+          player.vy = -canvas.height * 0.045;
           player.jumpCount++;
           jumpSound.play().catch(e => {});
         }
       }
+      
+      // Enhanced controls
       document.addEventListener("keydown", (e) => {
         if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") {
           e.preventDefault();
           jump();
         }
       });
-      // Touch/click anywhere on canvas to jump
+      
+      // Touch/click controls
       canvas.addEventListener("touchstart", (e) => {
         e.preventDefault();
         jump();
       });
+      
       canvas.addEventListener("mousedown", (e) => {
         e.preventDefault();
         jump();
       });
-      // Mobile jump button
+      
       mobileJump.addEventListener("touchstart", (e) => {
         e.preventDefault();
         jump();
       });
-      // Mouse click support for mobile
+      
       canvas.addEventListener("click", (e) => {
         if (isMobile) {
           e.preventDefault();
           jump();
         }
       });
+      
       startBtn.addEventListener("click", () => {
         startBtn.style.display = "none";
         if (isMobile) {
@@ -236,38 +341,66 @@
         }
         initGame();
       });
+      
       restartBtn.onclick = () => {
         restartBtn.style.display = "none";
         initGame();
       };
+      
       function drawPlayer() {
         ctx.drawImage(playerImg, player.x, player.y, player.w, player.h);
       }
+      
       function drawObstacle(ob) {
         ctx.drawImage(obstacleImg, ob.x, ob.y, ob.w, ob.h);
       }
+      
       function drawPowerUp(pu) {
         ctx.drawImage(powerupImg, pu.x, pu.y, pu.w, pu.h);
       }
-      function update() {
+      
+      function update(currentTime = 0) {
         if (gameOver) return;
+        
+        // Performance optimization: limit frame rate on mobile
+        if (isMobile && currentTime - lastFrameTime < 16) {
+          requestAnimationFrame(update);
+          return;
+        }
+        lastFrameTime = currentTime;
+        
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw ground
         ctx.fillStyle = "#3c763d";
-        ctx.fillRect(0, 380, canvas.width, 20);
+        ctx.fillRect(0, canvas.height * 0.95, canvas.width, canvas.height * 0.05);
+        
+        // Update player
         player.vy += gravity;
         player.y += player.vy;
-        if (player.y >= 330) {
-          player.y = 330;
+        
+        if (player.y >= canvas.height * 0.8) {
+          player.y = canvas.height * 0.8;
           player.vy = 0;
           player.jumpCount = 0;
         }
+        
         drawPlayer();
-        if (obstaclecooldown <= 0 && Math.random() < 0.01) {
-          obstacles.push({ x: canvas.width, y: 340, w: 40, h: 40 });
+        
+        // Generate obstacles
+        if (obstaclecooldown <= 0 && Math.random() < 0.008) {
+          obstacles.push({ 
+            x: canvas.width, 
+            y: canvas.height * 0.85, 
+            w: canvas.width * 0.05, 
+            h: canvas.height * 0.1 
+          });
           obstaclecooldown = 120;
         } else {
           obstaclecooldown--;
         }
+        
+        // Update obstacles
         obstacles.forEach((ob) => {
           ob.x -= speed;
           drawObstacle(ob);
@@ -276,9 +409,18 @@
           }
         });
         obstacles = obstacles.filter((ob) => ob.x + ob.w > 0);
-        if (Math.random() < 0.0035) {
-          powerups.push({ x: canvas.width, y: 310, w: 30, h: 30 });
+        
+        // Generate powerups
+        if (Math.random() < 0.003) {
+          powerups.push({ 
+            x: canvas.width, 
+            y: canvas.height * 0.75, 
+            w: canvas.width * 0.04, 
+            h: canvas.height * 0.08 
+          });
         }
+        
+        // Update powerups
         powerups.forEach((pu) => {
           pu.x -= speed;
           drawPowerUp(pu);
@@ -290,33 +432,37 @@
           }
         });
         powerups = powerups.filter((p) => !p.collected && p.x + p.w > 0);
+        
+        // Invincibility effect
         if (invincible) {
           invincibleTimer--;
           if (invincibleTimer <= 0) invincible = false;
-          ctx.fillStyle = "yellow";
-          ctx.fillText("Invincible!", 700, 30);
+          ctx.fillStyle = "#efcc00";
+          ctx.font = `${canvas.width * 0.02}px Arial`;
+          ctx.fillText("Invincible!", canvas.width * 0.7, canvas.height * 0.1);
         }
+        
         score++;
         document.getElementById("scoreDisplay").innerText = "Score: " + score;
+        
         requestAnimationFrame(update);
       }
+      
       function checkCollision(a, b) {
         return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
       }
+      
       function endGame() {
         gameOver = true;
         deathSound.play().catch(e => {});
         bgm.pause();
-        if (isMobile) {
-          setTimeout(() => {
-            alert("💀 Game Over! Your score was: " + score);
-            restartBtn.style.display = "inline-block";
-          }, 500);
-        } else {
+        
+        setTimeout(() => {
           alert("💀 Game Over! Your score was: " + score);
           restartBtn.style.display = "inline-block";
-        }
+        }, 500);
       }
+      
       window.onload = () => {
         preloadAudio();
       };
