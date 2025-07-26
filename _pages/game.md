@@ -10,10 +10,10 @@ Welcome to the Game Room! Enjoy these interactive games and simulations.
 
 <div class="projects-grid">
   <div class="project-card">
-    <a href="/game/infinite-runner/">
-      <img src="/assets/games/mario/img/player.png" alt="Infinite Runner" style="width:100px;height:100px;object-fit:contain;margin:1em auto;display:block;"/>
-      <h2>Infinite Runner</h2>
-      <p>A fun and engaging platformer! Jump, dodge obstacles, collect power-ups, and try to beat your high score.</p>
+    <a href="/game/space-shooter/">
+      <img src="/assets/games/mario/img/player.png" alt="Space Shooter" style="width:100px;height:100px;object-fit:contain;margin:1em auto;display:block;"/>
+      <h2>Space Shooter</h2>
+      <p>Pilot your spaceship through space! Destroy enemies, dodge asteroids, collect power-ups, and survive as long as possible.</p>
     </a>
   </div>
   <div class="project-card">
