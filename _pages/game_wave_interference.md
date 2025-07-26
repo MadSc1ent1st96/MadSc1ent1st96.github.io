@@ -5,14 +5,14 @@ permalink: /game/wave-interference/
 nav: false
 ---
 
-# Wave Interference Constructor 🌊
+# Wave Interference Constructor
 Explore wave superposition and interference patterns in real-time! This interactive simulation demonstrates fundamental wave physics concepts.
 
-<div style="max-width: 1100px; margin: auto; text-align: center;">
-  <div style="position: relative; width: 100%; max-width: 1100px; margin: 0 auto;">
-    <iframe 
-      src="/assets/games/wave_interference/index.html" 
-      style="width: 100%; height: 800px; border: none; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);"
+<div style="max-width: 900px; margin: auto; text-align: center;">
+  <div style="position: relative; width: 100%; max-width: 900px; margin: 0 auto;">
+    <iframe
+      src="/assets/games/wave_interference/index.html"
+      style="width: 100%; height: 700px; border: none; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);"
       title="Wave Interference Constructor"
       allowfullscreen>
     </iframe>

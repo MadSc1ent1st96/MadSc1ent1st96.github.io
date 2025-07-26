@@ -302,7 +302,7 @@
             vy: 0, 
             jumpCount: 0 
           };
-          gravity = canvas.height * 0.0055; // More natural gravity
+          gravity = canvas.height * 0.0035; // Lower gravity for floatier jump
           score = 0;
           speed = canvas.width * 0.002; // Slightly slower for playability
           obstacles = [];
@@ -324,12 +324,12 @@
       function jump() {
           if (!gameOver) {
             if (player.jumpCount === 0) {
-              player.vy = -canvas.height * 0.13; // First jump (higher)
+              player.vy = -canvas.height * 0.15; // First jump (higher)
               player.jumpCount = 1;
               canDoubleJump = true;
               jumpSound.play().catch(e => {});
             } else if (player.jumpCount === 1 && canDoubleJump) {
-              player.vy = -canvas.height * 0.11; // Double jump (slightly less)
+              player.vy = -canvas.height * 0.13; // Double jump (slightly less)
               player.jumpCount = 2;
               canDoubleJump = false;
               jumpSound.play().catch(e => {});
@@ -381,13 +381,13 @@
          lastFrameTime = currentTime;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw modern background
-        const bgGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        bgGrad.addColorStop(0, '#232323');
-        bgGrad.addColorStop(1, '#1c1c1d');
-        ctx.fillStyle = bgGrad;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+         // Draw blue gradient background
+         const bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+         bgGrad.addColorStop(0, '#5c94fc');
+         bgGrad.addColorStop(0.5, '#4a7bc8');
+         bgGrad.addColorStop(1, '#3c5aa6');
+         ctx.fillStyle = bgGrad;
+         ctx.fillRect(0, 0, canvas.width, canvas.height);
         // Draw ground with gradient
         const groundGradient = ctx.createLinearGradient(0, canvas.height * 0.95, 0, canvas.height);
         groundGradient.addColorStop(0, "#3c763d");
