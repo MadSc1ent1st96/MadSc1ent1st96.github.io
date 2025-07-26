@@ -210,7 +210,7 @@
   </head>
   <body>
     <div id="gameContainer">
-      <h1>🏃‍♂️ Infinite Runner+</h1>
+      <!-- Removed in-canvas/game title, only page title will be shown -->
       <div class="game-wrapper">
         <canvas id="gameCanvas"></canvas>
         <button id="startBtn">▶️ Start Game</button>
@@ -290,79 +290,63 @@
       let obstaclecooldown = 0;
       let lastFrameTime = 0;
       let frameCount = 0;
-      
+      let canDoubleJump = false;
+
       function initGame() {
-        player = { 
-          x: canvas.width * 0.12, 
-          y: canvas.height * 0.75, 
-          w: canvas.width * 0.06, 
-          h: canvas.height * 0.15, 
-          vy: 0, 
-          jumpCount: 0 
-        };
-        
-        gravity = canvas.height * 0.008; // Reduced gravity for higher jumps
-        score = 0;
-        speed = canvas.width * 0.0015; // Slower speed
-        obstacles = [];
-        powerups = [];
-        gameOver = false;
-        jumps = 2;
-        invincible = false;
-        invincibleTimer = 0;
-        
-        restartBtn.style.display = "none";
-        document.getElementById("scoreDisplay").innerText = "Score: 0";
-        
-        // Start audio
-        bgm.currentTime = 0;
-        bgm.play().catch(e => {});
-        
-        update();
-      }
-      
-      function jump() {
-        if (player.jumpCount < jumps && !gameOver) {
-          player.vy = -canvas.height * 0.08; // Much higher jump
-          player.jumpCount++;
-          jumpSound.play().catch(e => {});
+          player = { 
+            x: canvas.width * 0.12, 
+            y: canvas.height * 0.75, 
+            w: canvas.width * 0.06, 
+            h: canvas.height * 0.15, 
+            vy: 0, 
+            jumpCount: 0 
+          };
+          gravity = canvas.height * 0.0045; // More natural gravity
+          score = 0;
+          speed = canvas.width * 0.0022; // Balanced speed
+          obstacles = [];
+          powerups = [];
+          gameOver = false;
+          jumps = 2;
+          canDoubleJump = true;
+          invincible = false;
+          invincibleTimer = 0;
+          restartBtn.style.display = "none";
+          document.getElementById("scoreDisplay").innerText = "Score: 0";
+          bgm.currentTime = 0;
+          bgm.play().catch(e => {});
+          update();
         }
-      }
-      
-      // Enhanced controls - FIXED CLICK ISSUE
+
+      function jump() {
+          if (!gameOver) {
+            if (player.jumpCount === 0) {
+              player.vy = -canvas.height * 0.09; // First jump
+              player.jumpCount = 1;
+              canDoubleJump = true;
+              jumpSound.play().catch(e => {});
+            } else if (player.jumpCount === 1 && canDoubleJump) {
+              player.vy = -canvas.height * 0.08; // Double jump
+              player.jumpCount = 2;
+              canDoubleJump = false;
+              jumpSound.play().catch(e => {});
+            }
+          }
+        }
+
+      // Keyboard and mouse/touch event handling
       document.addEventListener("keydown", (e) => {
         if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") {
           e.preventDefault();
           jump();
         }
       });
-      
-      // Touch/click controls - FIXED FOR LAPTOP
-      canvas.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        jump();
-      });
-      
-      canvas.addEventListener("mousedown", (e) => {
-        e.preventDefault();
-        jump();
-      });
-      
-      canvas.addEventListener("click", (e) => {
-        e.preventDefault();
-        jump();
-      });
-      
-      mobileJump.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        jump();
-      });
-      
-      mobileJump.addEventListener("click", (e) => {
-        e.preventDefault();
-        jump();
-      });
-      
+      canvas.addEventListener("touchstart", (e) => { e.preventDefault(); jump(); });
+      canvas.addEventListener("mousedown", (e) => { e.preventDefault(); jump(); });
+      canvas.addEventListener("click", (e) => { e.preventDefault(); jump(); });
+      mobileJump.addEventListener("touchstart", (e) => { e.preventDefault(); jump(); });
+      mobileJump.addEventListener("click", (e) => { e.preventDefault(); jump(); });
+
       startBtn.addEventListener("click", () => {
         startBtn.style.display = "none";
         if (isMobile) {
@@ -390,14 +374,9 @@
       
       function update(currentTime = 0) {
         if (gameOver) return;
-        
-        // Performance optimization: limit frame rate on mobile
-        if (isMobile && currentTime - lastFrameTime < 16) {
-          requestAnimationFrame(update);
-          return;
-        }
-        lastFrameTime = currentTime;
-        
+         // Animation loop: always use requestAnimationFrame for smoothness
+         lastFrameTime = currentTime;
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         // Draw ground with gradient
@@ -410,11 +389,12 @@
         // Update player
         player.vy += gravity;
         player.y += player.vy;
-        
+        // Floor collision
         if (player.y >= canvas.height * 0.75) {
           player.y = canvas.height * 0.75;
           player.vy = 0;
           player.jumpCount = 0;
+          canDoubleJump = true;
         }
         
         drawPlayer();

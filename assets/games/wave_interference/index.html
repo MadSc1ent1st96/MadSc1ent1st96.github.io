@@ -164,7 +164,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Wave Interference Constructor</h1>
+        <!-- Removed in-canvas/game title, only page title will be shown -->
         <p class="subtitle">Explore wave superposition and interference patterns in real-time</p>
 
         <div class="game-area">
@@ -208,6 +208,7 @@
                     <label>
                         <input type="checkbox" id="showInterference" checked> Show Interference
                     </label>
+                    <button id="randomBtn">Random Waves</button>
                 </div>
             </div>
 
@@ -375,20 +376,6 @@
 
         document.getElementById('phase2').addEventListener('input', (e) => {
             wave2.phase = parseInt(e.target.value);
-            updateDisplay();
-        });
-
-        document.getElementById('resetBtn').addEventListener('click', () => {
-            wave1 = { amplitude: 50, frequency: 1.0, phase: 0, color: '#ff6b6b' };
-            wave2 = { amplitude: 50, frequency: 1.0, phase: 0, color: '#4ecdc4' };
-            
-            document.getElementById('amp1').value = 50;
-            document.getElementById('freq1').value = 1.0;
-            document.getElementById('phase1').value = 0;
-            document.getElementById('amp2').value = 50;
-            document.getElementById('freq2').value = 1.0;
-            document.getElementById('phase2').value = 0;
-            
             updateDisplay();
         });
 
