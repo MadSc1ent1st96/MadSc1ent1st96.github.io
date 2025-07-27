@@ -2,7 +2,7 @@
 layout: page
 title: Hysteresis Loop Study
 description: A computational study of hysteresis loops using Ubermag and OOMMF
-img: assets/img/Hysteresis-cube.png
+img: assets/img/Hysteresis-cube-thumbnail.png
 importance: 2
 category: work
 ---
