@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: <a href='https://www.iiserkol.ac.in'>BS-MS Student at IISER Kolkata</a>. Interested in Astrophysics and Computational Modeling.
 
