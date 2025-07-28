@@ -57,7 +57,7 @@ ninja.data = [{
         },
       },{id: "projects-hysteresis-loop-study",
           title: 'Hysteresis Loop Study',
-          description: "A computational study of hysteresis loops using Ubermag and OOMMF",
+          description: "A computational micromagnetic study of hysteresis behavior using Ubermag and OOMMF",
           section: "Projects",handler: () => {
               window.location.href = "/projects/Hysteresis_Study/";
             },},{id: "projects-stellar-atlas",
