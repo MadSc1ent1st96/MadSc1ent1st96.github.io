@@ -86,9 +86,9 @@ When $\dot{X}=0$, the star is in nuclear equilibrium.
 
 ## Modeling Stars: The MESA Code
 
-Because we can't observe stellar interiors directly, scientists use computer models. MESA is a powerful, open-source 1D stellar evolution code [3]. It solves the equations of stellar structure and evolution, given initial conditions and physics modules.
+Because we can't observe stellar interiors directly, scientists use computer models. MESA is a powerful, open-source 1D stellar evolution code [2]. It solves the equations of stellar structure and evolution, given initial conditions and physics modules.
 
-**Installation:** MESA runs on Linux/macOS. For Windows, use WSL. Installation can be time-consuming but is well-documented [3].
+**Installation:** MESA runs on Linux/macOS. For Windows, use WSL. Installation can be time-consuming but is well-documented [2].
 
 **How MESA Works:** Simulations are controlled by an `inlist` file (parameters, stopping conditions) and a `pgstar_inlist` file (for plots). MESA reads these and simulates the star's evolution.
 
