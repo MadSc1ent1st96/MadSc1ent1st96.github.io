@@ -7,15 +7,15 @@ importance: 2
 category: work
 ---
 
-<h1 style="color:#004d99; font-size:2.5rem; font-weight:700;">Hysteresis Loop Study</h1>
+<h1 style="color:#00c3ff; font-size:2.7rem; font-weight:700; margin-bottom:0.5em;">Hysteresis Loop Study</h1>
 
-<p style="font-size:1.2rem;">
+<p style="font-size:1.15rem; color:#f0f0f0; background:#111827; padding:1rem 1.5rem; border-left:5px solid #9333ea; border-radius:8px;">
 This project investigates how the shape and area of magnetic hysteresis loops are influenced by spatial variations in exchange energy within nanoscale magnetic systems. Using <strong>Ubermag</strong> and <strong>OOMMF</strong>, we modeled cubic materials under cyclic magnetic fields and explored different energy terms, geometric configurations, and system parameters to analyze magnetic behavior.
 </p>
 
-<hr>
+<hr style="border: none; border-top: 2px dashed #00c3ff; margin: 2rem 0;">
 
-<h2 style="color:#0a3d62;">Project Team</h2>
+<h2 style="color:#9333ea;">Project Team</h2>
 
 **Supervisor:** Dr. Bheemalingam Chittari  
 Assistant Professor, Department of Physical Sciences, IISER Kolkata  
@@ -26,9 +26,9 @@ Aniket Mishra (23MS096)
 Aditya Chaku (23MS095)  
 BS-MS Students, IISER Kolkata
 
-<hr>
+---
 
-<h2 style="color:#0a3d62;">Scientific Background</h2>
+<h2 style="color:#9333ea;">Scientific Background</h2>
 
 Magnetic hysteresis loops reflect how a material's magnetization changes in response to an external magnetic field. These loops provide critical insights into material properties like coercivity, remanence, and energy loss. Their shape is influenced by:
 
@@ -38,11 +38,11 @@ Magnetic hysteresis loops reflect how a material's magnetization changes in resp
 - Saturation magnetization  
 - External field strength and direction
 
-**Ubermag**, a Python interface to **OOMMF**, enables high-resolution micromagnetic modeling using scripts and parameterized simulations.
+Ubermag, a Python interface to OOMMF, enables high-resolution micromagnetic modeling using scripts and parameterized simulations.
 
-<hr>
+---
 
-<h2 style="color:#0a3d62;">Project Objectives</h2>
+<h2 style="color:#9333ea;">Project Objectives</h2>
 
 - Simulate hysteresis loops across different spatial exchange energy distributions  
 - Explore parameter sensitivity in micromagnetic systems  
@@ -52,9 +52,7 @@ Magnetic hysteresis loops reflect how a material's magnetization changes in resp
 
 ---
 
-<h2 style="color:#0a3d62;">Default Simulation Setup</h2>
-
-The base configuration used for most simulations:
+<h2 style="color:#9333ea;">Default Simulation Setup</h2>
 
 - Geometry: Cube of edge length 100 nm  
 - Mesh: 5 nm × 5 nm × 5 nm  
@@ -62,53 +60,46 @@ The base configuration used for most simulations:
 - Uniaxial Anisotropy: K = 4e5, u = (0, 0, 1)  
 - DM Constant: D = 1e-3 J/m²  
 - Saturation Magnetization: Ms = 1e6 A/m  
-- Applied Field: Hmin = –1/μ₀ to Hmax = +1/μ₀ over 21 steps
+- Magnetic Field: Hmin = –1/μ₀ to Hmax = +1/μ₀ over 21 steps
 
-<center>
-  <img src="/assets/img/Hysteresis-cube.png" alt="Cube Geometry" style="width:70%; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-top:20px;">
-  <p style="font-style:italic; font-size:0.95rem;">Figure 1. Cubic magnetic system used for the simulation. The mesh shown is 5 nm per cell within a 100 nm cube.</p>
-</center>
-
----
-
-<h2 style="color:#0a3d62;">Sample Output</h2>
-
-The default setup generates the following hysteresis loop, showing key characteristics:
-
-- Coercivity  
-- Remanence  
-- Saturation  
-- Symmetry under cyclic magnetic fields
-
-<center>
-  <img src="/assets/img/Hysteresis-plot.png" alt="Hysteresis Plot" style="width:70%; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-top:20px;">
-  <p style="font-style:italic; font-size:0.95rem;">Figure 2. Simulated hysteresis loop for the reference configuration.</p>
-</center>
+<div style="text-align:center; margin:2rem 0;">
+  <img src="/assets/img/Hysteresis-cube.png" alt="Cube Geometry" style="width:70%; border-radius:12px; box-shadow:0 0 25px #00c3ff;">
+  <p style="font-style:italic; font-size:0.95rem; color:#d1d5db;">Figure 1. Cubic magnetic system with a mesh size of 5 nm and total size of 100 nm.</p>
+</div>
 
 ---
 
-<h2 style="color:#0a3d62;">Simulation Variations</h2>
+<h2 style="color:#9333ea;">Sample Output</h2>
 
-<h3 style="color:#2c3e50;">1. Geometry and Mesh</h3>
+<div style="text-align:center; margin:2rem 0;">
+  <img src="/assets/img/Hysteresis-plot.png" alt="Hysteresis Plot" style="width:70%; border-radius:12px; box-shadow:0 0 25px #9333ea;">
+  <p style="font-style:italic; font-size:0.95rem; color:#d1d5db;">Figure 2. Hysteresis loop from the base configuration showing magnetization vs applied field.</p>
+</div>
+
+---
+
+<h2 style="color:#9333ea;">Simulation Variations</h2>
+
+<h3 style="color:#00c3ff;">1. Geometry and Mesh</h3>
 
 - Increasing cube size beyond 80 nm had minimal effect  
 - Reducing size below 45 nm distorted the loop  
 - Finer mesh (2 nm) improved resolution; coarser mesh (10 nm) caused loss of detail
 
-<h3 style="color:#2c3e50;">2. Energy Parameters</h3>
+<h3 style="color:#00c3ff;">2. Energy Parameters</h3>
 
-- **Exchange Energy**: Higher A led to wider loops and sharper transitions  
-- **Anisotropy**: Higher K increased coercivity; misaligned u changed loop symmetry  
-- **DM Interaction**: High D disrupted loop stability (>2.7e-3 J/m²)  
-- **Saturation Magnetization**: Low Ms (<0.3 A/m) caused S-shaped or vanishing loops
+- **Exchange Energy:** Higher A led to wider loops and sharper transitions  
+- **Anisotropy:** Higher K increased coercivity; misaligned u changed loop symmetry  
+- **DM Interaction:** High D disrupted loop stability (>2.7e-3 J/m²)  
+- **Saturation Magnetization:** Low Ms (<0.3 A/m) caused S-shaped or vanishing loops
 
-<h3 style="color:#2c3e50;">3. External Magnetic Field</h3>
+<h3 style="color:#00c3ff;">3. External Magnetic Field</h3>
 
 - Adjusting Hmin and Hmax changed loop span  
 - Equal but opposite Hmax = –Hmin maintained symmetry  
 - Directional fields tilted or skewed loop shapes
 
-<h3 style="color:#2c3e50;">4. Number of Steps</h3>
+<h3 style="color:#00c3ff;">4. Number of Steps</h3>
 
 - More steps gave smoother loops  
 - Fewer steps produced coarse, stepped plots  
@@ -116,40 +107,38 @@ The default setup generates the following hysteresis loop, showing key character
 
 ---
 
-<h2 style="color:#0a3d62;">Special Configurations Explored</h2>
+<h2 style="color:#9333ea;">Spatial Configurations</h2>
 
 - **Layered Cubes**: Gradual or alternating exchange energy layers  
 - **Pillared Cubes**: 5×5 grids of 20 nm pillars with varying A values  
-- **Subdivided Cubes**: 3×3×3 arrangement of smaller cubes with energy gradient  
-- **Layered Thickness**: Volume fraction of each layer varied with fixed energy values  
-- **Cube-in-Cube**: Inner high-A cube embedded in outer low-A shell
-
-These setups allowed investigation into spatial heterogeneity in magnetic response.
+- **Subdivided Cubes**: 3×3×3 inner cubes of 30 nm with descending energy  
+- **Layered Thickness**: Variable volume distribution with fixed A, B  
+- **Cube-in-Cube**: Core with high A, shell with low A, showing edge–core dynamics
 
 ---
 
-<h2 style="color:#0a3d62;">Key Insights</h2>
+<h2 style="color:#9333ea;">Key Findings</h2>
 
-- Magnetic behavior is highly sensitive to spatial distribution of exchange energy  
-- DM interaction can override other effects when dominant  
-- Saturation and remanence are controlled by both energy terms and geometry  
-- External bias direction can guide or distort domain alignment  
-- Loop area depends more on domain dynamics than overall volume
-
----
-
-<h2 style="color:#0a3d62;">Conclusion</h2>
-
-This study demonstrates how micromagnetic simulations can uncover the subtle interplay between geometry, field dynamics, and energy interactions in nanoscale systems. Using Ubermag and OOMMF, this project bridges theory and computation to provide a deeper understanding of magnetic hysteresis behavior.
+- Spatial distribution of exchange energy alters coercivity and loop structure  
+- DM interaction can dominate and destroy hysteresis shape at high D  
+- Magnetic behavior is not solely dependent on size or volume  
+- External field orientation modifies remanent states  
+- Loops are highly sensitive to both spatial geometry and field sequence
 
 ---
 
-<h2 style="color:#0a3d62;">Acknowledgments</h2>
+<h2 style="color:#9333ea;">Conclusion</h2>
 
-We thank Dr. Bheemalingam Chittari for his expert mentorship and guidance throughout this project. His insight into computational techniques and magnetic systems helped shape the core design and analysis strategy of this study.
+This study demonstrates how micromagnetic simulations offer insight into complex magnetic interactions in nanoscale systems. By exploring a broad space of energy configurations using Ubermag and OOMMF, the project bridges computational modeling and physical understanding of hysteresis.
 
 ---
 
-<p style="font-size:1rem; font-style:italic; color:#555;">
-This project demonstrates the application of computational micromagnetics to study fundamental physical behavior in magnetic systems, integrating Python-based modeling with physical insight and research collaboration.
+<h2 style="color:#9333ea;">Acknowledgments</h2>
+
+We thank Dr. Bheemalingam Chittari for his mentorship and deep insight throughout this project. His guidance helped shape both the theoretical framework and computational strategies employed in this work.
+
+---
+
+<p style="font-size:1rem; font-style:italic; color:#a0aec0; margin-top:2rem;">
+This project highlights the use of modern computational tools in micromagnetics to understand fundamental physical phenomena in a highly visual, data-driven way.
 </p>
