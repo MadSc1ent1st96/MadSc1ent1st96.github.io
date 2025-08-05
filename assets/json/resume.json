@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Aniket Mishra",
-    "label": "Physics Major, IISER Kolkata",
+    "label": "IISER Kolkata",
     "email": "mas23ms096@iiserkol.ac.in",
     "alt_email": "aniket.mishra200510@gmail.com",
     "phone": "+91 9766640165",
@@ -25,7 +25,7 @@
     {
       "institution": "IISER Kolkata",
       "location": "Kalyani, West Bengal",
-      "area": "AstroPhysics",
+      "area": "",
       "studyType": "BS-MS",
       "startDate": "2023",
       "endDate": "2028 (exp.)",
