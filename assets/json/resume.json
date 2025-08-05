@@ -7,7 +7,7 @@
     "phone": "+91 9766640165",
     "url": "https://MadSc1ent1st96.github.io",
     "url-stellar-atlas": "https://stellar-atlas.vercel.app/",
-    "summary": "BS-MS student at IISER Kolkata majoring in physics. Interested in stellar evolution, numerical simulations, and data-driven science. Currently working on MESA-based stellar modeling and other computational projects in physics.",
+    "summary": "BS-MS student at IISER Kolkata majoring in Earth Sciences. Interested in stellar evolution, numerical simulations, and data-driven science. Currently working on MESA-based stellar modeling and other computational projects in physics.",
     "location": {
       "city": "Kolkata",
       "countryCode": "IN",
@@ -25,7 +25,7 @@
     {
       "institution": "IISER Kolkata",
       "location": "Kalyani, West Bengal",
-      "area": "Physics",
+      "area": "AstroPhysics",
       "studyType": "BS-MS",
       "startDate": "2023",
       "endDate": "2028 (exp.)",
