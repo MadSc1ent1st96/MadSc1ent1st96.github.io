@@ -35,4 +35,4 @@ I enjoy working independently on projects that combine theoretical concepts with
 
 Outside academics, I’m involved in organizing student events and occasionally work on science outreach.
 
-For more on what I'm currently doing, check the [Projects](/projects/) page.
+For more on what I'm currently doing, check the [Projects](/Projects/) page.
