@@ -17,7 +17,7 @@ This project investigates how the shape and area of magnetic hysteresis loops ar
 
 <h2 style="color:#9333ea;">Project Team</h2>
 
-**Supervisor:** Dr. Bheemalingam Chittari - [Website](https://bheemalingam.com/) 
+**Supervisor:** Dr. Bheemalingam Chittari - [Website](https://bheemalingam.com/) \
 Assistant Professor, Department of Physical Sciences, IISER Kolkata  
 Expertise: Computational Physics, Condensed Matter Physics, Nano Science of Materials
 
