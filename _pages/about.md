@@ -9,6 +9,7 @@ profile:
   image: Aniket_Pic.jpg
   image_circular: false
   more_info: >
+    <p>Department of Physical Sciences</p>
     <p>IISER Kolkata, Mohanpur Campus</p>
     <p>Nadia, West Bengal 741246, India</p>
     <p>Email: mas23ms096@iiserkol.ac.in</p>
