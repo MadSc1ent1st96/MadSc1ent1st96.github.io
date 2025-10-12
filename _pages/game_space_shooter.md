@@ -7,6 +7,8 @@ nav: false
 
 Pilot your spaceship through space! Destroy enemies, dodge asteroids, collect power-ups, and survive as long as possible.
 
+*Currently, the Start button does not work for desktop, press Enter to start the game*
+
 <div style="max-width: 900px; margin: auto; text-align: center;">
   <div style="position: relative; width: 100%; max-width: 900px; margin: 0 auto;">
     <iframe
