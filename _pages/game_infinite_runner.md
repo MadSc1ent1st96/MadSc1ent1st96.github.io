@@ -5,6 +5,8 @@ permalink: /game/infinite-runner/
 nav: false
 ---
 
+*Currently, the Start button does not work for desktop, press Enter to start the game*
+
 A fun and engaging platformer! Jump, dodge obstacles, collect power-ups, and try to beat your high score.
 
 <div style="max-width: 900px; margin: auto; text-align: center;">
