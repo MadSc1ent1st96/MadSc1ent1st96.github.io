@@ -566,8 +566,8 @@
 
         // Game control functions
         function startGame() {
+            resizeCanvas();
             gameRunning = true;
-            canvas.style.pointerEvents = 'auto';
             startBtn.style.display = 'none';
             restartBtn.style.display = 'inline-block';
             initStars();
@@ -638,7 +638,8 @@
         });
 
         // Initialize
-        resizeCanvas();
+        requestAnimationFrame(resizeCanvas);
+
     </script>
 </body>
 </html>
