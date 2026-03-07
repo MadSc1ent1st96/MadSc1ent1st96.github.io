@@ -173,12 +173,28 @@ Moments from campus life, events, and the people I work with.
 
 </div>
 
-<div id="lightbox" onclick="closeLightbox()">
-<img id="lightbox-img">
+<div id="lightbox">
+
+  <span id="closeBtn">&times;</span>
+
+  <span id="prevBtn">&#10094;</span>
+
+  <img id="lightbox-img">
+
+  <span id="nextBtn">&#10095;</span>
+
 </div>
 
 <script>
+
+let currentIndex = 0;
+let images = [];
+
 function openLightbox(img) {
+
+  images = Array.from(document.querySelectorAll(".gallery-item img"));
+  currentIndex = images.indexOf(img);
+
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
 
@@ -189,6 +205,88 @@ function openLightbox(img) {
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
+
+function showImage(index) {
+
+  if (index < 0) index = images.length - 1;
+  if (index >= images.length) index = 0;
+
+  currentIndex = index;
+  document.getElementById("lightbox-img").src = images[currentIndex].src;
+}
+
+document.getElementById("prevBtn").onclick = function(e) {
+  e.stopPropagation();
+  showImage(currentIndex - 1);
+};
+
+document.getElementById("nextBtn").onclick = function(e) {
+  e.stopPropagation();
+  showImage(currentIndex + 1);
+};
+
+document.getElementById("closeBtn").onclick = function() {
+  closeLightbox();
+};
+
+document.getElementById("lightbox").onclick = function(e) {
+  if (e.target.id === "lightbox") {
+    closeLightbox();
+  }
+};
+
+document.addEventListener("keydown", function(e) {
+
+  const lightbox = document.getElementById("lightbox");
+
+  if (lightbox.style.display === "flex") {
+
+    if (e.key === "ArrowRight") {
+      showImage(currentIndex + 1);
+    }
+
+    if (e.key === "ArrowLeft") {
+      showImage(currentIndex - 1);
+    }
+
+    if (e.key === "Escape") {
+      closeLightbox();
+    }
+
+  }
+
+})
+
+let startX = 0;
+let endX = 0;
+
+const lightboxImg = document.getElementById("lightbox-img");
+
+lightboxImg.addEventListener("touchstart", function(e) {
+  startX = e.touches[0].clientX;
+});
+
+lightboxImg.addEventListener("touchend", function(e) {
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+
+  const threshold = 50;
+
+  if (startX - endX > threshold) {
+    showImage(currentIndex + 1);
+  }
+
+  if (endX - startX > threshold) {
+    showImage(currentIndex - 1);
+  }
+
+}
+
+;
+
 </script>
 
 <script>

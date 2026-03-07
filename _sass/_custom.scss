@@ -96,6 +96,38 @@
   max-width: 90%;
   max-height: 90%;
   border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+#prevBtn,
+#nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 45px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+}
+
+#prevBtn { left: 40px; }
+#nextBtn { right: 40px; }
+
+#prevBtn:hover,
+#nextBtn:hover,
+#closeBtn:hover {
+  opacity: 0.7;
 }
 
 .reveal {
@@ -126,3 +158,16 @@
     column-count: 1;
   }
 }
+
+@media (max-width: 700px) {
+
+  #prevBtn,
+  #nextBtn {
+    font-size: 35px;
+  }
+  
+  #prevBtn { left: 15px; }
+  
+  #nextBtn { right: 15px; }
+  
+  }
