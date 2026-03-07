@@ -11,6 +11,11 @@
           <h6 class="title font-weight-bold ml-1 ml-md-4">{{ content.position }}</h6>
           <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.organization }}</h6>
           <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.summary }}</h6>
+          {% if content.url %}
+          <p class="ml-1 ml-md-4"> <strong>Media: </strong>
+            <a href="{{ content.url }}" target="_blank">{{ content.url }}</a>
+          </p>
+          {% endif %}
         </div>
       </div>
     </li>
