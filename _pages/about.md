@@ -37,6 +37,8 @@ Outside academics, I’m involved in organizing student events and occasionally 
 
 For more on what I'm currently doing, check the [Projects](/Projects/) page.
 
+Be Curious and poke around.
+
 
 <div class="quote-box">
   We made ourselves.<br>
