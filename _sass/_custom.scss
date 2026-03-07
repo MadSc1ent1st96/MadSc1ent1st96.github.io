@@ -89,19 +89,57 @@
   opacity: 1;
 }
 
+.parallax-item {
+  will-change: transform;
+}
+
+.gallery-range {
+  text-align:center;
+  font-size:0.8rem;
+  opacity:0.6;
+  margin-bottom:25px;
+}
+
 /* ---------------- GALLERY YEAR SEPARATORS ---------------- */
 
 .gallery-year {
   grid-column: 1 / -1;
-  margin-top: 35px;
-  margin-bottom: 10px;
-  font-size: 1.3rem;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 1.2rem;
   font-weight: 600;
+  letter-spacing: 0.06em;
   opacity: 0.85;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-  padding-bottom: 6px;
-  text-transform: lowercase;
+  position: relative;
+}
+
+.gallery-year::before,
+.gallery-year::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+
+.gallery-year::before {
+  left: 0;
+}
+
+.gallery-year::after {
+  right: 0;
+}
+
+.gallery-intro {
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  letter-spacing: 0.02em;
+  font-style: italic;
 }
 
 /* LIGHTBOX */
@@ -172,13 +210,13 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(25px);
+  transform: translateY(25px) scale(0.98);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 @media (max-width: 1200px) {
