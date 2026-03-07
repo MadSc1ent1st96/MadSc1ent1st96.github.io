@@ -138,6 +138,37 @@
       ]
     }
   ],
+  
+  "leadership": [
+    {
+      "organization": "Inquivesta XII, IISER Kolkata",
+      "position": "Event Coordinator",
+      "startDate": "2025",
+      "endDate": "2026",
+      "summary": "Coordinated logistics and managed teams for events in the annual science festival."
+    },
+    {
+      "organization": "Gaming Club, IISER Kolkata",
+      "position": "Convener",
+      "startDate": "2024",
+      "endDate": "2025",
+      "summary": "Led club activities and organized campus gaming events."
+    },
+    {
+      "organization": "Student Monitored Canteen (SMC), IISER Kolkata",
+      "position": "Finance and Admin Sub-Committee Member",
+      "startDate": "2024",
+      "endDate": "2025",
+      "summary": "Handled budgeting and administrative responsibilities."
+    },
+    {
+      "organization": "Inquivesta XI, IISER Kolkata",
+      "position": "Event Organizer – Esports (Headshot)",
+      "startDate": "2024",
+      "endDate": "2025",
+      "summary": "Organized and managed esports competitions during the institute festival."
+    }
+  ],
 
   "awards": [
     {
