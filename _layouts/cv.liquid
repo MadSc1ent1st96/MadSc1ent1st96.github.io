@@ -44,8 +44,14 @@ layout: default
               {% case data[0] %}
                 {% when 'basics' %}
                   {% include resume/basics.liquid %}
+                {% when 'Interests' %}
+                  {% include resume/basics.Interests %}
                 {% when 'education' %}
                   {% include resume/education.liquid %}
+                {% when 'research' %}
+                  {% include resume/research.liquid %}
+                {% when 'manuscripts' %}
+                  {% include resume/manuscripts.liquid %}
                 {% when 'work' %}
                   {% include resume/work.liquid %}
                 {% when 'volunteer' %}
