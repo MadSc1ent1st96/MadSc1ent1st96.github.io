@@ -1,13 +1,13 @@
 # 👋 Hi, I'm Aniket Mishra (MadSc1ent1st96)!
 
 Welcome to my GitHub profile!  
-I’m a Physics major at [IISER Kolkata](https://www.iiserkol.ac.in/), currently between my second and third year of the Integrated BS-MS program (Physics Major). I’m on an endless quest to understand the universe, one simulation, plot, or event at a time.
+I’m a Physics major at [IISER Kolkata](https://www.iiserkol.ac.in/), currently in my third year of the Integrated BS-MS program (Physics Major). I’m on an endless quest to understand the universe, one simulation, plot, or event at a time.
 
 ---
 
 ## 🚀 About Me
 
-- 🔭 **Current Status:** Wrapping up my second year, gearing up for third year (enjoying summer break!).
+- 🔭 **Current Status:** In my third year, out of the five years of BS-MS.
 - 💡 **Passionate About:** Physics, coding, simulations, and organizing epic events.
 - 🎮 **Fun Fact:** I love immersive story-driven games and believe every experiment (or code) is a new adventure.
 - 🎤 **Community:** Active in organizing events—check out the details in my [CV](https://madsc1ent1st96.github.io/)!
