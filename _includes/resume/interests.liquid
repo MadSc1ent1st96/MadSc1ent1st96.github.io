@@ -1,19 +1,21 @@
-<div class="card mt-3 p-3">
-  <div>
-    {% for item in data[1] %}
-      <div class="row mb-2">
+<ul class="card-text font-weight-light list-group list-group-flush">
+  {% for content in data[1] %}
+    <li class="list-group-item">
 
-        <div class="col-sm-3">
-          <b>{{ item.name }}</b>
+      <div class="row">
+
+        <div class="col-xs-2 cl-sm-2 col-md-2">
+          <b>{{ content.name }}</b>
         </div>
 
-        <div class="col-sm-9">
-          {% for keyword in item.keywords %}
+        <div class="col-xs-10 cl-sm-10 col-md-10">
+          {% for keyword in content.keywords %}
             {{ keyword }}{% unless forloop.last %}, {% endunless %}
           {% endfor %}
         </div>
 
       </div>
-    {% endfor %}
-  </div>
-</div>
+
+    </li>
+  {% endfor %}
+</ul>
