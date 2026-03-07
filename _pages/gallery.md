@@ -190,3 +190,23 @@ function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
 </script>
+
+<script>
+
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach((element) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 80) {
+      element.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+</script>
