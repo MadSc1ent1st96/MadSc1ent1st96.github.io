@@ -45,8 +45,14 @@
           {% endif %}
 
           {% if content.url %}
-          <p class="ml-1 ml-md-4"> <strong>Link: </strong>
+          <p class="ml-1 ml-md-4"> <strong>Website: </strong>
             <a href="{{ content.url }}" target="_blank">{{ content.url }}</a>
+          </p>
+          {% endif %}
+
+          {% if content.url_SAD %}
+          <p class="ml-1 ml-md-4"> <strong>Dataset: </strong>
+            <a href="{{ content.url_SAD }}" target="_blank">{{ content.url_SAD }}</a>
           </p>
           {% endif %}
 
