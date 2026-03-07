@@ -166,14 +166,14 @@ window.addEventListener("load", revealOnScroll);
 
 function galleryParallax() {
 
-  const items = document.querySelectorAll(".parallax-item");
+  const items = document.querySelectorAll(".parallax-item, .gallery-year");
 
   const scrollY = window.scrollY;
 
   items.forEach((item) => {
 
     const rect = item.getBoundingClientRect();
-    const speed = 0.08;
+    const speed = 0.05;
 
     const offset = rect.top * speed;
 
@@ -196,13 +196,11 @@ document.addEventListener("keydown", function(e) {
 
     const grid = document.getElementById("galleryGrid");
 
-    if (!timelineReversed) {
-      grid.style.flexDirection = "column-reverse";
-      timelineReversed = true;
-    } else {
-      grid.style.flexDirection = "column";
-      timelineReversed = false;
-    }
+    const items = Array.from(grid.children);
+
+    items.reverse().forEach(el => grid.appendChild(el));
+
+    timelineReversed = !timelineReversed;
 
   }
 
