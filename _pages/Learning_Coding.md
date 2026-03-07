@@ -4,7 +4,7 @@ title: Learning Coding
 permalink: /Learning_Coding/
 description: A Collection of codes I wrote when learning to code and also the source from where I learned.
 nav: true
-nav_order: 7
+nav_order: 3
 horizontal: false
 toc: true
 ---

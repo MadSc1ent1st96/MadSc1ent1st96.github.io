@@ -1,9 +1,9 @@
 ---
 layout: page
-title: gallery
+title: Gallery
 permalink: /gallery/
 nav: true
-nav_order: 9
+nav_order: 5
 ---
 
 Moments from campus life, events, and the people I work with.

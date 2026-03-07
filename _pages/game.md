@@ -3,7 +3,7 @@ layout: page
 title: Game Room
 permalink: /game/
 nav: true
-nav_order: 8
+nav_order: 4
 ---
 
 Welcome to the Game Room! Enjoy these interactive games and simulations.
