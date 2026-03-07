@@ -76,6 +76,22 @@
 .gallery-item:hover .gallery-caption {
   opacity: 1;
 }
+
+/* ---------------- GALLERY YEAR SEPARATORS ---------------- */
+
+.gallery-year {
+  grid-column: 1 / -1;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  opacity: 0.85;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 6px;
+  text-transform: uppercase;
+}
+
 /* LIGHTBOX */
 
 #lightbox {

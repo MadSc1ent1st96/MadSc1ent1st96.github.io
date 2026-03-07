@@ -12,76 +12,81 @@ Moments from campus life, events, and the people I work with.
 
 <!-- INQUIVESTA -->
 
+<div class="gallery-year">2026</div>
+
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/001_FINALLY_DONE.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">After finishing Inquivesta setup</div>
+<div class="gallery-caption">Finally Done!!</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/002_INQ_AFTER.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">After the event with the team</div>
+<div class="gallery-caption">Inquivesta XII, After Fest Barbeque</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/003_INQ_LIMITMESS.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Inquivesta poster moment</div>
+<div class="gallery-caption">Day 3, Inquivesta XII </div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/004_INQ_CLUTHERS.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Team photo during Inquivesta</div>
+<div class="gallery-caption">Day 2, INquivesta XII - The lucky five</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/005_INQ_CCC.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Inquivesta coordination team</div>
+<div class="gallery-caption">Day 2, Inquivesta XII - The unlucky five</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/006_INQ_CC.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Coordinators group photo</div>
+<div class="gallery-caption">Inquivesta XII - CORE COMMITTEE</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/007_INQ_OKAYY.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Another team moment</div>
+<div class="gallery-caption">Day 3, Inquivesta XII - After DJ</div>
+<div class="gallery-caption"></div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/008_INQ.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Friends during Inquivesta</div>
+<div class="gallery-caption">Day 2, Inquivesta XII - During Concert</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/009_INQ_ARTIST1.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Artist performance</div>
+<div class="gallery-caption">Day 2, Inquivesta XII - Monali Thakur performance</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/010_INQ_ARTIST2.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Stage performance</div>
+<div class="gallery-caption">Day 2, Inquivesta XII - Fireworks</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/011INQ_ARTIST3.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Concert lighting moment</div>
+<div class="gallery-caption">Day 2, Inquivesta XII - CO2 Cannons</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/012_INQ_MAJDOORI.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Event preparation work</div>
+<div class="gallery-caption">Pre-Fest, Inquivesta Majdoori</div>
 </div>
 
 <!-- PERSONAL -->
 
+<div class="gallery-year">2025</div>
+
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/013_Lappy.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">My setup</div>
+<div class="gallery-caption">Laptop Maintenance</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/013_Why_Though.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Late night coding snack</div>
+<div class="gallery-caption">Have a snack</div>
 </div>
 
 <div class="gallery-item reveal">
@@ -106,67 +111,77 @@ Moments from campus life, events, and the people I work with.
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/016_NIGHTSKY1.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Night sky</div>
+<div class="gallery-caption">Night sky 1</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/016_NIGHTSKY2.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Another night sky</div>
+<div class="gallery-caption">Night sky 2</div>
+</div>
+
+<div class="gallery-item reveal">
+<img src="/assets/img/gallery/022_HEADSHOT_INQXI.jpg" loading="lazy" onclick="openLightbox(this)">
+<div class="gallery-caption">Inquivesta XI, Headshot event</div>
 </div>
 
 <!-- TRAVEL -->
 
+<div class="gallery-year">2024</div>
+
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/017_2024_MUMBAI1.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Mumbai trip</div>
+<div class="gallery-caption">Mumbai, Home Sweet Home</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/017_2024_MUMBAI2.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Mumbai memories</div>
+<div class="gallery-caption">Marine Drive, Mumbai - Hope to go home soon!</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/018_2024_Trip1.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Trip view</div>
+<div class="gallery-caption">Aditya's House, Dehradun</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/019_2024_Trip2.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Mountain view</div>
+<div class="gallery-caption">Mussoorie 1 </div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/020_2024_Trip3.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Mountain lookout</div>
+<div class="gallery-caption">Mussoorie 2</div>
 </div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/021_2024_Trip4.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Night view during trip</div>
+<div class="gallery-caption">Mussoorie 3, Night view</div>
 </div>
 
 <!-- OLDER -->
 
-<div class="gallery-item reveal">
-<img src="/assets/img/gallery/022_HEADSHOT_INQXI.jpg" loading="lazy" onclick="openLightbox(this)">
-<div class="gallery-caption">Headshot event</div>
-</div>
+<div class="gallery-year">2022</div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/023_2022.jpg" loading="lazy" onclick="openLightbox(this)">
 <div class="gallery-caption">2022 memories</div>
 </div>
 
+<div class="gallery-year">2021</div>
+
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/024_2021.jpg" loading="lazy" onclick="openLightbox(this)">
 <div class="gallery-caption">2021</div>
 </div>
 
+<div class="gallery-year">2018</div>
+
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/025_2018.jpg" loading="lazy" onclick="openLightbox(this)">
 <div class="gallery-caption">2018</div>
 </div>
+
+<div class="gallery-year">2017</div>
 
 <div class="gallery-item reveal">
 <img src="/assets/img/gallery/026_2017.jpg" loading="lazy" onclick="openLightbox(this)">
