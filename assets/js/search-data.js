@@ -38,7 +38,7 @@ ninja.data = [{
             window.location.href = "/game/";
           },
         },{id: "nav-gallery",
-          title: "gallery",
+          title: "Gallery",
           description: "",
           section: "Navigation",
           handler: () => {
