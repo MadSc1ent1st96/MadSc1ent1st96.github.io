@@ -1,35 +1,39 @@
-<table class="table table-cv table-sm table-borderless table-responsive table-cv-map">
-  {% for item in data[1] %}
-  <tr>
-    <td class="p-1 pr-2 font-weight-bold">
-      {{ item.name }}
-    </td>
+<div class="card mt-3 p-3">
+  <div>
+    {% for item in data[1] %}
+      <div class="row mb-2">
 
-    <td class="p-1 pl-2 font-weight-light text">
-      {% if item.summary %}
-        <div>{{ item.summary }}</div>
-      {% endif %}
-
-      {% if item.startDate %}
-        <div class="text-muted">
-          {{ item.startDate }} – {{ item.endDate }}
+        <div class="col-sm-3">
+          <h6 class="mb-0">{{ item.name }}</h6>
         </div>
-      {% endif %}
 
-      {% if item.highlights %}
-        <ul>
-          {% for h in item.highlights %}
-          <li>{{ h }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
+        <div class="col-sm-9">
 
-      {% if item.url %}
-        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
-          {{ item.url }}
-        </a>
-      {% endif %}
-    </td>
-  </tr>
-  {% endfor %}
-</table>
+          <div class="text-muted mb-1">
+            {{ item.startDate }} – {{ item.endDate }}
+          </div>
+
+          <div class="mb-1">
+            {{ item.summary }}
+          </div>
+
+          {% if item.highlights %}
+          <ul class="cv-highlights">
+            {% for h in item.highlights %}
+            <li>{{ h }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if item.url %}
+          <a href="{{ item.url }}" target="_blank">
+            {{ item.url }}
+          </a>
+          {% endif %}
+
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</div>

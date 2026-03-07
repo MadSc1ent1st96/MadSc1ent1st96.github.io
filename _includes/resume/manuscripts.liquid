@@ -1,21 +1,33 @@
-<table class="table table-cv table-sm table-borderless table-responsive table-cv-map">
-  {% for item in data[1] %}
-  <tr>
-    <td class="p-1 pr-2 font-weight-bold">
-      {{ item.year }}
-    </td>
+<div class="card mt-3 p-3">
+  <div>
+    {% for item in data[1] %}
+      <div class="row mb-2">
 
-    <td class="p-1 pl-2 font-weight-light text">
-      <b>{{ item.name }}</b>
+        <div class="col-sm-2">
+          <span class="badge badge-info">{{ item.year }}</span>
+        </div>
 
-      {% if item.status %}
-        <div>{{ item.status }}</div>
-      {% endif %}
+        <div class="col-sm-10">
 
-      {% if item.notes %}
-        <div class="text-muted">{{ item.notes }}</div>
-      {% endif %}
-    </td>
-  </tr>
-  {% endfor %}
-</table>
+          <div>
+            <b>{{ item.name }}</b>
+          </div>
+
+          {% if item.status %}
+          <div class="text-muted">
+            {{ item.status }}
+          </div>
+          {% endif %}
+
+          {% if item.notes %}
+          <div class="text-muted">
+            {{ item.notes }}
+          </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</div>
