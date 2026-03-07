@@ -188,8 +188,6 @@ Moments from campus life, events, and the people I work with.
 <div class="gallery-caption">2017</div>
 </div>
 
-</div>
-
 <div id="lightbox">
 
   <span id="closeBtn">&times;</span>
@@ -200,12 +198,19 @@ Moments from campus life, events, and the people I work with.
 
   <span id="nextBtn">&#10095;</span>
 
+  <div id="imageCounter"></div>
+
 </div>
 
 <script>
 
 let currentIndex = 0;
 let images = [];
+
+function updateCounter() {
+  const counter = document.getElementById("imageCounter");
+  counter.textContent = (currentIndex + 1) + " / " + images.length;
+}
 
 function openLightbox(img) {
 
@@ -217,6 +222,8 @@ function openLightbox(img) {
 
   lightbox.style.display = "flex";
   lightboxImg.src = img.src;
+
+  updateCounter();
 }
 
 function closeLightbox() {
@@ -228,8 +235,19 @@ function showImage(index) {
   if (index < 0) index = images.length - 1;
   if (index >= images.length) index = 0;
 
-  currentIndex = index;
-  document.getElementById("lightbox-img").src = images[currentIndex].src;
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  lightboxImg.style.opacity = 0;
+
+  setTimeout(() => {
+
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+    updateCounter();
+
+    lightboxImg.style.opacity = 1;
+
+  }, 120);
 }
 
 document.getElementById("prevBtn").onclick = function(e) {
@@ -272,7 +290,7 @@ document.addEventListener("keydown", function(e) {
 
   }
 
-})
+});
 
 let startX = 0;
 let endX = 0;
