@@ -40,4 +40,5 @@ For more on what I'm currently doing, check the [Projects](/Projects/) page.
 
 <div class="quote-box">
 We made ourselves.
+              - someone, probably
 </div>

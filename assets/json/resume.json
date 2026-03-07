@@ -102,7 +102,7 @@
     },
     {
       "name": "Remote Research Project",
-      "summary": "Ongoing remote research project exploring binary evolution physics and stability criteria in massive star systems using stellar evolution models, in discussion with Alejandro Vigna-Gómez.",
+      "summary": "Ongoing remote research project exploring binary evolution physics and stability criteria in massive star systems using stellar evolution models, in discussion with <a href=\"https://alejandrovignagomez.com\" target=\"_blank\" rel=\"noopener noreferrer\">Dr. Alejandro Vigna-Gómez</a>.",
       "startDate": "2026-01",
       "endDate": "Present",
       "technologies": [
@@ -141,12 +141,12 @@
 
   "positions": [
     {
-      "organization": "Inquivesta XII, IISER Kolkata \n https://drive.google.com/drive/folders/1e8KVt4jCCRtpWMg5Ix2mfSMd7x5xBEeQ?usp=sharing",
+      "organization": "Inquivesta XII, IISER Kolkata",
       "position": "Event Coordinator",
       "startDate": "2025",
       "endDate": "2026",
       "summary": "Coordinated logistics and managed teams for all the events in the annual science festival.",
-      "Media Link": "https://drive.google.com/drive/folders/1e8KVt4jCCRtpWMg5Ix2mfSMd7x5xBEeQ?usp=sharing"
+      "url": "https://drive.google.com/drive/folders/1e8KVt4jCCRtpWMg5Ix2mfSMd7x5xBEeQ?usp=sharing"
     },
     {
       "organization": "Gaming Club, IISER Kolkata",
