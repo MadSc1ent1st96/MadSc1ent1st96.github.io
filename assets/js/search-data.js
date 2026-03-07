@@ -37,6 +37,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/game/";
           },
+        },{id: "nav-gallery",
+          title: "gallery",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/gallery/";
+          },
         },{id: "post-inside-the-heart-of-a-star-simulating-stellar-evolution-with-mesa",
         
           title: "Inside the Heart of a Star: Simulating Stellar Evolution with MESA",
