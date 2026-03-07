@@ -24,7 +24,7 @@ announcements:
   limit: 5
 
 latest_posts:
-  enabled: true
+  enabled: false
   scrollable: true
   limit: 3
 ---
@@ -36,3 +36,8 @@ I enjoy working independently on projects that combine theoretical concepts with
 Outside academics, I’m involved in organizing student events and occasionally work on science outreach.
 
 For more on what I'm currently doing, check the [Projects](/Projects/) page.
+
+
+<div class="quote-box">
+We made ourselves.
+</div>
