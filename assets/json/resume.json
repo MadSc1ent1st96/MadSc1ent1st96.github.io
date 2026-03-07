@@ -79,6 +79,19 @@
 
   "research": [
     {
+      "name": "Remote Research Project",
+      "summary": "Ongoing remote research project exploring binary evolution physics and stability criteria in massive star systems using stellar evolution models, in discussion with <a href=\"https://alejandrovignagomez.com\" target=\"_blank\" rel=\"noopener noreferrer\">Dr. Alejandro Vigna-Gómez</a>.",
+      "startDate": "2026-01",
+      "endDate": "Present",
+      "technologies": [
+        "MESA",
+        "Python",
+        "NumPy",
+        "mesa_reader",
+        "matplotlib"
+      ]
+    },
+    {
       "name": "Stellar Evolution Atlas",
       "summary": "Independent research project computing a grid of ~2000 stellar evolution models using MESA across stellar masses from 0–100M and varying metallicities. Analyzed HR diagram evolution, stellar lifetimes, and temperature–density tracks. Results presented through an interactive Stellar Evolution Atlas website with an open dataset of stellar models.",
       "startDate": "2025-05",
@@ -96,20 +109,8 @@
         "Bash",
         "FFmpeg"
       ]
-    },
-    {
-      "name": "Remote Research Project",
-      "summary": "Ongoing remote research project exploring binary evolution physics and stability criteria in massive star systems using stellar evolution models, in discussion with <a href=\"https://alejandrovignagomez.com\" target=\"_blank\" rel=\"noopener noreferrer\">Dr. Alejandro Vigna-Gómez</a>.",
-      "startDate": "2026-01",
-      "endDate": "Present",
-      "technologies": [
-        "MESA",
-        "Python",
-        "NumPy",
-        "mesa_reader",
-        "matplotlib"
-      ]
     }
+    
   ],
 
   "manuscripts": [
