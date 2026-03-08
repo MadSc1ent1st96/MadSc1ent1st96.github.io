@@ -200,7 +200,6 @@ A few moments from my otherwise mundane life.
 Press <b>T</b> to reverse timeline
 </p>
 
-</div>
 
 <div id="lightbox">
 
