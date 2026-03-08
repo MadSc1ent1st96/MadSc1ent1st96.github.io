@@ -240,6 +240,8 @@ function openLightbox(img) {
 
   const captionText = img.parentElement.querySelector(".gallery-caption").innerText;
   caption.innerText = captionText;
+
+  counter.innerText = `Image ${currentIndex + 1} of ${images.length}`;
 }
 
 function closeLightbox() {
@@ -268,6 +270,7 @@ function showImage(index) {
     images[currentIndex].parentElement.querySelector(".gallery-caption").innerText;
 
   caption.innerText = captionText;
+  counter.innerText = `Image ${currentIndex + 1} of ${images.length}`;
 }
 
 document.getElementById("prevBtn").onclick = function(e) {
