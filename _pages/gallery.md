@@ -209,6 +209,10 @@ Press <b>T</b> to reverse timeline
 
   <img id="lightbox-img">
 
+  <div id="lightbox-counter"></div>
+
+  <div id="lightbox-caption"></div>
+
   <span id="nextBtn">&#10095;</span>
 
 </div>
@@ -225,13 +229,28 @@ function openLightbox(img) {
 
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
+  const caption = document.getElementById("lightbox-caption");
+
+  document.getElementById("lightbox-counter").innerText =
+  (currentIndex + 1) + " / " + images.length;
 
   lightbox.style.display = "flex";
+  setTimeout(() => lightbox.classList.add("show"), 10);
   lightboxImg.src = img.src;
+
+  caption.innerText = img.nextElementSibling.innerText;
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
+
+  const lightbox = document.getElementById("lightbox");
+
+  lightbox.classList.remove("show");
+
+  setTimeout(() => {
+    lightbox.style.display = "none";
+  }, 200);
+
 }
 
 function showImage(index) {
@@ -240,7 +259,11 @@ function showImage(index) {
   if (index >= images.length) index = 0;
 
   currentIndex = index;
-  document.getElementById("lightbox-img").src = images[currentIndex].src;
+  const lightboxImg = document.getElementById("lightbox-img");
+  const caption = document.getElementById("lightbox-caption");
+
+  lightboxImg.src = images[currentIndex].src;
+  caption.innerText = images[currentIndex].nextElementSibling.innerText;
 }
 
 document.getElementById("prevBtn").onclick = function(e) {
