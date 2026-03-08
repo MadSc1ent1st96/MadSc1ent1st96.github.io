@@ -41,6 +41,8 @@
   box-shadow: 0 6px 18px rgba(0,0,0,0.35);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   transform-style: preserve-3d;
+  break-inside: avoid;
+  margin-bottom: 18px;
 }
 
 .gallery-item:hover {
@@ -83,6 +85,7 @@
   font-size: 0.85rem;
   opacity: 0;
   transition: opacity 0.25s ease;
+  pointer-events: none;
 }
 
 .gallery-item:hover .gallery-caption {
