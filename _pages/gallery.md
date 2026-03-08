@@ -14,7 +14,7 @@ A few moments from my otherwise mundane life.
 </p>
 
 <div id="galleryGridWrapper">
-  <div class="gallery-grid" id="galleryGrid">
+<div class="gallery-grid" id="galleryGrid">
 
   <!-- INQUIVESTA -->
 
@@ -238,7 +238,8 @@ function openLightbox(img) {
   setTimeout(() => lightbox.classList.add("show"), 10);
   lightboxImg.src = img.src;
 
-  caption.innerText = img.nextElementSibling.innerText;
+  const captionText = img.parentElement.querySelector(".gallery-caption").innerText;
+  caption.innerText = captionText;
 }
 
 function closeLightbox() {
@@ -263,7 +264,10 @@ function showImage(index) {
   const caption = document.getElementById("lightbox-caption");
 
   lightboxImg.src = images[currentIndex].src;
-  caption.innerText = images[currentIndex].nextElementSibling.innerText;
+  const captionText =
+    images[currentIndex].parentElement.querySelector(".gallery-caption").innerText;
+
+  caption.innerText = captionText;
 }
 
 document.getElementById("prevBtn").onclick = function(e) {
