@@ -200,6 +200,8 @@ A few moments from my otherwise mundane life.
 Press <b>T</b> to reverse timeline
 </p>
 
+</div>
+
 <div id="lightbox">
 
   <span id="closeBtn">&times;</span>
@@ -210,19 +212,12 @@ Press <b>T</b> to reverse timeline
 
   <span id="nextBtn">&#10095;</span>
 
-  <div id="imageCounter"></div>
-
 </div>
 
 <script>
 
 let currentIndex = 0;
 let images = [];
-
-function updateCounter() {
-  const counter = document.getElementById("imageCounter");
-  counter.textContent = (currentIndex + 1) + " / " + images.length;
-}
 
 function openLightbox(img) {
 
@@ -234,8 +229,6 @@ function openLightbox(img) {
 
   lightbox.style.display = "flex";
   lightboxImg.src = img.src;
-
-  updateCounter();
 }
 
 function closeLightbox() {
@@ -247,19 +240,8 @@ function showImage(index) {
   if (index < 0) index = images.length - 1;
   if (index >= images.length) index = 0;
 
-  const lightboxImg = document.getElementById("lightbox-img");
-
-  lightboxImg.style.opacity = 0;
-
-  setTimeout(() => {
-
-    currentIndex = index;
-    lightboxImg.src = images[currentIndex].src;
-    updateCounter();
-
-    lightboxImg.style.opacity = 1;
-
-  }, 120);
+  currentIndex = index;
+  document.getElementById("lightbox-img").src = images[currentIndex].src;
 }
 
 document.getElementById("prevBtn").onclick = function(e) {
@@ -302,7 +284,7 @@ document.addEventListener("keydown", function(e) {
 
   }
 
-});
+})
 
 let startX = 0;
 let endX = 0;
