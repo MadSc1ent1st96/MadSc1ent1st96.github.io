@@ -168,11 +168,12 @@
 }
 
 #lightbox img {
-  max-width: 90%;
-  max-height: 90%;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
   border-radius: 6px;
-  opacity: 1;
-  transition: opacity 0.25s ease;
 }
 
 #closeBtn {
