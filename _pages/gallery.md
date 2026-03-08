@@ -42,7 +42,7 @@ A few moments from my otherwise mundane life.
 
   <div class="gallery-item reveal parallax-item">
   <img src="/assets/img/gallery/005_INQ_CCC.jpg" loading="lazy" onclick="openLightbox(this)">
-  <div class="gallery-caption">Day 2, Inquivesta XII - The unlucky five</div>
+  <div class="gallery-caption">Day 2, Inquivesta XII - The unlucky four</div>
   </div>
 
   <div class="gallery-item reveal parallax-item">
@@ -53,7 +53,6 @@ A few moments from my otherwise mundane life.
   <div class="gallery-item reveal parallax-item">
   <img src="/assets/img/gallery/007_INQ_OKAYY.jpg" loading="lazy" onclick="openLightbox(this)">
   <div class="gallery-caption">Day 3, Inquivesta XII - After DJ</div>
-  <div class="gallery-caption"></div>
   </div>
 
   <div class="gallery-item reveal parallax-item">
