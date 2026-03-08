@@ -196,9 +196,9 @@ A few moments from my otherwise mundane life.
 </div>
 
 
-<p class="gallery-hint">
+<!-- <p class="gallery-hint">
 Press <b>T</b> to reverse timeline
-</p>
+</p> -->
 
 
 <div id="lightbox">
