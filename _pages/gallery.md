@@ -230,15 +230,16 @@ function openLightbox(img) {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const caption = document.getElementById("lightbox-caption");
-
-  document.getElementById("lightbox-counter").innerText =
-  (currentIndex + 1) + " / " + images.length;
+  const counter = document.getElementById("lightbox-counter");
 
   lightbox.style.display = "flex";
   setTimeout(() => lightbox.classList.add("show"), 10);
+
   lightboxImg.src = img.src;
 
-  const captionText = img.parentElement.querySelector(".gallery-caption").innerText;
+  const captionText =
+    img.parentElement.querySelector(".gallery-caption").innerText;
+
   caption.innerText = captionText;
 
   counter.innerText = `Image ${currentIndex + 1} of ${images.length}`;
@@ -262,14 +263,18 @@ function showImage(index) {
   if (index >= images.length) index = 0;
 
   currentIndex = index;
+
   const lightboxImg = document.getElementById("lightbox-img");
   const caption = document.getElementById("lightbox-caption");
+  const counter = document.getElementById("lightbox-counter");
 
   lightboxImg.src = images[currentIndex].src;
+
   const captionText =
     images[currentIndex].parentElement.querySelector(".gallery-caption").innerText;
 
   caption.innerText = captionText;
+
   counter.innerText = `Image ${currentIndex + 1} of ${images.length}`;
 }
 
