@@ -58,7 +58,7 @@
   cursor: pointer;
   transition: transform 0.35s ease;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .gallery-item::after {
@@ -91,6 +91,7 @@
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
+  z-index: 2;
 }
 
 .gallery-item:hover .gallery-caption {
