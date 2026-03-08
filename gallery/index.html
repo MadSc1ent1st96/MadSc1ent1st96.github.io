@@ -35,13 +35,16 @@ function openLightbox(img) {
   const lightboxImg = document.getElementById("lightbox-img");
 
   lightbox.style.display = "flex";
-  lightboxImg.src = img.src;
+  lightbox.classList.add("show");
+  lightboxImg.src = img.currentSrc;
 
   updateCounter();
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
+  const lb = document.getElementById("lightbox");
+  lb.classList.remove("show");
+  setTimeout(()=>{ lb.style.display="none"; },200);
 }
 
 function showImage(index) {
@@ -56,7 +59,7 @@ function showImage(index) {
   setTimeout(() => {
 
     currentIndex = index;
-    lightboxImg.src = images[currentIndex].src;
+    lightboxImg.src = images[currentIndex].currentSrc;
     updateCounter();
 
     lightboxImg.style.opacity = 1;
@@ -172,14 +175,12 @@ function galleryParallax() {
 
   const items = document.querySelectorAll(".parallax-item, .gallery-year");
 
-  const scrollY = window.scrollY;
-
   items.forEach((item) => {
 
     const rect = item.getBoundingClientRect();
-    const speed = 0.03;
+    const speed = 0.05;
 
-    const offset = rect.top * speed;
+    const offset = (window.innerHeight - rect.top) * speed;
 
     item.style.transform = `translateY(${offset}px)`;
 
