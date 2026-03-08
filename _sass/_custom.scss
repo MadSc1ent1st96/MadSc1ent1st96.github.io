@@ -67,6 +67,7 @@
   background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 70%);
   opacity: 0;
   transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .gallery-item:hover::after {
