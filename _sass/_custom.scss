@@ -13,7 +13,7 @@
 
 .quote-box-RI {
   max-width: 760px;
-  margin: 2.5rem auto 3rem auto;   /* bottom space added */
+  margin: 2.5rem auto 3rem auto;
   padding: 18px 26px;
 
   text-align: center;
@@ -22,11 +22,17 @@
   line-height: 1.7;
   letter-spacing: 0.03em;
 
-  background: rgba(48, 74, 111, 0.827);
-  border: 1px solid #6ea8fe;
+  background: rgba(30,40,60,0.75);            
+  border: 1px solid rgba(120,160,255,0.35);   
   border-radius: 10px;
 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);   
+}
+
+.quote-box-RI:hover {
+  border-color: rgba(120,160,255,0.55);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+  transition: all 0.25s ease;
 }
 
 .quote-author-RI {
@@ -34,7 +40,7 @@
   margin-top: 10px;
   font-style: normal;
   font-size: 0.9rem;
-  opacity: 0.7;
+  color: rgba(255,255,255,0.65);
 }
 
 .projects-divider {
