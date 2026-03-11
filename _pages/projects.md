@@ -9,9 +9,12 @@ horizontal: false
 ---
 
 <div class="quote-box-RI">
-  To give us the will to touch the stars but arms too short to reach them, a flower blooms only to wither, the sunset burns only to die.<br>
-  <span class="quote-author">— Fang Yuan, RI</span>
+  To give us the will to touch the stars but arms too short to reach them,
+  a flower blooms only to wither, the sunset burns only to die.
+  <span class="quote-author-RI">— Fang Yuan, RI</span>
 </div>
+
+<div class="projects-divider"></div>
 
 <!-- pages/projects.md -->
 <div class="projects">

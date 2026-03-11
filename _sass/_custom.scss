@@ -12,16 +12,36 @@
 }
 
 .quote-box-RI {
-  display: inline-block;
-  max-width: 840px;
-  margin-top: 1.5rem;
-  margin-left: 90px;   /* pushes it right */
-  padding: 12px 16px;
-  border-left: 3px solid #6ea8fe;
-  background: rgba(110,168,254,0.07);
+  max-width: 760px;
+  margin: 2.5rem auto 3rem auto;   /* bottom space added */
+  padding: 18px 26px;
+
+  text-align: center;
   font-style: italic;
-  letter-spacing: 0.02em;
-  border-radius: 6px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+
+  background: rgba(110,168,254,0.08);
+  border: 1px solid rgba(110,168,254,0.35);
+  border-radius: 10px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.quote-box-RI .quote-author-RI {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.projects-divider {
+  width: 120px;
+  height: 2px;
+  margin: 0 auto 2.5rem auto;
+  background: rgba(255,255,255,0.15);
 }
 
 .quote-author {
