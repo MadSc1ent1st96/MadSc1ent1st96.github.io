@@ -8,7 +8,7 @@ nav_order: 1
 horizontal: false
 ---
 
-<div class="quote-box">
+<div class="quote-box-RI">
   To give us the will to touch the stars but arms too short to reach them, a flower blooms only to wither, the sunset burns only to die.<br>
   <span class="quote-author">— Fang Yuan, RI</span>
 </div>

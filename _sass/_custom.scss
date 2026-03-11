@@ -11,6 +11,19 @@
   border-radius: 6px;
 }
 
+.quote-box-RI {
+  display: inline-block;
+  max-width: 840px;
+  margin-top: 1.5rem;
+  margin-left: 90px;   /* pushes it right */
+  padding: 12px 16px;
+  border-left: 3px solid #6ea8fe;
+  background: rgba(110,168,254,0.07);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  border-radius: 6px;
+}
+
 .quote-author {
   display: block;
   margin-left: 120px;
